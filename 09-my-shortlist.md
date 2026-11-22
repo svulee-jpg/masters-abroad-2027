@@ -18,6 +18,7 @@
 - Reading, MSc Applied Artificial Intelligence for Business (код 1.4, good second class, диапазон для Казахстана 2.6–3.0/4.0, IELTS 6.5/5.5).
 - Sussex, MSc Strategic Innovation Management и MSc Entrepreneurship and Innovation (коды 1.23, 4.16, 4.18; общий минимум для Казахстана 3.0/4.0, запас 0.09; срок 1 августа 2027).
 - York, MSc Entrepreneurship and Innovation Management (коды 1.23 и 4.16) и MSc International Business (коды 4.12, 4.16, 4.18): 2:2 = 3.0/4.0, запас 0.09, £32 900, IELTS 6.5/6.0, срок на странице не найден.
+- Queen's University Belfast, MSc International Business (добавлено 22.11.2026 18:45 по скриншотам Saule; коды 4.12, 4.16, 4.18; 2:2 = 3.0/4.0 для Казахстана, запас 0.09; IELTS 6.5/6.0 по буклету 2025/26; цена 2027/28 не опубликована; срок на странице не найден).
 - Sheffield, MSc International Management (код 4.18, 2:1 = 3.0/4.0, запас 0.09, IELTS 6.5/6.0).
 
 Не записаны: Leeds (программа с 2:2 пока не подобрана) и Regent's (запасной вариант на свои деньги, программы не выбраны). Программы Business Analytics под кодом 1.1 (Sheffield, Nottingham, Royal Holloway, Leicester) не записаны, пока решение «добавить код 1.1» открыто. Royal Holloway, Strathclyde и Leicester не записаны: порог GPA для Казахстана у них не найден.
