@@ -30,7 +30,7 @@
 
 ## 4. Пересчёт GPA
 
-GPA 3.08 из 4.0 в британский эквивалент 2:1 по требованиям каждого вуза. Таблица с порогами для 24 вузов в [04-uk.md](04-uk.md). 3.08 проходит на 2:1 в Sheffield и Nottingham, на уровне 2:2 в Leeds, York, Warwick, Queen Mary. UCL выше твоего GPA (3.3/4.0), снят со списка. Не найдены пороги: Glasgow, Durham, Southampton, Exeter, Liverpool, Newcastle, Queen's Belfast, Cardiff.
+GPA 3.08 из 4.0 в британский эквивалент 2:1 по требованиям каждого вуза. Таблица с порогами для 24 вузов в [04-uk.md](04-uk.md). 3.08 проходит на 2:1 в Sheffield и Nottingham, на уровне 2:2 в Leeds, York, Warwick, Queen Mary. UCL выше твоего GPA (3.3/4.0), снят со списка. Durham: прямой вход 3.4/4.0, выше твоего GPA; подготовка ISC от 3.0 (решение за Saule). Не найдены пороги: Glasgow, Southampton, Exeter, Liverpool, Newcastle, Queen's Belfast, Cardiff.
 
 ## 4a. Код 1.1 (Business Analytics)
 
