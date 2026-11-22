@@ -30,7 +30,7 @@
 
 ## 4. Пересчёт GPA
 
-GPA 3.08 из 4.0 в британский эквивалент 2:1 по требованиям каждого вуза. Таблица с порогами для 24 вузов в [04-uk.md](04-uk.md). 3.08 проходит на 2:1 в Sheffield, Nottingham и Newcastle (2:1 = 3.0), на уровне 2:2 в Leeds, York, Warwick, Queen Mary. UCL выше твоего GPA (3.3/4.0), снят со списка. Durham: прямой вход 3.4/4.0, выше твоего GPA; подготовка ISC от 3.0 (решение за Saule). Glasgow: International Business требует 3.4/4.0, выше твоего GPA. Exeter даёт таблицу только в пятибалльной шкале (2:2 = 3.9–4.29), эквивалент для 4.0 подтвердить у Exeter. Не найдены пороги: Southampton, Liverpool, Queen's Belfast, Cardiff.
+GPA 3.09 из 4.0 в британский эквивалент 2:1 по требованиям каждого вуза. В списке оставлены только вузы, где GPA проходит ([04-uk.md](04-uk.md)): на 2:1 Sheffield, Nottingham и Newcastle (2:1 = 3.0), на уровне 2:2 Leeds, York, Warwick, Queen Mary, Lancaster и UEA. Остальные убраны с порогом выше или без подтверждения, данные в [docs/archive-gpa-filter.md](docs/archive-gpa-filter.md). Открыто: порог UEA в баллах для Казахстана; Exeter вернуть в список, если подтвердит эквивалент 3.09/4.0 в своей пятибалльной таблице (2:2 = 3.9–4.29).
 
 ## 4a. Код 1.1 (Business Analytics)
 

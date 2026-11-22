@@ -8,9 +8,9 @@
 
 **University of East Anglia (UEA)** (добавлено 22.11.2026 по просьбе Saule, программу пока не выбирали). В таблице стоит MSc Sustainable Business Management со скриншотов: коды 4.16 и 4.18, 2:2 в любой дисциплине, IELTS 6.0 (не ниже 5.5), старт только в январе (для цикла 2027 это январь 2028, совместимость с Болашаком уточнить в ЦМП), цена и срок на скриншотах не видны. Страница: https://www.uea.ac.uk/course/postgraduate/msc-sustainable-business-management. Уровень Safety.
 
-На рассмотрении, но не в «Моём выборе»: Queen Mary, MSc Entrepreneurship and Innovation Management (код 1.23 и 4.16, 2:2 = 2.67/4.0, £34 650, IELTS 6.5/6.0, срок на странице не найден), Durham, Lancaster.
+На рассмотрении, но не в «Моём выборе»: Queen Mary, MSc Entrepreneurship and Innovation Management (код 1.23 и 4.16, 2:2 = 2.67/4.0, £34 650, IELTS 6.5/6.0, срок на странице не найден), Lancaster.
 
-Сняты: Imperial College London 22.11.2026 (порог GPA 3.6/4 против 3.09), подробности в [docs/archive-imperial.md](docs/archive-imperial.md). UCL снят 22.11.2026 (порог 3.3/4.0 против 3.09), см. [docs/archive-ucl.md](docs/archive-ucl.md). Manchester снят 22.11.2026 (порог 3.33/4.0 против 3.09), см. [docs/archive-manchester.md](docs/archive-manchester.md).
+Сняты: Imperial College London 22.11.2026 (порог GPA 3.6/4 против 3.09), подробности в [docs/archive-imperial.md](docs/archive-imperial.md). UCL снят 22.11.2026 (порог 3.3/4.0 против 3.09), см. [docs/archive-ucl.md](docs/archive-ucl.md). Manchester снят 22.11.2026 (порог 3.33/4.0 против 3.09), см. [docs/archive-manchester.md](docs/archive-manchester.md). 22.11.2026 по просьбе Saule из списка вузов убраны все, где GPA 3.09 не проходит или порог не подтверждён (Edinburgh, Bristol, Birmingham, Glasgow, Durham, St Andrews, Exeter, Oxford, Cambridge, Southampton, Liverpool, Queen's Belfast, Cardiff и др.), данные в [docs/archive-gpa-filter.md](docs/archive-gpa-filter.md).
 
 ## Запасной вариант без Болашака
 
