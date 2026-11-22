@@ -27,6 +27,7 @@
 | [06-checklists.md](06-checklists.md) | Чек-листы документов |
 | [07-open-questions.md](07-open-questions.md) | Что проверить и у кого спросить |
 | [08-time-map.md](08-time-map.md) | Карта времени ноябрь 2026 – октябрь 2027 по дорожкам: подготовка, Великобритания, Европа, Китай, Болашак |
+| [09-my-shortlist.md](09-my-shortlist.md) | Программы, которые я выбираю на сайтах вузов (сейчас Imperial, пять программ) |
 | [data/deadlines.csv](data/deadlines.csv) | Дедлайны в машиночитаемом виде |
 | [data/transcript.csv](data/transcript.csv) | Транскрипт AITU: 39 курсов, кредиты, оценки (22.11.2026) |
 | [docs/sources.md](docs/sources.md) | Источники со ссылками |
