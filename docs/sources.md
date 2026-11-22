@@ -32,7 +32,9 @@
 - Пороги GPA для Казахстана: страницы вузов Edinburgh, Sheffield, Nottingham, Leeds, York, Warwick, UCL, Bristol, Manchester, Birmingham, Queen Mary, LSE, St Andrews, Surrey, Brookes (проверено 22.11.2026)
 - Durham: порог для магистратуры из Казахстана https://durham.ac.uk/study/international/entry-requirements/international-qualifications/ ; страница подготовительных программ ISC (Bakalavr 3.0) https://durhamisc.com/how-to-apply/entry-requirements (проверено 22.11.2026)
 - Lancaster: порог для Казахстана https://www.lancaster.ac.uk/study/entry-requirements/postgraduate-qualifications/?country=Kazakhstan (1st 3.5, 2:1 3.3, 2:2 3.0 из 4.0; проверено по скриншоту Saule 22.11.2026)
-- Программы: страницы Lancaster, Sheffield, Nottingham, Leicester, Royal Holloway, Strathclyde (проверено 22.11.2026)
+- Newcastle: программа https://www.ncl.ac.uk/postgraduate/degrees/5549f/ (порог для Казахстана 2:1 = 3.0, 2:2 = 2.5 из 4.0, по скриншотам Saule 22.11.2026; цена по Mastersportal, срока на странице нет)
+- Queen Mary: https://www.qmul.ac.uk/postgraduate/taught/coursefinder/courses/entrepreneurship-and-innovation-management-msc/ (£34 650, IELTS 6.5/6.0; порог для Казахстана 2:1 = 3.33, 2:2 = 2.67, проверено 22.11.2026)
+- Программы: страницы Lancaster, Newcastle, Queen Mary, Sheffield, Nottingham, Leicester, Royal Holloway, Strathclyde (проверено 22.11.2026)
 
 ## Европа: Erasmus Mundus (проверено 22.11.2026)
 

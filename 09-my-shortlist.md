@@ -4,7 +4,11 @@
 
 ## Сейчас в списке
 
-Пока пусто. Imperial College London снят 22.11.2026 (порог GPA 3.6/4 против 3.09), подробности в [docs/archive-imperial.md](docs/archive-imperial.md). UCL снят 22.11.2026 (порог 3.3/4.0 против 3.09), см. [docs/archive-ucl.md](docs/archive-ucl.md). Manchester снят 22.11.2026 (порог 3.33/4.0 против 3.09), см. [docs/archive-manchester.md](docs/archive-manchester.md).
+**Newcastle University, MSc Artificial Intelligence in Business** (добавлено 22.11.2026). Код 1.4 (название есть и под 1.23). Для Казахстана 2:1 = 3.0/4.0, 2:2 = 2.5/4.0, программа просит 2:2, у Saule 3.09. IELTS 6.5, не ниже 6.0. Цена около £30 800 в год (Mastersportal, проверить), срок на странице не найден, старт сентябрь 2027, 12 месяцев. Требования на странице даны для набора 2026, проверить на 2027. Брать вариант 5549F, не 5550F with Study Abroad. Страница: https://www.ncl.ac.uk/postgraduate/degrees/5549f/. Уровень Safety.
+
+На рассмотрении, но не в «Моём выборе»: Queen Mary, MSc Entrepreneurship and Innovation Management (код 1.23 и 4.16, 2:2 = 2.67/4.0, £34 650, IELTS 6.5/6.0, срок на странице не найден), Durham, Lancaster.
+
+Сняты: Imperial College London 22.11.2026 (порог GPA 3.6/4 против 3.09), подробности в [docs/archive-imperial.md](docs/archive-imperial.md). UCL снят 22.11.2026 (порог 3.3/4.0 против 3.09), см. [docs/archive-ucl.md](docs/archive-ucl.md). Manchester снят 22.11.2026 (порог 3.33/4.0 против 3.09), см. [docs/archive-manchester.md](docs/archive-manchester.md).
 
 ## Запасной вариант без Болашака
 
