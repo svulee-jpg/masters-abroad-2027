@@ -856,8 +856,10 @@ var UNIS = [
   {n:"Regent's University London (вне RG, нет в списке Болашака)", qs:null, the:"—", gpa:"3.0/5.0 (Казахстан, магистратура)", cat:"selfpay", fit:"Запас на свои деньги"}
 ];
 var CAT = {ok21:["good","Проходит"], ok22:["warn","2:2"], near:["warn","Чуть выше"], above:["bad","Выше"], unknown:["mute","Нет данных"], selfpay:["info","Без Болашака"]};
+var PICKED_DEFAULT = ["Queen Mary University of London"];
 var state = {filter:"all", picked:{}};
-try { var saved = localStorage.getItem("saule-picked"); if (saved) state.picked = JSON.parse(saved) || {}; } catch (e) {}
+PICKED_DEFAULT.forEach(function (k) { state.picked[k] = true; });
+try { var saved = localStorage.getItem("saule-picked"); if (saved) { var sp = JSON.parse(saved) || {}; Object.keys(sp).forEach(function (k) { state.picked[k] = sp[k]; }); } } catch (e) {}
 
 function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
 function render() {
