@@ -23,15 +23,6 @@
 
 ## UK
 
-- Imperial, Business Analytics & AI (раунды, 2027): https://www.imperial.ac.uk/study/courses/postgraduate-taught/business-analytics/?addCourse=1201973
-- Imperial, MiM, 2027 (раунды, IELTS, цена): https://www.imperial.ac.uk/business-school/masters/management/admissions/
-- Imperial, Innovation, Entrepreneurship & Management, 2027: https://www.imperial.ac.uk/business-school/masters/innovation-entrepreneurship-management/admissions/
-- Imperial, Investment & Wealth Management, 2027: https://www.imperial.ac.uk/business-school/masters/investment-wealth-management/admissions/
-- Imperial, Strategic Marketing, 2027: https://www.imperial.ac.uk/business-school/masters/strategic-marketing/admissions/
-- Imperial, AI, Economics & Policy, 2027: https://www.imperial.ac.uk/study/courses/postgraduate-taught/ai-economics-policy/
-- Imperial, допустимые квалификации для магистратуры (минимум 3.6/4 или 4.5/5, привязку к Казахстану перепроверить): https://www.imperial.ac.uk/study/apply/postgraduate-taught/entry-requirements/accepted-qualifications/
-- Imperial, IELTS 7.0 overall (листинг Mastersportal): https://www.mastersportal.com/studies/65254/business-analytics-and-ai.html
-- Imperial, программа 2026-27 (требования к диплому): https://www.imperial.ac.uk/media/imperial-college/study/programme-specifications/icbs/2627/N209T-MSc-Business-Analytics-and-AI-2026-27.pdf
 - Edinburgh, AI for Business, дедлайны: https://www.business-school.ed.ac.uk/msc/ai-business/apply/application-deadlines
 - Edinburgh, Business Analytics, подача: https://www.business-school.ed.ac.uk/msc/business-analytics/apply
 
