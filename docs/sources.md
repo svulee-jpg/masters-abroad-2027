@@ -31,6 +31,7 @@
 - Рейтинги: QS World University Rankings 2027 (июнь 2026), THE World University Rankings 2027 (30 сентября 2026): https://www.timeshighereducation.com/student/best-universities/best-universities-uk
 - Пороги GPA для Казахстана: страницы вузов Edinburgh, Sheffield, Nottingham, Leeds, York, Warwick, UCL, Bristol, Manchester, Birmingham, Queen Mary, LSE, St Andrews, Surrey, Brookes (проверено 22.11.2026)
 - Durham: порог для магистратуры из Казахстана https://durham.ac.uk/study/international/entry-requirements/international-qualifications/ ; страница подготовительных программ ISC (Bakalavr 3.0) https://durhamisc.com/how-to-apply/entry-requirements (проверено 22.11.2026)
+- Lancaster: порог для Казахстана https://www.lancaster.ac.uk/study/entry-requirements/postgraduate-qualifications/?country=Kazakhstan (1st 3.5, 2:1 3.3, 2:2 3.0 из 4.0; проверено по скриншоту Saule 22.11.2026)
 - Программы: страницы Lancaster, Sheffield, Nottingham, Leicester, Royal Holloway, Strathclyde (проверено 22.11.2026)
 
 ## Европа: Erasmus Mundus (проверено 22.11.2026)
