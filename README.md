@@ -4,6 +4,8 @@
 
 Статус: **22.11.2026**. Живая таблица грантов (Claude Artifact): https://claude.ai/artifact/D6ajABepsdbkd8ePB4fyc1
 
+Сайт «Saule — Master's Admission 2027» (направления, вузы, GPA и IELTS, Болашак, календарь): https://claude.ai/artifact/AXHfRcDkEWumWTCgvQ7yVi. Исходник: [site/index.html](site/index.html).
+
 ## Срочно (ближайшие 2 недели)
 
 1. **Записаться на IELTS** (компьютерный формат, British Council Kazakhstan) на первый свободный слот в декабре 2026. Подробности: [03-ielts-and-tests.md](03-ielts-and-tests.md).
@@ -20,18 +22,20 @@
 | [01-timeline.md](01-timeline.md) | Единый календарь дедлайнов (подтверждено / ожидаемо) |
 | [02-bolashak.md](02-bolashak.md) | Правила, сроки, пакет документов, риски Болашака |
 | [03-ielts-and-tests.md](03-ielts-and-tests.md) | IELTS и KAZTEST: сроки, формат, стоимость, логика дедлайна |
-| [04-uk.md](04-uk.md) | Британский шорт-лист, раунды, условия офферов |
+| [04-uk.md](04-uk.md) | Направления Болашака, 24 вуза Russell Group с рейтингами и GPA, проверенные программы, Reach / Match / Safety |
 | [05-other-countries.md](05-other-countries.md) | Erasmus Mundus, Корея, Шанхай: ставки и открытые проверки |
 | [06-checklists.md](06-checklists.md) | Чек-листы документов |
 | [07-open-questions.md](07-open-questions.md) | Что проверить и у кого спросить |
 | [data/deadlines.csv](data/deadlines.csv) | Дедлайны в машиночитаемом виде |
 | [docs/sources.md](docs/sources.md) | Источники со ссылками |
+| [site/index.html](site/index.html) | Исходник сайта Saule — Master's Admission 2027 |
 
 ## Принятые решения
 
 - Болашак используется только для Великобритании и Китая. В остальных странах только программы с полным финансированием от вуза или государства.
 - Гонконг исключён. Chevening не подходит на цикл 2027 (нет двух лет опыта).
-- Основные направления: AI for Business (трек A) и Business Analytics (трек C). Чисто технические программы (трек B) исключены. Organization Management & Strategy тоже включать в анализ.
+- Для Великобритании (22.11.2026) выбраны четыре направления из перечня Болашака: 1.4 Искусственный интеллект, 1.23 Информационные технологии и системы, 4.16 Предпринимательство, 4.18 Менеджмент. Business Analytics стоит под кодом 1.1: добавлять ли его, пока решается.
+- Ранее основные направления: AI for Business (трек A) и Business Analytics (трек C). Чисто технические программы (трек B) исключены. Organization Management & Strategy тоже включать в анализ.
 - Главная цель: поступить на **полный грант**.
 
 ## Как вести репозиторий

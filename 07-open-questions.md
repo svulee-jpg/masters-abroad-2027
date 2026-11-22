@@ -27,7 +27,15 @@
 
 ## 4. Пересчёт GPA
 
-GPA 3.09 из 4.0 в британский эквивалент 2:1 по требованиям каждого вуза.
+GPA 3.09 из 4.0 в британский эквивалент 2:1 по требованиям каждого вуза. Таблица с порогами для 24 вузов в [04-uk.md](04-uk.md). 3.09 проходит на 2:1 в Sheffield и Nottingham, на уровне 2:2 в Leeds, York, Warwick, UCL, Queen Mary. Не найдены пороги: Glasgow, Durham, Southampton, Exeter, Liverpool, Newcastle, Queen's Belfast, Cardiff.
+
+## 4a. Код 1.1 (Business Analytics)
+
+Добавить ли код 1.1 пятым направлением. Business Analytics стоит только под 1.1, а самые проходимые по GPA программы (Sheffield, Nottingham, Royal Holloway, Leicester) называются именно так.
+
+## 4b. Целевая точка
+
+Подтвердить Reach / Match / Safety из [04-uk.md](04-uk.md) или выбрать другие вузы.
 
 ## 5. Другие открытые проверки
 

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saule — Master's Admission 2027</title>
+<style>
+/* Layout idea: one long working document. Stepper on top, numbered sections, one filterable table, plain tables elsewhere. */
+:root {
+  --bg: #f3f5f7;
+  --surface: #ffffff;
+  --ink: #15202b;
+  --muted: #566474;
+  --line: #d9e0e7;
+  --accent: #0a6f93;
+  --accent-soft: #dcf0f7;
+  --good: #1f7a4d;
+  --good-soft: #def3e7;
+  --warn: #8a5300;
+  --warn-soft: #fbecd0;
+  --bad: #a8261e;
+  --bad-soft: #f9dedb;
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0f1720;
+    --surface: #17212c;
+    --ink: #e6edf3;
+    --muted: #9aa9b8;
+    --line: #2a3745;
+    --accent: #4cc2e8;
+    --accent-soft: #12323f;
+    --good: #5fd39a;
+    --good-soft: #14352a;
+    --warn: #e8b04a;
+    --warn-soft: #3b2e12;
+    --bad: #ff9b92;
+    --bad-soft: #43201d;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f1720;
+  --surface: #17212c;
+  --ink: #e6edf3;
+  --muted: #9aa9b8;
+  --line: #2a3745;
+  --accent: #4cc2e8;
+  --accent-soft: #12323f;
+  --good: #5fd39a;
+  --good-soft: #14352a;
+  --warn: #e8b04a;
+  --warn-soft: #3b2e12;
+  --bad: #ff9b92;
+  --bad-soft: #43201d;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+}
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px 80px; }
+header { padding: 40px 0 8px; }
+.kicker { font-size: 13px; letter-spacing: .04em; color: var(--muted); margin: 0 0 6px; }
+h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; margin: 0 0 10px; text-wrap: balance; }
+.lead { color: var(--muted); max-width: 66ch; margin: 0; }
+h2 { font-family: var(--font-display); font-weight: 600; font-size: 26px; line-height: 1.2; margin: 0 0 6px; text-wrap: balance; }
+h3 { font-size: 16px; margin: 0 0 6px; }
+section { margin-top: 48px; }
+.sec-note { color: var(--muted); margin: 0 0 18px; max-width: 70ch; }
+ol.steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 26px 0 0; padding: 0; list-style: none; }
+ol.steps li { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 14px; }
+ol.steps b { display: block; font-size: 12px; letter-spacing: .04em; color: var(--muted); font-weight: 500; }
+ol.steps li.done { border-color: var(--good); }
+ol.steps li.now { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.pill { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.pill.good { background: var(--good-soft); color: var(--good); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.pill.bad { background: var(--bad-soft); color: var(--bad); }
+.pill.info { background: var(--accent-soft); color: var(--accent); }
+.pill.mute { background: var(--line); color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+.card .big { font-family: var(--font-display); font-size: 28px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.card .lbl { color: var(--muted); font-size: 13px; }
+.dir { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; }
+.dir header { padding: 0 0 8px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.dir h3 { margin: 0; font-size: 17px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.chips li { font-size: 13.5px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 2px 8px; }
+.chips li.hit { border-color: var(--accent); background: var(--accent-soft); }
+.tablewrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12.5px; letter-spacing: .03em; color: var(--muted); font-weight: 600; background: var(--bg); position: sticky; top: 0; }
+tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; white-space: nowrap; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+.filters button, .tools button {
+  font: inherit; font-size: 14px; background: var(--surface); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 999px; padding: 5px 14px; cursor: pointer;
+}
+.filters button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+:root[data-theme="dark"] .filters button[aria-pressed="true"] { color: #06202a; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .filters button[aria-pressed="true"] { color: #06202a; } }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.star { font: inherit; font-size: 18px; line-height: 1; background: none; border: 0; cursor: pointer; color: var(--muted); padding: 0 4px; }
+.star[aria-pressed="true"] { color: var(--warn); }
+.pick { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 12px; }
+.pick output { color: var(--muted); font-size: 14px; }
+.tools { display: flex; gap: 8px; align-items: center; }
+.tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.tier { background: var(--surface); border: 1px solid var(--line); border-top-width: 4px; border-radius: 8px; padding: 14px 16px; }
+.tier.reach { border-top-color: var(--bad); }
+.tier.match { border-top-color: var(--accent); }
+.tier.safe { border-top-color: var(--good); }
+.tier h3 { margin-bottom: 8px; }
+.tier ul { margin: 0; padding-left: 18px; }
+.tier li { margin: 0 0 6px; }
+.callout { border-left: 4px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+.callout.warn { border-left-color: var(--warn); background: var(--warn-soft); }
+.callout p { margin: 0 0 6px; }
+.callout p:last-child { margin-bottom: 0; }
+ol.docs, ul.plain { margin: 0; padding-left: 20px; }
+ol.docs li, ul.plain li { margin: 0 0 6px; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.decide li { margin-bottom: 10px; }
+footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+footer a, td a { color: var(--accent); }
+footer ul { margin: 6px 0 0; padding-left: 18px; }
+@media (max-width: 720px) {
+  ol.steps { grid-template-columns: 1fr 1fr; }
+  th, td { padding: 8px 10px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="kicker">Великобритания · Болашак · набор осени 2027 · обновлено 22.11.2026</p>
+  <h1>Saule — Master's Admission 2027</h1>
+  <p class="lead">Всё в одном месте: направление, вузы, требования к GPA и IELTS, шаги Болашака и сроки. Данные взяты из официальных источников; чего нет на страницах вузов, помечено «проверить».</p>
+  <nav aria-label="Этапы плана">
+    <ol class="steps">
+      <li class="done"><b>1</b>Направления выбраны</li>
+      <li class="done"><b>2</b>Список вузов (черновик)</li>
+      <li class="now"><b>3</b>Целевая точка: ждёт выбора</li>
+      <li><b>4</b>GPA и IELTS по каждому вузу</li>
+      <li><b>5</b>Болашак: документы и тесты</li>
+    </ol>
+  </nav>
+</header>
+
+<section id="profile">
+  <h2>1. Исходные данные</h2>
+  <p class="sec-note">От этих цифр зависит, куда можно подаваться.</p>
+  <div class="grid">
+    <div class="card"><div class="big">3.09</div><div class="lbl">GPA из 4.0 (октябрь 2026). Порог Болашака 3.00 пройден</div></div>
+    <div class="card"><div class="big">AI Business</div><div class="lbl">Бакалавриат AITU, первый выпуск, защита в начале июня 2027</div></div>
+    <div class="card"><div class="big">нет IELTS</div><div class="lbl">Прошлый результат (6.0, 2023) просрочен. Нужна новая сдача</div></div>
+    <div class="card"><div class="big">UK + Китай</div><div class="lbl">Страны, где можно использовать Болашак. Здесь разбираем Великобританию</div></div>
+  </div>
+</section>
+
+<section id="directions">
+  <h2>2. Четыре направления из перечня Болашака</h2>
+  <p class="sec-note">Выбраны 22.11.2026 из «Перечня приоритетных специальностей на 2026 год». Ниже программы из перечня, которые подходят под профиль AI Business. Выделены те, что в твоём списке встречаются точно по названию у британских вузов, проверенных ниже. Чисто инженерные и робототехнические названия пропущены.</p>
+
+  <article class="dir">
+    <header><h3>1.4 Искусственный интеллект</h3><span class="pill info">магистратура 1.4 М</span></header>
+    <ul class="chips">
+      <li class="hit">Artificial Intelligence for Business</li><li>AI for Business</li><li>AI for Business Intelligence</li><li class="hit">Management and Artificial Intelligence</li><li>AI + Management</li><li>Applied AI and Business Analytics</li><li>Artificial Intelligence in Business</li><li>Digital Business and AI</li><li>Digital Transformation and Artificial Intelligence</li><li>Artificial Intelligence and Decision Making</li><li>Artificial Intelligence and Innovation</li><li>Data Analytics and AI</li>
+    </ul>
+  </article>
+
+  <article class="dir">
+    <header><h3>1.23 ИТ и системы · менеджмент технологий · финтех</h3><span class="pill info">магистратура 1.23 М</span></header>
+    <ul class="chips">
+      <li class="hit">Artificial Intelligence for Business</li><li class="hit">Management and Artificial Intelligence</li><li>Business Information Systems</li><li>Management of Information Systems and Digital Innovation</li><li>Information Systems Management</li><li>Management Information Systems</li><li>Management of Technology</li><li>Technology Management</li><li>Business Strategy and Innovation Management</li><li>Strategic Innovation Management</li><li>Entrepreneurship and Innovation</li><li>Fintech Management</li>
+    </ul>
+  </article>
+
+  <article class="dir">
+    <header><h3>4.16 Предпринимательство</h3><span class="pill info">магистратура 4.16 М</span></header>
+    <ul class="chips">
+      <li>Entrepreneurship</li><li>Innovation and Entrepreneurship</li><li>Management (Entrepreneurship)</li><li>Strategy, Innovation, and Entrepreneurship</li><li>Business with Consulting</li><li>Business Technology Consulting</li><li>Business Analytics and Management Science</li><li>Business Analytics: Operational Research and Risk Analysis</li><li>Marketing Analytics and Insights</li><li>International Business</li><li>Digital Business and AI</li><li>Business Finance with Applied AI</li>
+    </ul>
+  </article>
+
+  <article class="dir">
+    <header><h3>4.18 Менеджмент · проекты · риск-менеджмент</h3><span class="pill info">магистратура 4.18 М</span></header>
+    <ul class="chips">
+      <li>Management</li><li>International Management</li><li>Strategic Management</li><li>Management of Innovation</li><li>Applied Business Analytics</li><li>Business Analytics and Risk Management</li><li>Data Analysis for Business Intelligence</li><li>AI for Business Intelligence</li><li>Digital Business and Management</li><li>Project Management</li><li>Risk Management</li><li>Product Management</li>
+    </ul>
+  </article>
+
+  <div class="callout warn">
+    <p><b>Business Analytics без дополнений стоит под кодом 1.1, а не в твоих четырёх.</b> Под 1.1 в перечне также «Business Analytics and Artificial Intelligence (AI)» и «Marketing Analytics».</p>
+    <p>Из-за этого Business Analytics в Sheffield, Nottingham, Leicester и Royal Holloway сейчас вне выбранных направлений. Это решение ждёт тебя: добавить 1.1 пятым направлением или искать программы только внутри четырёх (раздел 8).</p>
+  </div>
+  <p class="sec-note">Название программы у вуза должно совпадать с названием из перечня. Перед подачей сверяй дословно.</p>
+</section>
+
+<section id="universities">
+  <h2>3. Университеты: Russell Group и топ страны</h2>
+  <p class="sec-note">Russell Group — 24 исследовательских университета Великобритании (британский аналог Лиги плюща). Все 24 есть в списке Болашака, пункты 28–59. Рейтинги 2027: QS (июнь 2026) и Times Higher Education (сентябрь 2026). Порог GPA — шкала 4.0 с официальных страниц вузов для Казахстана; сравнение с твоим 3.09.</p>
+
+  <div class="filters" role="group" aria-label="Фильтр по GPA">
+    <button type="button" data-f="all" aria-pressed="true">Все</button>
+    <button type="button" data-f="ok21" aria-pressed="false">Проходит на 2:1</button>
+    <button type="button" data-f="ok22" aria-pressed="false">Только программы с 2:2</button>
+    <button type="button" data-f="near" aria-pressed="false">Чуть выше GPA</button>
+    <button type="button" data-f="above" aria-pressed="false">Заметно выше GPA</button>
+    <button type="button" data-f="unknown" aria-pressed="false">Порог не найден</button>
+    <button type="button" data-f="picked" aria-pressed="false">Мой выбор</button>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th scope="col">★</th><th scope="col">Университет</th><th scope="col" class="num">QS 2027</th><th scope="col" class="num">THE 2027</th><th scope="col">GPA на 2:1 (из 4.0)</th><th scope="col">Для GPA 3.09</th></tr>
+      </thead>
+      <tbody id="unirows"></tbody>
+    </table>
+  </div>
+  <div class="pick">
+    <div class="tools"><button type="button" id="copyPick">Скопировать мой выбор</button></div>
+    <output id="pickStatus" aria-live="polite">Отметь звёздочкой вузы, которые хочешь разбирать дальше.</output>
+  </div>
+  <p class="sec-note" style="margin-top:14px">«Только программы с 2:2» значит: проходишь там, где вуз принимает уровень 2:2. У бизнес-школ программы чаще требуют 2:1, поэтому смотри требования конкретной программы. Из британского списка вне Russell Group в перечне Болашака ещё Bath, UEA, Reading, Sussex, Aberdeen, Leicester, а во втором блоке перечня Strathclyde, Surrey, Royal Holloway, Loughborough и другие.</p>
+</section>
+
+<section id="tiers">
+  <h2>4. Целевая точка: предложение</h2>
+  <p class="sec-note">Черновая раскладка Reach / Match / Safety для Великобритании. Ждёт твоего подтверждения.</p>
+  <div class="tiers">
+    <div class="tier reach">
+      <h3>Reach</h3>
+      <ul>
+        <li><b>Edinburgh</b>, Artificial Intelligence for Business. GPA 3.25 против твоих 3.09, любой бакалавриат. Название есть в кодах 1.3, 1.4, 1.23</li>
+        <li><b>Warwick, UCL, Leeds, York</b>: только программы, где достаточно 2:2. Названия подбирать</li>
+      </ul>
+    </div>
+    <div class="tier match">
+      <h3>Match</h3>
+      <ul>
+        <li><b>Sheffield</b> (QS 82): 2:1 при GPA 3.0</li>
+        <li><b>Nottingham</b> (QS 97): 2:1 при GPA 3.0</li>
+        <li><b>Lancaster</b> (THE UK 23), Management and Artificial Intelligence: достаточно 2:2, название совпадает с перечнем</li>
+      </ul>
+    </div>
+    <div class="tier safe">
+      <h3>Safety</h3>
+      <ul>
+        <li><b>Royal Holloway</b>: 2:2 любой предмет, последний срок для иностранных 20 августа</li>
+        <li><b>Strathclyde</b>: «second-class», есть стипендия £6 000</li>
+        <li><b>Leicester</b>: «good second-class», IELTS 6.5</li>
+      </ul>
+    </div>
+  </div>
+  <p class="sec-note" style="margin-top:14px">Oxford, Cambridge, Imperial, LSE, Manchester и Bristol по GPA заметно выше твоего уровня или порог не проверен. Imperial Business Analytics & AI к тому же ждёт квантитативный бакалавриат. Safety-программы Royal Holloway, Leicester и часть Sheffield/Nottingham стоят под кодом 1.1.</p>
+</section>
+
+<section id="requirements">
+  <h2>5. Требования по проверенным программам</h2>
+  <p class="sec-note">Данные с официальных страниц программ (ноябрь 2026). «Нет на странице» значит, что дату или цену нужно уточнить у вуза.</p>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th scope="col">Вуз и программа</th><th scope="col">Код в перечне</th><th scope="col">Диплом</th><th scope="col">IELTS</th><th scope="col">Срок и цена</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Edinburgh</b><br>Artificial Intelligence for Business</td><td><span class="pill good">1.3 · 1.4 · 1.23</span></td><td>2:1 (3.25 из 4.0), любой бакалавриат</td><td>7.0 overall (по прошлой проверке; уточнить минимумы по навыкам)</td><td>Раунды заявок, последний пятый. Даты 2027 на странице программы: проверить</td></tr>
+        <tr><td><b>Lancaster</b><br>Management and Artificial Intelligence</td><td><span class="pill good">1.4 · 1.23</span></td><td>2:2, любая дисциплина</td><td>6.5, в каждом компоненте не ниже 6.0</td><td>£30 900 в год. Срок: нет на странице</td></tr>
+        <tr><td><b>Sheffield</b><br>Business Analytics</td><td><span class="pill warn">1.1</span></td><td>2:1, любой предмет, количественная подготовка не нужна</td><td>6.5, в каждом не ниже 6</td><td>Срок и цена: нет на странице</td></tr>
+        <tr><td><b>Nottingham</b><br>Business Analytics</td><td><span class="pill warn">1.1</span></td><td>2:1 в любой дисциплине и 2:1 в модулях с математикой или статистикой</td><td>6.5, не ниже 6.0</td><td>Цена: нет на странице</td></tr>
+        <tr><td><b>Royal Holloway</b><br>Business Analytics</td><td><span class="pill warn">1.1</span></td><td>2:2, любой предмет</td><td>6.5, не ниже 6.0</td><td>Подать до 20 августа 2027 (иностранные). £28 100 в год</td></tr>
+        <tr><td><b>Leicester</b><br>Business Analytics</td><td><span class="pill warn">1.1</span></td><td>«Good second-class», предмет не указан</td><td>6.5</td><td>£23 650 (цену на сентябрь 2027 проверить)</td></tr>
+        <tr><td><b>Strathclyde</b><br>Business Analysis &amp; Consulting, путь with AI</td><td><span class="pill mute">точного названия нет</span></td><td>Second-class, бизнес, экономика, инженерия или соцнауки; другие тоже можно</td><td>6.5, не ниже 5.5</td><td>£29 350 в год, стипендия £6 000 после оффера. Срок: нет на странице</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <p><b>Какой IELTS брать.</b> Edinburgh и Warwick обычно просят 7.0 overall; Imperial тоже 7.0. Для Sheffield, Nottingham, Lancaster, Royal Holloway, Strathclyde и Leicester хватает 6.5 (минимумы по навыкам 5.5–6.0). Поэтому цель 7.0 покрывает весь список, а 7.5 из прежних заметок не нужна. Результат IELTS действует 2 года и должен быть действителен на дату старта программы. Минимумы по навыкам для 7.0 проверить на странице каждой программы.</p>
+  </div>
+  <p class="sec-note">Warwick Business with Artificial Intelligence не найден в твоём перечне, поэтому для Болашака эта программа не подходит. Edinburgh AI for Business принимает бакалавриат любой специальности. Imperial, Manchester, Bristol и QMUL по аналитике и AI ждут количественную подготовку.</p>
+</section>
+
+<section id="bolashak">
+  <h2>6. Болашак: что нужно для категории «самостоятельно поступившие»</h2>
+  <p class="sec-note">Источник: bolashak.gov.kz, правила для претендентов. Приказ на 2027 год пока не опубликован: сроки ниже даны по 2026 году.</p>
+  <div class="two">
+    <div>
+      <h3>Три тура отбора</h3>
+      <ol class="docs">
+        <li><b>Комплексное тестирование.</b> Вербальная и числовая информация и личностный опросник. Нужен пороговый балл, иначе во второй тур не допустят. Запись аудио и видео, пересдачи нет.</li>
+        <li><b>Собеседование</b> с Независимой экспертной комиссией. Члены комиссии учитывают мотивационное письмо.</li>
+        <li><b>Республиканская комиссия</b> принимает окончательное решение.</li>
+      </ol>
+      <h3 style="margin-top:16px">Тесты и порог</h3>
+      <ul class="plain">
+        <li>KAZTEST или Qazaq Resmi Test, результат не ниже B1</li>
+        <li>GPA не ниже 3.00 из 4.00 либо 4.00 из 5.00</li>
+        <li>Безусловное приглашение вуза (кроме финансовых условий) из списка Болашака</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Документы магистранта</h3>
+      <ol class="docs">
+        <li>Удостоверение личности и паспорт</li>
+        <li>Документ о безусловном зачислении в вуз из списка, с нотариальным переводом на казахский или русский</li>
+        <li>Диплом бакалавра с приложением (появится после защиты в июне 2027)</li>
+        <li>Сертификат KAZTEST или Qazaq Resmi Test</li>
+        <li>Медицинская справка по форме 072/у</li>
+        <li>Мотивационное письмо до 500 слов, с датой и подписью</li>
+        <li>Официальный документ об успеваемости (если учишься в зарубежном вузе)</li>
+      </ol>
+    </div>
+  </div>
+  <p class="sec-note" style="margin-top:14px">Подача идёт через egov.kz, нужна действующая ЭЦП. Отработка после учёбы: 5 лет физического присутствия в Казахстане. Полный чек-лист: файл 06-checklists.md в репозитории.</p>
+</section>
+
+<section id="timeline">
+  <h2>7. Календарь</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th scope="col">Когда</th><th scope="col">Что</th><th scope="col">Статус</th></tr></thead>
+      <tbody>
+        <tr><td>Декабрь 2026</td><td>Сдать IELTS на компьютере (результат за 1–5 дней)</td><td><span class="pill info">рекомендация</span></td></tr>
+        <tr><td>Янв – апр 2027</td><td>Раунды заявок британских вузов (у каждого свои даты)</td><td><span class="pill warn">проверить</span></td></tr>
+        <tr><td>Конец февраля 2027</td><td>Крайний срок IELTS с запасом на пересдачу</td><td><span class="pill info">рекомендация</span></td></tr>
+        <tr><td>Около 16 марта 2027</td><td>Открытие приёма документов Болашак (в 2026 было 16 марта)</td><td><span class="pill warn">ожидаемо</span></td></tr>
+        <tr><td>Начало июня 2027</td><td>Защита диплома AITU</td><td><span class="pill good">подтверждено</span></td></tr>
+        <tr><td>Июль 2027</td><td>Диплом и транскрипт на руках, оффер становится безусловным</td><td><span class="pill warn">ожидаемо</span></td></tr>
+        <tr><td>2 августа / 20 августа 2027</td><td>Последние сроки Warwick и Royal Holloway (по страницам программ)</td><td><span class="pill good">подтверждено</span></td></tr>
+        <tr><td>Около 16 октября 2027</td><td>Закрытие приёма документов Болашак (в 2026 до 16 октября)</td><td><span class="pill warn">ожидаемо</span></td></tr>
+        <tr><td>До 31 декабря 2027</td><td>Отбор Болашак: тест, собеседование, комиссия</td><td><span class="pill warn">ожидаемо</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout warn">
+    <p><b>Развилка по срокам.</b> Безусловный оффер возможен не раньше июля 2027, а решение Болашака придёт в конце 2027. Стипендию присудят уже после начала учёбы в сентябре. Допустимый вариант определит ответ ЦМП: info@bolashak.gov.kz, +7 (717) 276-90-76.</p>
+  </div>
+</section>
+
+<section id="decisions">
+  <h2>8. Что нужно решить</h2>
+  <ol class="decide">
+    <li><b>Добавить код 1.1 пятым направлением?</b> Рекомендация: да. Там Business Analytics, самые проходимые по GPA программы Sheffield, Nottingham, Royal Holloway, Leicester.</li>
+    <li><b>Подтвердить целевую точку</b> из раздела 4 или заменить вузы звёздочками в разделе 3.</li>
+    <li><b>Найти пороги GPA</b> у Glasgow, Durham, Southampton, Exeter, Liverpool, Newcastle, QUB, Cardiff, KCL и Imperial.</li>
+    <li><b>Подобрать программы</b> под коды 1.4, 1.23, 4.16, 4.18 в Sheffield, Nottingham, Durham, Leeds и York и сверить названия с перечнем.</li>
+    <li><b>Записаться на IELTS</b> на декабрь 2026 (British Council Казахстан, компьютерный Academic).</li>
+    <li><b>Написать в ЦМП</b> про сроки: оффер после защиты и окно подачи до середины октября.</li>
+  </ol>
+</section>
+
+<footer>
+  <p>Источники и ссылки:</p>
+  <ul>
+    <li>Перечни Болашака: «Перечень приоритетных специальностей на 2026 год» и «Список ведущих зарубежных вузов 2024–2026» (файлы проекта); <a href="https://bolashak.gov.kz/ru/pretendentu/pravila">bolashak.gov.kz, правила для претендентов</a></li>
+    <li>Russell Group: <a href="https://www.informedchoices.ac.uk/universities">informedchoices.ac.uk/universities</a></li>
+    <li>Рейтинги: QS World University Rankings 2027, THE World University Rankings 2027 (<a href="https://www.timeshighereducation.com/student/best-universities/best-universities-uk">THE, лучшие вузы Великобритании</a>)</li>
+    <li>Пороги GPA для Казахстана: страницы Edinburgh, Sheffield, Nottingham, Leeds, York, Warwick, UCL, Bristol, Manchester, Birmingham, QMUL, LSE, St Andrews</li>
+    <li>Программы: страницы Lancaster, Sheffield, Nottingham, Leicester, Royal Holloway, Strathclyde</li>
+    <li>Репозиторий с полным планом: github.com/svulee-jpg/masters-abroad-2027 (приватный)</li>
+  </ul>
+</footer>
+</div>
+
+<script>
+var UNIS = [
+  {n:"Imperial College London", qs:2, the:"8", gpa:"не проверено (нужна квант. база)", cat:"unknown", fit:"Порог не проверен"},
+  {n:"University of Oxford", qs:4, the:"1", gpa:"не проверено", cat:"unknown", fit:"Порог не проверен"},
+  {n:"University of Cambridge", qs:6, the:"5", gpa:"не проверено", cat:"unknown", fit:"Порог не проверен"},
+  {n:"UCL", qs:8, the:"=17", gpa:"3.3 (2:2 = 3.0)", cat:"ok22", fit:"Уровень 2:2"},
+  {n:"University of Edinburgh", qs:35, the:"=29", gpa:"3.25", cat:"near", fit:"Порог чуть выше"},
+  {n:"King's College London", qs:37, the:"40", gpa:"уточнить", cat:"unknown", fit:"Порог не подтверждён"},
+  {n:"University of Manchester", qs:40, the:"60", gpa:"3.4", cat:"above", fit:"Порог выше"},
+  {n:"University of Bristol", qs:57, the:"82", gpa:"3.3", cat:"above", fit:"Порог выше"},
+  {n:"LSE", qs:62, the:"47", gpa:"3.5", cat:"above", fit:"Порог выше"},
+  {n:"University of Warwick", qs:68, the:"=113", gpa:"3.20–3.66 (2:2 = 2.80–3.19)", cat:"ok22", fit:"Уровень 2:2"},
+  {n:"University of Birmingham", qs:68, the:"=97", gpa:"3.4", cat:"above", fit:"Порог выше"},
+  {n:"University of Leeds", qs:77, the:"=113", gpa:"3.4 (2:2 = 3.0)", cat:"ok22", fit:"Уровень 2:2"},
+  {n:"University of Glasgow", qs:80, the:"83", gpa:"не найден", cat:"unknown", fit:"Порог не найден"},
+  {n:"University of Sheffield", qs:82, the:"=104", gpa:"3.0 (2:2 = 2.33)", cat:"ok21", fit:"Проходит на 2:1"},
+  {n:"Durham University", qs:85, the:"=157", gpa:"не найден", cat:"unknown", fit:"Порог не найден"},
+  {n:"University of Nottingham", qs:97, the:"=157", gpa:"3.0 (2:2 = 2.5)", cat:"ok21", fit:"Проходит на 2:1"},
+  {n:"Queen Mary University of London", qs:103, the:"=129", gpa:"3.33 (2:2 = 2.67)", cat:"ok22", fit:"Уровень 2:2"},
+  {n:"University of Southampton", qs:111, the:"=136", gpa:"не найден", cat:"unknown", fit:"Порог не найден"},
+  {n:"University of Exeter", qs:136, the:"=157", gpa:"не найден", cat:"unknown", fit:"Порог не найден"},
+  {n:"University of Liverpool", qs:139, the:"=154", gpa:"не найден", cat:"unknown", fit:"Порог не найден"},
+  {n:"Newcastle University", qs:149, the:"=154", gpa:"не найден", cat:"unknown", fit:"Порог не найден"},
+  {n:"University of York", qs:158, the:"=168", gpa:"3.4 (2:2 = 3.0)", cat:"ok22", fit:"Уровень 2:2"},
+  {n:"Queen's University Belfast", qs:174, the:"=196", gpa:"не найден", cat:"unknown", fit:"Порог не найден"},
+  {n:"Cardiff University", qs:179, the:"=257", gpa:"не найден", cat:"unknown", fit:"Порог не найден"},
+  {n:"Lancaster University (вне RG)", qs:null, the:"=183", gpa:"2:2 для Management and AI", cat:"ok22", fit:"Достаточно 2:2"},
+  {n:"University of St Andrews (вне RG)", qs:null, the:"=185", gpa:"3.33", cat:"above", fit:"Порог выше"}
+];
+var CAT = {ok21:["good","Проходит"], ok22:["warn","2:2"], near:["warn","Чуть выше"], above:["bad","Выше"], unknown:["mute","Нет данных"]};
+var state = {filter:"all", picked:{}};
+try { var saved = localStorage.getItem("saule-picked"); if (saved) state.picked = JSON.parse(saved) || {}; } catch (e) {}
+
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function render() {
+  var rows = UNIS.filter(function (u) {
+    if (state.filter === "all") return true;
+    if (state.filter === "picked") return !!state.picked[u.n];
+    return u.cat === state.filter;
+  });
+  var html = rows.map(function (u) {
+    var c = CAT[u.cat];
+    var on = !!state.picked[u.n];
+    return '<tr><td><button type="button" class="star" data-n="' + esc(u.n) + '" aria-pressed="' + on + '" aria-label="Выбрать ' + esc(u.n) + '">' + (on ? "★" : "☆") + '</button></td>' +
+      '<td>' + esc(u.n) + '</td>' +
+      '<td class="num">' + (u.qs === null ? "—" : u.qs) + '</td>' +
+      '<td class="num">' + esc(u.the) + '</td>' +
+      '<td>' + esc(u.gpa) + '</td>' +
+      '<td><span class="pill ' + c[0] + '">' + esc(u.fit) + '</span></td></tr>';
+  }).join("");
+  document.getElementById("unirows").innerHTML = html || '<tr><td colspan="6">В этом фильтре пока пусто.</td></tr>';
+  var n = Object.keys(state.picked).filter(function (k) { return state.picked[k]; }).length;
+  document.getElementById("pickStatus").textContent = n ? "В выборе: " + n : "Отметь звёздочкой вузы, которые хочешь разбирать дальше.";
+}
+document.addEventListener("click", function (e) {
+  var f = e.target.closest("[data-f]");
+  if (f) {
+    state.filter = f.getAttribute("data-f");
+    document.querySelectorAll("[data-f]").forEach(function (b) { b.setAttribute("aria-pressed", b === f ? "true" : "false"); });
+    render();
+    return;
+  }
+  var s = e.target.closest(".star");
+  if (s) {
+    var name = s.getAttribute("data-n");
+    state.picked[name] = !state.picked[name];
+    try { localStorage.setItem("saule-picked", JSON.stringify(state.picked)); } catch (err) {}
+    render();
+  }
+});
+document.getElementById("copyPick").addEventListener("click", function () {
+  var list = Object.keys(state.picked).filter(function (k) { return state.picked[k]; });
+  var text = list.length ? "Мой выбор вузов: " + list.join(", ") : "Пока ничего не выбрано";
+  var out = document.getElementById("pickStatus");
+  try {
+    navigator.clipboard.writeText(text).then(function () { out.textContent = "Скопировано: " + text; }, function () { out.textContent = text; });
+  } catch (err) { out.textContent = text; }
+});
+render();
+</script>
+</body>
+</html>

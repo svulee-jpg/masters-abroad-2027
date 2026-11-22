@@ -29,6 +29,12 @@
 - Edinburgh, AI for Business, дедлайны: https://www.business-school.ed.ac.uk/msc/ai-business/apply/application-deadlines
 - Edinburgh, Business Analytics, подача: https://www.business-school.ed.ac.uk/msc/business-analytics/apply
 
+- Russell Group, 24 вуза: https://www.informedchoices.ac.uk/universities
+- Перечни Болашака (файлы проекта): «Перечень приоритетных специальностей на 2026 год», «Список ведущих зарубежных вузов 2024–2026»
+- Рейтинги: QS World University Rankings 2027 (июнь 2026), THE World University Rankings 2027 (30 сентября 2026): https://www.timeshighereducation.com/student/best-universities/best-universities-uk
+- Пороги GPA для Казахстана: страницы вузов Edinburgh, Sheffield, Nottingham, Leeds, York, Warwick, UCL, Bristol, Manchester, Birmingham, Queen Mary, LSE, St Andrews, Surrey, Brookes (проверено 22.11.2026)
+- Программы: страницы Lancaster, Sheffield, Nottingham, Leicester, Royal Holloway, Strathclyde (проверено 22.11.2026)
+
 <a id="grant-map"></a>
 ## Карта грантов (11.10.2026)
 
