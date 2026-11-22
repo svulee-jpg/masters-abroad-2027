@@ -27,6 +27,7 @@
 | [06-checklists.md](06-checklists.md) | Чек-листы документов |
 | [07-open-questions.md](07-open-questions.md) | Что проверить и у кого спросить |
 | [data/deadlines.csv](data/deadlines.csv) | Дедлайны в машиночитаемом виде |
+| [data/transcript.csv](data/transcript.csv) | Транскрипт AITU: 39 курсов, кредиты, оценки (22.11.2026) |
 | [docs/sources.md](docs/sources.md) | Источники со ссылками |
 | [site/index.html](site/index.html) | Исходник сайта Saule — Master's Admission 2027 |
 

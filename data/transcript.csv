@@ -1,0 +1,40 @@
+trimester,n,course,credits,percent,letter,points
+1,1,"Introduction to Programming (Python)",5,81,B,3.0
+1,2,"Mathematics for AI",5,72,C+,2.33
+1,3,"Physical Education",2,75,B-,2.67
+1,4,"Business Administration",5,91,A-,3.67
+1,5,"Sociology",2,89,B+,3.33
+1,6,"Information and Communication Technologies",5,95,A,4.0
+1,7,"Foreign Language 1",5,90,A-,3.67
+2,8,"Physical Education",2,70,C+,2.33
+2,9,"Psychology",2,72,C+,2.33
+2,10,"AI for Medicine and Healthcare",4,90,A-,3.67
+2,11,"Cultural Studies",2,73,C+,2.33
+2,12,"AI Business Fundamentals",5,96,A,4.0
+2,13,"Foreign Language 2",5,72,C+,2.33
+2,14,"Micro and Macroeconomics",5,79,B-,2.67
+3,15,"Presentation, Communication & Negotiation",5,79,B-,2.67
+3,16,"History of Kazakhstan (State Exam)",5,74,C+,2.33
+3,17,"Technology & Innovation Management",5,93,A-,3.67
+3,18,"Physical Education",2,70,C+,2.33
+3,19,"Educational Practice",2,100,A,4.0
+3,20,"Political Science",2,81,B,3.0
+3,21,"Business Project (Simulation)",5,82,B,3.0
+4,22,"Operations Management",5,96,A,4.0
+4,23,"Accounting & Financial Management",5,72,C+,2.33
+4,24,"Academic Writing",5,76,B-,2.67
+4,25,"Kazakh Language 1",5,70,C+,2.33
+4,26,"Mastering Design Thinking",5,96,A,4.0
+4,27,"Physical Education",2,80,B,3.0
+5,28,"AI for Production/Manufacturing",4,95,A,4.0
+5,29,"Quantitative Methods for AI Business",5,90,A-,3.67
+5,30,"Kazakh Language 2",5,74,C+,2.33
+5,31,"AI for Accounting Decisions",4,71,C+,2.33
+5,32,"AI for Finance Decisions",4,78,B-,2.67
+5,33,"Probability and Statistics for Media and DJ",5,90,A-,3.67
+6,34,"Marketing",5,89,B+,3.33
+6,35,"Logistics Management",5,84,B,3.0
+6,36,"Data Mining Theory and Applications",5,84,B,3.0
+6,37,"Organizational Behavior",5,100,A,4.0
+6,38,"Industrial Practice",4,95,A,4.0
+6,39,"Artificial Intelligence",5,64,C-,1.67
