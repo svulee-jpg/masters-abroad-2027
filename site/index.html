@@ -742,7 +742,7 @@ tr.p-closed td { opacity: .62; }
 
   <h3 style="margin-top:22px">Что проверить напрямую</h3>
   <ol class="docs">
-    <li>Пересчёт GPA 3.08 в британскую шкалу: написать Edinburgh, Bristol, KCL и Manchester, считается ли это 2:1 для выпускников из Казахстана.</li>
+    <li>Пересчёт GPA 3.08 в британскую шкалу: написать Edinburgh, Bristol и Manchester, считается ли это 2:1 для выпускников из Казахстана.</li>
     <li>Нужен ли HSK для CSC при поступлении на англоязычную программу (Tsinghua прямо предупреждает об этом).</li>
     <li>Дедлайн Tongji MGM на 2027 год и покрывает ли Шанхайская стипендия всю оплату MGM.</li>
   </ol>
@@ -753,7 +753,7 @@ tr.p-closed td { opacity: .62; }
   <ol class="decide">
     <li><b>Добавить код 1.1 пятым направлением?</b> Рекомендация: да. Там Business Analytics, самые проходимые по GPA программы Sheffield, Nottingham, Royal Holloway, Leicester.</li>
     <li><b>Подтвердить целевую точку</b> из раздела 5 или заменить вузы звёздочками в разделе 4.</li>
-    <li><b>Найти пороги GPA</b> у Glasgow, Durham, Southampton, Exeter, Liverpool, Newcastle, QUB и Cardiff. У KCL порог для SEI найден (3.57/4.0), для International Management проверить.</li>
+    <li><b>Найти пороги GPA</b> у Glasgow, Durham, Southampton, Exeter, Liverpool, Newcastle, QUB и Cardiff.</li>
     <li><b>Подобрать программы</b> под коды 1.4, 1.23, 4.16, 4.18 в Sheffield, Nottingham, Durham, Leeds и York и сверить названия с перечнем.</li>
     <li><b>Записаться на IELTS</b> на начало декабря 2026, крайний срок 31 декабря (British Council Казахстан, компьютерный Academic). Без него в январе не подать в британские вузы, для GLOCAL он нужен к 14 января.</li>
     <li><b>Какие три заявки Erasmus Mundus подавать.</b> Рекомендация: GLOCAL (14 января) и Global COOP (27 января); третью оставить под NavigAIte EU, если старт в январе 2028 подходит, иначе под другую программу из каталога EMJM.</li>
@@ -789,7 +789,7 @@ var UNIS = [
   {n:"University of Cambridge", qs:6, the:"5", gpa:"не проверено", cat:"unknown", fit:"Порог не проверен"},
   {n:"UCL", qs:8, the:"=17", gpa:"3.3 (2:2 = 3.0)", cat:"ok22", fit:"Уровень 2:2"},
   {n:"University of Edinburgh", qs:35, the:"=29", gpa:"3.25", cat:"near", fit:"Порог чуть выше"},
-  {n:"King's College London", qs:37, the:"40", gpa:"3.57/4.0 (страница курса SEI)", cat:"above", fit:"Порог выше"},
+  {n:"King's College London", qs:37, the:"40", gpa:"3.57/4.0 (страница курса)", cat:"above", fit:"Порог выше"},
   {n:"University of Manchester", qs:40, the:"60", gpa:"3.4", cat:"above", fit:"Порог выше"},
   {n:"University of Bristol", qs:57, the:"82", gpa:"3.3", cat:"above", fit:"Порог выше"},
   {n:"LSE", qs:62, the:"47", gpa:"3.5", cat:"above", fit:"Порог выше"},
@@ -886,8 +886,6 @@ render();
     {r: "UK", uni: "University of Warwick", p: "MSc Business Analytics & Artificial Intelligence", url: "https://www.wbs.ac.uk/courses/masters/business-analytics-artificial-intelligence/", dir: "1.1", rt: ["bol"], f: "full", d: "2027-08-02", dl: "≈ 2 авг", dls: "по циклу 2026", req: "2:1, сильная математика и статистика", cost: "£38 150 (2026)", t: "R", n: "Берут из разных специальностей, но проверяют количественные навыки. 3.08 на уровне 2:2 по шкале Warwick."},
     {r: "UK", uni: "University of Warwick", p: "MSc Programme and Project Management", url: "https://warwick.ac.uk/study/postgraduate/courses/msc-project-management/", dir: "4.18", rt: ["bol", "uni"], f: "full", d: "2027-08-02", dl: "≈ 2 авг", dls: "по циклу 2026", req: "Опыт не нужен · аккредитация APM", cost: "£37 460 (2026)", t: "R", n: "Стипендии WMG £5–15 тыс. как дополнение. 3.08 на уровне 2:2 по шкале Warwick."},
     {r: "UK", uni: "University of Warwick", p: "MSc Innovation and Entrepreneurship", url: "https://warwick.ac.uk/study/postgraduate/courses/msc-innovation-entrepreneurship/", dir: "4.16", rt: ["bol"], f: "full", d: "2027-08-02", dl: "≈ 2 авг", dls: "по циклу 2026", req: "Опыт не нужен", cost: "уточнить", t: "R", n: "1-е место в Великобритании по предпринимательству (Eduniversal 2025). 3.08 на уровне 2:2 по шкале Warwick."},
-    {r: "UK", uni: "King's College London", p: "MSc Strategic Entrepreneurship & Innovation", url: "https://www.kcl.ac.uk/study/postgraduate-taught/courses/strategic-entrepreneurship-and-innovation-msc", dir: "4.16", rt: ["bol", "uni"], f: "full", d: "2027-03-09", dl: "≈ март", dls: "первый срок по циклу 2026", req: "Высокий 2:1 (от 65%) · для Казахстана на странице курса: средний балл от 3.57/4.0 (A-)", cost: "£38 300 (2026)", t: "R", n: "Минимум KCL для Казахстана 3.57/4.0, у тебя 3.09: ниже планки. Данные со скриншота страницы курса от 22.11.2026."},
-    {r: "UK", uni: "King's College London", p: "MSc International Management", url: "https://www.kcl.ac.uk/study/postgraduate-taught/courses/international-management-msc", dir: "4.18", rt: ["bol"], f: "full", d: "2027-03-09", dl: "≈ март", dls: "по циклу 2026", req: "Любая специальность · возможно видеоинтервью Kira", cost: "£40 450 (2026)", t: "U", n: "Топ-30 QS по менеджменту. Порог GPA у KCL для Казахстана не подтверждён."},
     {r: "UK", uni: "Royal Holloway, University of London", p: "MSc Artificial Intelligence for Business", url: "https://www.royalholloway.ac.uk/", dir: "1.4", rt: ["bol"], f: "full", d: "2027-08-21", dl: "≈ 21 авг", dls: "по циклу 2026", req: "IELTS 6.5", cost: "£29 300 (2026)", t: "S", n: "Самый дешёвый британский вариант по твоей специальности."},
     {r: "UK", uni: "Royal Holloway, University of London", p: "MSc Entrepreneurship and Innovation", url: "https://www.royalholloway.ac.uk/studying-here/postgraduate/business-school/entrepreneurship-and-innovation/", dir: "4.16", rt: ["bol"], f: "full", d: "2027-08-21", dl: "≈ 21 авг", dls: "по циклу 2026", req: "2:2 · IELTS 6.5 (6.0)", cost: "£27 000 (2026)", t: "S", n: "Самый низкий порог по оценкам из всех."},
     {r: "UK", uni: "Royal Holloway, University of London", p: "MSc International Management", url: "https://www.royalholloway.ac.uk/studying-here/postgraduate/business-school/international-business-management/", dir: "4.18", rt: ["bol"], f: "full", d: "2027-08-21", dl: "≈ 21 авг", dls: "по циклу 2026", req: "Для тех, кто не учил менеджмент", cost: "£27 000 (2026)", t: "S", n: "Есть и отдельная MSc Project Management."},
@@ -987,10 +985,9 @@ render();
     {lane: "prep", label: "Защита диплома AITU", from: "2027-06-05", to: "2027-06-05", kind: "due", note: "Начало июня 2027."},
     {lane: "prep", label: "Диплом и транскрипт на руках", from: "2027-07-01", to: "2027-07-15", kind: "do", note: "Июль 2027: условные офферы можно сделать безусловными, дальше документы на CAS и в Болашак."},
 
-    {lane: "UK", label: "Выбрать целевую точку, спросить вузы про GPA", from: "2026-11-23", to: "2026-12-15", kind: "do", note: "Подтвердить раскладку Reach / Match / Safety (раздел 5), решить про код 1.1. Edinburgh, Bristol, KCL и Manchester: спросить, считается ли 3.08 за 2:1."},
+    {lane: "UK", label: "Выбрать целевую точку, спросить вузы про GPA", from: "2026-11-23", to: "2026-12-15", kind: "do", note: "Подтвердить раскладку Reach / Match / Safety (раздел 5), решить про код 1.1. Edinburgh, Bristol и Manchester: спросить, считается ли 3.08 за 2:1."},
     {lane: "UK", label: "Manchester: этап 1 (проверить)", from: "2026-12-15", to: "2026-12-15", kind: "due", note: "Около декабря по карте 11.10; официальные даты 2027 проверить. Порог GPA Manchester 3.4 выше твоего."},
     {lane: "UK", label: "Подача в британские вузы", from: "2027-01-05", to: "2027-02-28", kind: "do", note: "Edinburgh (раунды), Sheffield, Nottingham, Lancaster, Leicester, Royal Holloway и др. Даты у каждого свои (раздел 11). Цель: подать всё до конца февраля, IELTS к этому моменту уже на руках."},
-    {lane: "UK", label: "KCL: первый срок (проверить)", from: "2027-03-09", to: "2027-03-09", kind: "due", note: "По циклу 2026. Нужен высокий 2:1."},
     {lane: "UK", label: "Условные офферы, ответы вузам", from: "2027-03-01", to: "2027-06-30", kind: "wait", note: "Офферы приходят условными: диплом, транскрипт, IELTS. Отвечать в сроки вуза."},
     {lane: "UK", label: "Royal Holloway: 27 июня, 30 июля, 20 августа", from: "2027-06-27", to: "2027-08-20", kind: "due", note: "Три срока по странице программы."},
     {lane: "UK", label: "Warwick 2 авг, Bristol ≈ 13 и 27 авг", from: "2027-08-02", to: "2027-08-27", kind: "due", note: "Сроки по циклу 2026. Порог GPA у Warwick и Bristol выше твоего (раздел 4)."},
