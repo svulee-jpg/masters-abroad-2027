@@ -34,6 +34,7 @@
 - Lancaster: порог для Казахстана https://www.lancaster.ac.uk/study/entry-requirements/postgraduate-qualifications/?country=Kazakhstan (1st 3.5, 2:1 3.3, 2:2 3.0 из 4.0; проверено по скриншоту Saule 22.11.2026)
 - Newcastle: программа https://www.ncl.ac.uk/postgraduate/degrees/5549f/ (порог для Казахстана 2:1 = 3.0, 2:2 = 2.5 из 4.0, по скриншотам Saule 22.11.2026; цена по Mastersportal, срока на странице нет)
 - Queen Mary: https://www.qmul.ac.uk/postgraduate/taught/coursefinder/courses/entrepreneurship-and-innovation-management-msc/ (£34 650, IELTS 6.5/6.0; порог для Казахстана 2:1 = 3.33, 2:2 = 2.67, проверено 22.11.2026)
+- UEA: MSc Sustainable Business Management https://www.uea.ac.uk/course/postgraduate/msc-sustainable-business-management (2:2, IELTS 6.0/5.5, старт в январе; по скриншотам Saule 22.11.2026); общая страница https://www.uea.ac.uk/study/international-students/country-map/central-asia (для большинства курсов 2:1)
 - Программы: страницы Lancaster, Newcastle, Queen Mary, Sheffield, Nottingham, Leicester, Royal Holloway, Strathclyde (проверено 22.11.2026)
 
 ## Европа: Erasmus Mundus (проверено 22.11.2026)
