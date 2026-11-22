@@ -342,6 +342,7 @@ tr.p-closed td { opacity: .62; }
     <button type="button" data-f="near" aria-pressed="false">Чуть выше GPA</button>
     <button type="button" data-f="above" aria-pressed="false">Заметно выше GPA</button>
     <button type="button" data-f="unknown" aria-pressed="false">Порог не найден</button>
+    <button type="button" data-f="selfpay" aria-pressed="false">Без Болашака</button>
     <button type="button" data-f="picked" aria-pressed="false">Мой выбор</button>
   </div>
   <div class="tablewrap">
@@ -356,7 +357,7 @@ tr.p-closed td { opacity: .62; }
     <div class="tools"><button type="button" id="copyPick">Скопировать мой выбор</button></div>
     <output id="pickStatus" aria-live="polite">Отметь звёздочкой вузы, которые хочешь разбирать дальше.</output>
   </div>
-  <p class="sec-note" style="margin-top:14px">«Только программы с 2:2» значит: проходишь там, где вуз принимает уровень 2:2. У бизнес-школ программы чаще требуют 2:1, поэтому смотри требования конкретной программы. Из британского списка вне Russell Group в перечне Болашака ещё Bath, UEA, Reading, Sussex, Aberdeen, Leicester, а во втором блоке перечня Strathclyde, Surrey, Royal Holloway, Loughborough и другие.</p>
+  <p class="sec-note" style="margin-top:14px">«Только программы с 2:2» значит: проходишь там, где вуз принимает уровень 2:2. У бизнес-школ программы чаще требуют 2:1, поэтому смотри требования конкретной программы. Из британского списка вне Russell Group в перечне Болашака ещё Bath, UEA, Reading, Sussex, Aberdeen, Leicester, а во втором блоке перечня Strathclyde, Surrey, Royal Holloway, Loughborough и другие. Regent's University London в списке Болашака 2024–2026 не найден: порог GPA у него низкий (3/5.0), но учёба там только на свои деньги. Он оставлен как запас, программы пока не выбраны.</p>
 </section>
 
 <section id="tiers">
@@ -809,9 +810,10 @@ var UNIS = [
   {n:"Queen's University Belfast", qs:174, the:"=196", gpa:"не найден", cat:"unknown", fit:"Порог не найден"},
   {n:"Cardiff University", qs:179, the:"=257", gpa:"не найден", cat:"unknown", fit:"Порог не найден"},
   {n:"Lancaster University (вне RG)", qs:null, the:"=183", gpa:"2:2 для Management and AI", cat:"ok22", fit:"Достаточно 2:2"},
-  {n:"University of St Andrews (вне RG)", qs:null, the:"=185", gpa:"3.33", cat:"above", fit:"Порог выше"}
+  {n:"University of St Andrews (вне RG)", qs:null, the:"=185", gpa:"3.33", cat:"above", fit:"Порог выше"},
+  {n:"Regent's University London (вне RG, нет в списке Болашака)", qs:null, the:"—", gpa:"3.0/5.0 (Казахстан, магистратура)", cat:"selfpay", fit:"Запас на свои деньги"}
 ];
-var CAT = {ok21:["good","Проходит"], ok22:["warn","2:2"], near:["warn","Чуть выше"], above:["bad","Выше"], unknown:["mute","Нет данных"]};
+var CAT = {ok21:["good","Проходит"], ok22:["warn","2:2"], near:["warn","Чуть выше"], above:["bad","Выше"], unknown:["mute","Нет данных"], selfpay:["info","Без Болашака"]};
 var state = {filter:"all", picked:{}};
 try { var saved = localStorage.getItem("saule-picked"); if (saved) state.picked = JSON.parse(saved) || {}; } catch (e) {}
 
