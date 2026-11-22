@@ -1,14 +1,14 @@
-# Магистратура за рубежом 2027: кейс Сауле
+# Saule's Master's Degree Roadmap (магистратура за рубежом 2027)
 
 Единое место для всего, что связано с поступлением в магистратуру на осень 2027: правила Болашака, сроки, IELTS, британские вузы, другие страны, чек-листы и открытые вопросы.
 
-Статус: **22.11.2026** (добавлены Erasmus Mundus и Китай). Живая таблица грантов (Claude Artifact): https://claude.ai/artifact/D6ajABepsdbkd8ePB4fyc1
+Статус: **22.11.2026**. Приоритеты: 1 Великобритания (Болашак), 2 Европа (Erasmus Mundus), 3 Китай.
 
-Сайт «Saule — Master's Admission 2027» (направления, вузы, GPA и IELTS, Болашак, календарь): https://claude.ai/artifact/AXHfRcDkEWumWTCgvQ7yVi. Исходник: [site/index.html](site/index.html).
+Сайт «Saule's Master's Degree Roadmap» (всё в одном файле: карта времени, направления, вузы, GPA и IELTS, Болашак, Европа, Китай, календарь, карта программ с фильтрами): https://claude.ai/artifact/AXHfRcDkEWumWTCgvQ7yVi. Исходник: [site/index.html](site/index.html).
 
 ## Срочно (ближайшие 2 недели)
 
-1. **Записаться на IELTS** (компьютерный формат, British Council Kazakhstan) на первый свободный слот в декабре 2026. Подробности: [03-ielts-and-tests.md](03-ielts-and-tests.md).
+1. **Записаться на IELTS** (компьютерный формат, British Council Kazakhstan) на первый свободный слот в декабре 2026. **Крайний срок 31 декабря:** без сертификата в январе нельзя подавать в британские вузы. Подробности: [03-ielts-and-tests.md](03-ielts-and-tests.md).
 2. **Erasmus Mundus: GLOCAL до 14 января 2027, GLOBAL COOP до 27 января 2027.** Сертификат английского нужен вместе с заявкой, поэтому IELTS сдавать в первых числах декабря. Mundus MAPP отпадает (GPA 3.17 и IELTS 7.0). Третья заявка: NavigAIte EU после проверки старта (январь 2028) или другая программа: [05-other-countries.md](05-other-countries.md).
 3. **Задать вопрос в ЦМП** про Болашак и сентябрь 2027 (формулировка в [07-open-questions.md](07-open-questions.md)). От ответа зависит весь план.
 4. Запросить в регистратуре AITU предварительный транскрипт и договориться с двумя рекомендателями.
@@ -26,10 +26,12 @@
 | [05-other-countries.md](05-other-countries.md) | Erasmus Mundus, Китай (Болашак, CSC, CGS), Корея: ставки, программы, открытые проверки |
 | [06-checklists.md](06-checklists.md) | Чек-листы документов |
 | [07-open-questions.md](07-open-questions.md) | Что проверить и у кого спросить |
+| [08-time-map.md](08-time-map.md) | Карта времени ноябрь 2026 – октябрь 2027 по дорожкам: подготовка, Великобритания, Европа, Китай, Болашак |
 | [data/deadlines.csv](data/deadlines.csv) | Дедлайны в машиночитаемом виде |
 | [data/transcript.csv](data/transcript.csv) | Транскрипт AITU: 39 курсов, кредиты, оценки (22.11.2026) |
 | [docs/sources.md](docs/sources.md) | Источники со ссылками |
-| [site/index.html](site/index.html) | Исходник сайта Saule — Master's Admission 2027 |
+| [docs/archive-korea-and-other-grants.md](docs/archive-korea-and-other-grants.md) | Архив: Корея и другие гранты из карты от 11.10.2026 (не входят в текущий план) |
+| [site/index.html](site/index.html) | Исходник сайта Saule's Master's Degree Roadmap |
 
 ## Принятые решения
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Saule — Master's Admission 2027</title>
+<title>Saule's Master's Degree Roadmap</title>
 <style>
 /* Layout idea: one long working document. Stepper on top, numbered sections, one filterable table, plain tables elsewhere. */
 :root {
@@ -137,30 +137,99 @@ ol.docs li, ul.plain li { margin: 0 0 6px; }
 footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
 footer a, td a { color: var(--accent); }
 footer ul { margin: 6px 0 0; padding-left: 18px; }
+
+a.prio { display: block; color: inherit; text-decoration: none; }
+a.prio:hover { border-color: var(--accent); }
+.p-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; margin: 0 0 12px; }
+.p-field { display: grid; gap: 4px; font-size: 12.5px; color: var(--muted); }
+.p-field select, .p-field input { font: inherit; font-size: 14px; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 7px; padding: 6px 9px; min-width: 0; }
+.p-field input { width: 190px; }
+#p-count { font-size: 13.5px; color: var(--muted); margin-left: auto; }
+.p-table { min-width: 1000px; }
+tr.p-closed td { opacity: .62; }
+.p-prog b { display: block; }
+.p-prog .p-uni { color: var(--muted); font-size: 13px; }
+.p-prog a { font-size: 13px; }
+.p-routes { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
+.p-code { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--warn); white-space: nowrap; }
+.p-tier { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 13px; white-space: nowrap; }
+.p-tier i { width: 9px; height: 9px; border-radius: 2px; display: inline-block; background: var(--line); }
+.p-tier.R i { background: var(--bad); }
+.p-tier.M i { background: var(--warn); }
+.p-tier.S i { background: var(--good); }
+.p-dl b { display: block; font-variant-numeric: tabular-nums; }
+.p-dl span, .p-note { color: var(--muted); font-size: 13px; }
+.p-dl .p-soon { color: var(--bad); }
+.p-empty { padding: 24px; text-align: center; color: var(--muted); }
 @media (max-width: 720px) {
   ol.steps { grid-template-columns: 1fr 1fr; }
   th, td { padding: 8px 10px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Time map */
+:root { --tm-bol: #6d4fa8; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --tm-bol: #b79cf0; } }
+:root[data-theme="dark"] { --tm-bol: #b79cf0; }
+.tm-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 14px 0 12px; }
+.tm-play { font: inherit; font-weight: 600; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent-soft); color: var(--accent); cursor: pointer; }
+.tm-months { display: flex; flex-wrap: wrap; gap: 6px; }
+.tm-months button { font: inherit; font-size: 13px; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.tm-months button[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 700; }
+.tm-play:focus-visible, .tm-months button:focus-visible, .tm-mhead button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tm-panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin-bottom: 12px; min-height: 120px; }
+.tm-panel h3 { margin: 0 0 4px; font-size: 18px; }
+.tm-ln { margin: 12px 0 4px; font-weight: 700; font-size: 13px; color: var(--c); border-left: 4px solid var(--c); padding-left: 8px; }
+.tm-panel ul.plain li { margin-bottom: 8px; }
+.tm-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--muted); margin: 0 0 8px; }
+.tm-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.tm-legend i { display: inline-block; width: 22px; height: 10px; border-radius: 5px; background: var(--muted); }
+.tm-legend .k-do { opacity: .45; }
+.tm-legend .k-wait { background: repeating-linear-gradient(45deg, var(--muted) 0 3px, transparent 3px 6px); border: 1px solid var(--muted); }
+.tm-legend .k-dia { width: 10px; height: 10px; border-radius: 2px; transform: rotate(45deg); }
+.tm-legend .k-today { width: 2px; height: 14px; border-radius: 0; background: var(--bad); }
+.tm-grid { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.tm-inner { min-width: 880px; padding-bottom: 8px; }
+.tm-row { display: grid; grid-template-columns: 270px 1fr; align-items: center; min-height: 26px; }
+.tm-lab { display: flex; gap: 8px; align-items: center; padding: 2px 10px; font-size: 12.5px; line-height: 1.25; }
+.tm-lab i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex: none; }
+.tm-track { position: relative; height: 24px; border-left: 1px solid var(--line); background: repeating-linear-gradient(90deg, transparent 0, transparent calc(100% / 12 - 1px), var(--line) calc(100% / 12 - 1px), var(--line) calc(100% / 12)); }
+.tm-mhead { display: grid; grid-template-columns: repeat(12, 1fr); height: auto; background: none; }
+.tm-mhead button { font: inherit; font-size: 12px; border: 0; background: none; color: var(--muted); padding: 8px 0; cursor: pointer; }
+.tm-mhead button[aria-pressed="true"] { color: var(--accent); font-weight: 700; background: var(--accent-soft); }
+.tm-lane { margin-top: 8px; padding: 6px 10px; font-weight: 700; font-size: 13px; color: var(--c); border-top: 1px solid var(--line); border-left: 4px solid var(--c); }
+.tm-sel { position: absolute; top: 0; bottom: 0; background: var(--accent-soft); opacity: .7; }
+.tm-today { position: absolute; top: -2px; bottom: -2px; width: 2px; background: var(--bad); z-index: 2; }
+.tm-shape { position: absolute; top: 6px; height: 12px; border-radius: 6px; background: var(--c); z-index: 1; }
+.tm-shape.do { opacity: .45; }
+.tm-shape.wait { background: repeating-linear-gradient(45deg, var(--c) 0 3px, transparent 3px 6px); border: 1px solid var(--c); }
+.tm-dia { position: absolute; top: 6px; width: 12px; height: 12px; margin-left: -6px; transform: rotate(45deg); background: var(--c); border-radius: 2px; z-index: 1; }
+@media (prefers-reduced-motion: reduce) { .tm-play { transition: none; } }
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header>
-  <p class="kicker">Великобритания · Европа · Китай · Болашак · набор осени 2027 · обновлено 22.11.2026</p>
-  <h1>Saule — Master's Admission 2027</h1>
-  <p class="lead">Всё в одном месте: направление, вузы, требования к GPA и IELTS, Erasmus Mundus, Китай, шаги Болашака и сроки. Данные взяты со страниц вузов и программ; цифры из вторичных источников и всё, чего нет на официальных страницах, помечено «проверить».</p>
+  <p class="kicker">Приоритеты: 1 Великобритания · 2 Европа (Erasmus Mundus) · 3 Китай · набор осени 2027 · обновлено 22.11.2026</p>
+  <h1>Saule's Master's Degree Roadmap</h1>
+  <p class="lead">Всё в одном файле: карта времени, направления, вузы и программы по трём регионам, требования к GPA и IELTS, Erasmus Mundus, Китай, шаги Болашака, сроки и карта программ с фильтрами. Данные взяты со страниц вузов и программ; цифры из вторичных источников и всё, чего нет на официальных страницах, помечено «проверить».</p>
   <nav aria-label="Этапы плана">
     <ol class="steps">
       <li class="done"><b>1</b>Направления выбраны</li>
-      <li class="done"><b>2</b>Список вузов UK (черновик)</li>
-      <li class="now"><b>3</b>Целевая точка UK: ждёт выбора</li>
-      <li class="now"><b>4</b>Erasmus Mundus: заявки до 14 и 27 января</li>
-      <li><b>5</b>Китай по Болашаку: черновик программ</li>
-      <li><b>6</b>IELTS в декабре, GPA, документы Болашака</li>
+      <li class="now"><b>2</b>Приоритет 1: Великобритания, ждёт целевой точки</li>
+      <li class="now"><b>3</b>Приоритет 2: Erasmus Mundus, заявки до 14 и 27 января</li>
+      <li><b>4</b>Приоритет 3: Китай, SJTU и Tongji по Болашаку</li>
+      <li class="now"><b>5</b>IELTS до конца декабря, документы, Болашак</li>
     </ol>
   </nav>
+  <div class="grid" style="margin-top:14px">
+    <a class="card prio" href="#directions"><div class="big" style="font-size:22px">1 · Великобритания</div><div class="lbl">Болашак. Вузы Russell Group и ещё несколько из списка. Основные программы: AI for Business, Management and AI, Business Analytics (код 1.1 ждёт решения). Разделы 3–7</div></a>
+    <a class="card prio" href="#europe"><div class="big" style="font-size:22px">2 · Европа</div><div class="lbl">Erasmus Mundus, грант ЕС: GLOCAL до 14 января, GLOBAL COOP до 27 января, NavigAIte EU в феврале. Раздел 8</div></a>
+    <a class="card prio" href="#china"><div class="big" style="font-size:22px">3 · Китай</div><div class="lbl">Болашак: SJTU MIB и Tongji MGM; параллельно CGS и Shanghai Government Scholarship. Раздел 9</div></a>
+    <a class="card prio" href="#timemap"><div class="big" style="font-size:22px">Карта времени</div><div class="lbl">Что и когда делать: IELTS до 31 декабря, подача в Великобританию в январе, Европа, Китай и Болашак по месяцам. Раздел 2</div></a>
+    <a class="card prio" href="#programs"><div class="big" style="font-size:22px">Все программы</div><div class="lbl">Фильтры по региону, коду, шансу и сроку, 39 программ. Раздел 11</div></a>
+  </div>
 </header>
 
 <section id="profile">
@@ -204,8 +273,26 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
   </div>
 </section>
 
+<section id="timemap">
+  <p class="kicker">Когда и куда подаваться</p>
+  <h2>2. Карта времени: ноябрь 2026 – октябрь 2027</h2>
+  <p class="sec-note">Выбери месяц или нажми «Проиграть год»: ниже покажется, что делать в этом месяце, а на схеме подсветится столбец. Дорожки идут по приоритету: Великобритания, Европа, Китай, Болашак. Даты со словом «проверить» взяты по циклу 2026 или по карте от 11.10 и не подтверждены на 2027.</p>
+  <div class="callout warn">
+    <p><b>Главный срок сейчас: IELTS до 31 декабря 2026.</b> Без сертификата в январе нельзя подавать в британские вузы, а в GLOCAL он загружается вместе с заявкой к 14 января. Лучше записаться и сдать в начале декабря, чтобы осталось время на пересдачу.</p>
+    <p id="tm-next"></p>
+  </div>
+  <div class="tm-bar">
+    <button type="button" id="tm-play" class="tm-play">▶ Проиграть год</button>
+    <div id="tm-months" class="tm-months" role="group" aria-label="Месяц"></div>
+  </div>
+  <div id="tm-panel" class="tm-panel" aria-live="polite"></div>
+  <p class="tm-legend"><span><i class="k-do"></i>сделать (окно работы)</span><span><i class="k-due"></i>срок подачи</span><span><i class="k-wait"></i>ждать ответа</span><span><i class="k-dia"></i>точечный срок</span><span><i class="k-today"></i>сегодня</span></p>
+  <div id="tm-grid" class="tm-grid"></div>
+</section>
+
 <section id="directions">
-  <h2>2. Четыре направления из перечня Болашака</h2>
+  <p class="kicker">Приоритет 1 · Великобритания (разделы 3–7)</p>
+  <h2>3. Четыре направления из перечня Болашака</h2>
   <p class="sec-note">Выбраны 22.11.2026 из «Перечня приоритетных специальностей на 2026 год». Ниже программы из перечня, которые подходят под профиль AI Business. Выделены те, что в твоём списке встречаются точно по названию у британских вузов, проверенных ниже. Чисто инженерные и робототехнические названия пропущены.</p>
 
   <article class="dir">
@@ -238,13 +325,13 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
 
   <div class="callout warn">
     <p><b>Business Analytics без дополнений стоит под кодом 1.1, а не в твоих четырёх.</b> Под 1.1 в перечне также «Business Analytics and Artificial Intelligence (AI)» и «Marketing Analytics».</p>
-    <p>Из-за этого Business Analytics в Sheffield, Nottingham, Leicester и Royal Holloway сейчас вне выбранных направлений. Это решение ждёт тебя: добавить 1.1 пятым направлением или искать программы только внутри четырёх (раздел 8).</p>
+    <p>Из-за этого Business Analytics в Sheffield, Nottingham, Leicester и Royal Holloway сейчас вне выбранных направлений. Это решение ждёт тебя: добавить 1.1 пятым направлением или искать программы только внутри четырёх (раздел 12).</p>
   </div>
   <p class="sec-note">Название программы у вуза должно совпадать с названием из перечня. Перед подачей сверяй дословно.</p>
 </section>
 
 <section id="universities">
-  <h2>3. Университеты: Russell Group и топ страны</h2>
+  <h2>4. Университеты: Russell Group и топ страны</h2>
   <p class="sec-note">Russell Group — 24 исследовательских университета Великобритании (британский аналог Лиги плюща). Все 24 есть в списке Болашака, пункты 28–59. Рейтинги 2027: QS (июнь 2026) и Times Higher Education (сентябрь 2026). Порог GPA — шкала 4.0 с официальных страниц вузов для Казахстана; сравнение с твоим 3.08.</p>
 
   <div class="filters" role="group" aria-label="Фильтр по GPA">
@@ -272,7 +359,7 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
 </section>
 
 <section id="tiers">
-  <h2>4. Целевая точка: предложение</h2>
+  <h2>5. Целевая точка: предложение</h2>
   <p class="sec-note">Черновая раскладка Reach / Match / Safety для Великобритании. Ждёт твоего подтверждения.</p>
   <div class="tiers">
     <div class="tier reach">
@@ -303,7 +390,7 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
 </section>
 
 <section id="requirements">
-  <h2>5. Требования по проверенным программам</h2>
+  <h2>6. Требования по проверенным программам</h2>
   <p class="sec-note">Данные с официальных страниц программ (ноябрь 2026). «Нет на странице» значит, что дату или цену нужно уточнить у вуза.</p>
   <div class="tablewrap">
     <table>
@@ -325,10 +412,72 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
     <p><b>Какой IELTS брать.</b> Edinburgh и Warwick обычно просят 7.0 overall; Imperial тоже 7.0. Для Sheffield, Nottingham, Lancaster, Royal Holloway, Strathclyde и Leicester хватает 6.5 (минимумы по навыкам 5.5–6.0). Поэтому цель 7.0 покрывает весь список, а 7.5 из прежних заметок не нужна. Результат IELTS действует 2 года и должен быть действителен на дату старта программы. Минимумы по навыкам для 7.0 проверить на странице каждой программы.</p>
   </div>
   <p class="sec-note">Warwick Business with Artificial Intelligence не найден в твоём перечне, поэтому для Болашака эта программа не подходит. Edinburgh AI for Business принимает бакалавриат любой специальности. Imperial, Manchester, Bristol и QMUL по аналитике и AI ждут количественную подготовку.</p>
+  <h3 style="margin-top:28px">Критерии и документы: Великобритания</h3>
+  <div class="two">
+    <div>
+      <h3>Критерии приёма</h3>
+      <ul class="plain">
+        <li><b>Диплом.</b> Вуз сам переводит GPA в британский класс. Пороги для 2:1: Edinburgh 3.25, Bristol 3.3, Manchester 3.4 (твой GPA 3.08). Мягче всего Lancaster и Royal Holloway (2:2), Leicester («good second-class») и Strathclyde (second-class).</li>
+        <li><b>Английский.</b> IELTS Academic 7.0 покрывает весь список; для остальных хватает 6.5 (по навыкам 5.5–6.0). Сертификат должен быть на руках к подаче в январе.</li>
+        <li><b>Профиль.</b> Imperial, Manchester, Bristol и QMUL ждут количественную подготовку (математика, статистика). Edinburgh AI for Business берёт любой бакалавриат, Sheffield количественную базу не требует.</li>
+        <li><b>Болашак.</b> Название программы должно дословно совпадать с перечнем (раздел 3), а оффер должен быть безусловным.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Документы</h3>
+      <ol class="docs">
+        <li>Онлайн-заявка в личном кабинете вуза; у части программ есть сбор за подачу</li>
+        <li>Транскрипт AITU на английском и справка, что диплом будет получен в июне 2027</li>
+        <li>Сертификат IELTS Academic</li>
+        <li>Personal statement (мотивационное письмо): объём и вопросы у каждого вуза свои</li>
+        <li>CV на английском</li>
+        <li>1–2 рекомендации от преподавателей AITU; часть вузов запрашивает их письмом напрямую у рекомендателя</li>
+        <li>Копия паспорта</li>
+        <li>Для аналитических программ иногда просят описание курсов по математике и статистике</li>
+      </ol>
+    </div>
+  </div>
+  <p class="sec-note" style="margin-top:14px">Список типичный: точный набор у каждой программы свой, перед подачей сверять на её странице.</p>
+</section>
+
+<section id="bolashak">
+  <p class="kicker">Приоритет 1 · Великобритания (и Китай)</p>
+  <h2>7. Болашак: что нужно для категории «самостоятельно поступившие»</h2>
+  <p class="sec-note">Источник: bolashak.gov.kz, правила для претендентов. Приказ на 2027 год пока не опубликован: сроки ниже даны по 2026 году.</p>
+  <div class="two">
+    <div>
+      <h3>Три тура отбора</h3>
+      <ol class="docs">
+        <li><b>Комплексное тестирование.</b> Вербальная и числовая информация и личностный опросник. Нужен пороговый балл, иначе во второй тур не допустят. Запись аудио и видео, пересдачи нет.</li>
+        <li><b>Собеседование</b> с Независимой экспертной комиссией. Члены комиссии учитывают мотивационное письмо.</li>
+        <li><b>Республиканская комиссия</b> принимает окончательное решение.</li>
+      </ol>
+      <h3 style="margin-top:16px">Тесты и порог</h3>
+      <ul class="plain">
+        <li>KAZTEST или Qazaq Resmi Test, результат не ниже B1</li>
+        <li>GPA не ниже 3.00 из 4.00 либо 4.00 из 5.00</li>
+        <li>Безусловное приглашение вуза (кроме финансовых условий) из списка Болашака</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Документы магистранта</h3>
+      <ol class="docs">
+        <li>Удостоверение личности и паспорт</li>
+        <li>Документ о безусловном зачислении в вуз из списка, с нотариальным переводом на казахский или русский</li>
+        <li>Диплом бакалавра с приложением (появится после защиты в июне 2027)</li>
+        <li>Сертификат KAZTEST или Qazaq Resmi Test</li>
+        <li>Медицинская справка по форме 072/у</li>
+        <li>Мотивационное письмо до 500 слов, с датой и подписью</li>
+        <li>Официальный документ об успеваемости (если учишься в зарубежном вузе)</li>
+      </ol>
+    </div>
+  </div>
+  <p class="sec-note" style="margin-top:14px">Подача идёт через egov.kz, нужна действующая ЭЦП. Отработка после учёбы: 5 лет физического присутствия в Казахстане. Полный чек-лист: файл 06-checklists.md в репозитории.</p>
 </section>
 
 <section id="europe">
-  <h2>6. Европа: Erasmus Mundus</h2>
+  <p class="kicker">Приоритет 2 · Европа</p>
+  <h2>8. Европа: Erasmus Mundus</h2>
   <p class="sec-note">Отдельная ставка на полный грант ЕС: Болашак здесь не нужен. Заявка подаётся напрямую в каждый консорциум, всего можно подать не больше трёх. Грант покрывает обучение, страховку и €1 400 в месяц на оба года (сумма указана на странице Global COOP; у остальных программ проверить). Даты ниже сверены 22.11.2026 по нескольким страницам, перед подачей сверить с сайтом консорциума.</p>
   <div class="tablewrap">
     <table>
@@ -375,14 +524,40 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
     </table>
   </div>
   <div class="callout warn">
-    <p><b>IELTS теперь жёсткий дедлайн.</b> Сертификат нужен в день подачи: для GLOCAL до 14 января, для Global COOP до 27 января. Сдавать в первых числах декабря: результат компьютерного теста приходит за 1–5 дней, остаётся запас на ошибку. Нужный балл смотреть на странице каждой программы.</p>
+    <p><b>IELTS теперь жёсткий дедлайн.</b> Сертификат нужен в день подачи: для GLOCAL до 14 января, для Global COOP до 27 января. Сдавать лучше в начале декабря, крайний срок для января 31 декабря: результат компьютерного теста приходит за 1–5 дней, остаётся запас на ошибку. Нужный балл смотреть на странице каждой программы.</p>
   </div>
   <p class="sec-note">Правила EMJM: одна и та же стипендия Erasmus Mundus присуждается человеку один раз. Диплом бакалавра появится после защиты в июне 2027, поэтому перед подачей отправь каждой программе письмо: примут ли заявку с последним транскриптом и справкой о предстоящем выпуске. Подбор третьей программы по каталогу EMJM пока не сделан.</p>
+  <h3 style="margin-top:28px">Критерии и документы: Erasmus Mundus</h3>
+  <div class="two">
+    <div>
+      <h3>Критерии</h3>
+      <ul class="plain">
+        <li><b>Заявки.</b> Подаются напрямую в консорциум, не больше трёх в год. Болашак здесь не нужен.</li>
+        <li><b>Диплом.</b> Бакалавриат ещё не получен: спросить каждую программу, принимают ли справку об ожидаемом выпуске. EMMIE ждёт готовый диплом до дедлайна.</li>
+        <li><b>Английский.</b> GLOCAL: выбрать трек и загрузить сертификат вместе с заявкой, позже его не принимают. Требуемый балл смотреть на странице программы.</li>
+        <li><b>Профиль.</b> GLOBAL COOP просит подтверждение подготовки по экономике и количественным методам. CLIDE (по карте 11.10, проверить): видео около 2 минут и две рекомендации.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Документы</h3>
+      <ol class="docs">
+        <li>CV на английском</li>
+        <li>Мотивационное письмо под конкретную программу</li>
+        <li>Транскрипт AITU и справка об ожидаемом выпуске в июне 2027</li>
+        <li>Обычно 2 рекомендации (преподаватели AITU)</li>
+        <li>Сертификат IELTS</li>
+        <li>Копия паспорта</li>
+        <li>У части программ: эссе, план исследования или видео</li>
+      </ol>
+    </div>
+  </div>
+  <p class="sec-note" style="margin-top:14px">Список типичный для программ Erasmus Mundus. Данные по вторичным страницам: сверить с сайтами консорциумов.</p>
 </section>
 
 <section id="china">
-  <h2>7. Китай: Болашак и другие полные гранты</h2>
-  <p class="sec-note">Полный грант на англоязычную магистратуру в Шанхае можно получить тремя путями. Болашак самый надёжный по покрытию, но привязан к безусловному офферу и срокам (раздел 8). Два остальных пути работают через сам Китай и закрываются раньше.</p>
+  <p class="kicker">Приоритет 3 · Китай</p>
+  <h2>9. Китай: Болашак и другие полные гранты</h2>
+  <p class="sec-note">Полный грант на англоязычную магистратуру в Шанхае можно получить тремя путями. Болашак самый надёжный по покрытию, но привязан к безусловному офферу и срокам (раздел 7). Два остальных пути работают через сам Китай и закрываются раньше.</p>
   <div class="tablewrap">
     <table>
       <thead>
@@ -392,7 +567,7 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
         <tr>
           <td><b>Болашак</b></td>
           <td>Вуз из списка 2024–2026: Tongji, SJTU, Fudan, Tsinghua, PKU, Zhejiang и ещё около десяти китайских вузов. NYU в списке только как вуз США. Нужен безусловный оффер</td>
-          <td>Общие сроки Болашака (раздел 8): приём ожидается с марта 2027</td>
+          <td>Общие сроки Болашака (раздел 7): приём ожидается с марта 2027</td>
           <td><span class="pill good">основной</span></td>
         </tr>
         <tr>
@@ -460,64 +635,60 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
     </table>
   </div>
   <p class="sec-note" style="margin-top:14px">Fudan и Zhejiang есть в списке Болашака, но их англоязычные магистерские программы пока не проверены. SUFE MIB остаётся запасным вариантом через полный CSC (SUFE в списке Болашака нет).</p>
-</section>
-
-<section id="bolashak">
-  <h2>8. Болашак: что нужно для категории «самостоятельно поступившие»</h2>
-  <p class="sec-note">Источник: bolashak.gov.kz, правила для претендентов. Приказ на 2027 год пока не опубликован: сроки ниже даны по 2026 году.</p>
+  <h3 style="margin-top:28px">Критерии и документы: Китай</h3>
   <div class="two">
     <div>
-      <h3>Три тура отбора</h3>
-      <ol class="docs">
-        <li><b>Комплексное тестирование.</b> Вербальная и числовая информация и личностный опросник. Нужен пороговый балл, иначе во второй тур не допустят. Запись аудио и видео, пересдачи нет.</li>
-        <li><b>Собеседование</b> с Независимой экспертной комиссией. Члены комиссии учитывают мотивационное письмо.</li>
-        <li><b>Республиканская комиссия</b> принимает окончательное решение.</li>
-      </ol>
-      <h3 style="margin-top:16px">Тесты и порог</h3>
+      <h3>Критерии</h3>
       <ul class="plain">
-        <li>KAZTEST или Qazaq Resmi Test, результат не ниже B1</li>
-        <li>GPA не ниже 3.00 из 4.00 либо 4.00 из 5.00</li>
-        <li>Безусловное приглашение вуза (кроме финансовых условий) из списка Болашака</li>
+        <li><b>Путь.</b> Болашак (SJTU MIB, Tongji MGM) плюс параллельно CGS и Shanghai Government Scholarship; через ЦМП окно CSC. Засчитают ли NYU Shanghai и PKU HSBC, решает ЦМП.</li>
+        <li><b>Английский.</b> Программы на английском. SUFE MIB: IELTS 6.5 (по карте 11.10, проверить). PKU HSBC (британская часть): IELTS 6.5 с UKVI SELT.</li>
+        <li><b>Сроки.</b> CGS 15 февраля, Shanghai Government Scholarship и SJTU Scholarship 31 марта, SJTU MIB самоплатно до 31 мая (раздел 10).</li>
       </ul>
     </div>
     <div>
-      <h3>Документы магистранта</h3>
+      <h3>Документы</h3>
       <ol class="docs">
-        <li>Удостоверение личности и паспорт</li>
-        <li>Документ о безусловном зачислении в вуз из списка, с нотариальным переводом на казахский или русский</li>
-        <li>Диплом бакалавра с приложением (появится после защиты в июне 2027)</li>
-        <li>Сертификат KAZTEST или Qazaq Resmi Test</li>
-        <li>Медицинская справка по форме 072/у</li>
-        <li>Мотивационное письмо до 500 слов, с датой и подписью</li>
-        <li>Официальный документ об успеваемости (если учишься в зарубежном вузе)</li>
+        <li>Паспорт</li>
+        <li>Транскрипт AITU на английском и справка об ожидаемом выпуске (диплом после защиты)</li>
+        <li>CV и мотивационное письмо или study plan на английском</li>
+        <li>Две рекомендации; SUFE (карта 11.10, проверить) просит от преподавателей уровня associate professor и выше</li>
+        <li>Сертификат IELTS, если его просит программа</li>
+        <li>Справка об отсутствии судимости (SUFE, проверить)</li>
+        <li>Для визы и CSC обычно нужна медицинская форма для иностранных студентов; Tsinghua просит эссе и CV на английском и китайском (проверить)</li>
       </ol>
     </div>
   </div>
-  <p class="sec-note" style="margin-top:14px">Подача идёт через egov.kz, нужна действующая ЭЦП. Отработка после учёбы: 5 лет физического присутствия в Казахстане. Полный чек-лист: файл 06-checklists.md в репозитории.</p>
+  <p class="sec-note" style="margin-top:14px">Список типичный: условия SJTU и Tongji сверять на страницах программ, остальные строки помечены «проверить».</p>
 </section>
 
 <section id="timeline">
-  <h2>9. Календарь</h2>
+  <h2>10. Календарь</h2>
   <div class="tablewrap">
     <table>
       <thead><tr><th scope="col">Когда</th><th scope="col">Что</th><th scope="col">Статус</th></tr></thead>
       <tbody>
+        <tr><td>30 ноября 2026</td><td>PKU HSBC: ранний раунд (по карте 11.10; основной срок 31 марта 2027)</td><td><span class="pill warn">проверить</span></td></tr>
         <tr><td>1 декабря 2026</td><td>Mundus MAPP: не проходит по GPA и IELTS</td><td><span class="pill bad">отпадает</span></td></tr>
-        <tr><td>Начало декабря 2026</td><td>Сдать IELTS на компьютере (результат за 1–5 дней). Сертификат нужен для GLOCAL к 14 января</td><td><span class="pill info">рекомендация</span></td></tr>
+        <tr><td>Начало декабря 2026, крайний срок 31 декабря</td><td>Сдать IELTS на компьютере (результат за 1–5 дней). Без сертификата в январе не подать в британские вузы; для GLOCAL он нужен к 14 января</td><td><span class="pill info">рекомендация</span></td></tr>
+        <tr><td>Около 15 декабря 2026</td><td>Tsinghua SEM, раунд 1, и ранний раунд SJTU по прошлому циклу (карта 11.10); Manchester: этап 1 заявок</td><td><span class="pill warn">проверить</span></td></tr>
+        <tr><td>6 января 2027</td><td>Imperial, Business Analytics &amp; AI: раунд 2 закрывается (приём до 28 апреля)</td><td><span class="pill good">подтверждено</span></td></tr>
         <tr><td>14 января 2027</td><td>GLOCAL (Erasmus Mundus): заявка и сертификат английского, до 13:00 по Лондону</td><td><span class="pill good">подтверждено</span></td></tr>
+        <tr><td>15 января 2027</td><td>NYU Shanghai, MS OMS: раунд 2 (летний старт; раунд 1 был 31 октября)</td><td><span class="pill warn">проверить</span></td></tr>
         <tr><td>27 января 2027</td><td>GLOBAL COOP (Erasmus Mundus): заявка, до 13:00 по Парижу</td><td><span class="pill good">подтверждено</span></td></tr>
         <tr><td>Янв – апр 2027</td><td>Раунды заявок британских вузов (у каждого свои даты)</td><td><span class="pill warn">проверить</span></td></tr>
         <tr><td>Янв – фев 2027</td><td>Окно CSC через ЦМП (в 2026: 21 января – 10 февраля, продлено до 18 февраля)</td><td><span class="pill warn">ожидаемо</span></td></tr>
         <tr><td>Февраль 2027</td><td>NavigAIte EU: ближайший приём, старт в январе 2028</td><td><span class="pill warn">проверить</span></td></tr>
         <tr><td>15 февраля 2027</td><td>SJTU: заявка на CGS через вуз</td><td><span class="pill good">подтверждено</span></td></tr>
-        <tr><td>Конец февраля 2027</td><td>Крайний срок IELTS с запасом на пересдачу (для UK и Болашака)</td><td><span class="pill info">рекомендация</span></td></tr>
+        <tr><td>Около 9 марта 2027</td><td>King&#39;s College London: первый срок по циклу 2026</td><td><span class="pill warn">проверить</span></td></tr>
         <tr><td>Около 16 марта 2027</td><td>Открытие приёма документов Болашак (в 2026 было 16 марта)</td><td><span class="pill warn">ожидаемо</span></td></tr>
         <tr><td>31 марта 2027</td><td>SJTU: Shanghai Government Scholarship и SJTU Scholarship. PKU HSBC: закрытие приёма</td><td><span class="pill good">подтверждено</span></td></tr>
+        <tr><td>5 апреля 2027</td><td>NYU Shanghai, MS OMS: раунд 3 (официально)</td><td><span class="pill warn">проверить</span></td></tr>
         <tr><td>10 апреля</td><td>Tongji MGM: онлайн-заявка (год на странице не указан)</td><td><span class="pill warn">проверить</span></td></tr>
         <tr><td>31 мая 2027</td><td>SJTU MIB: последний срок для самоплатных заявок</td><td><span class="pill good">подтверждено</span></td></tr>
         <tr><td>Начало июня 2027</td><td>Защита диплома AITU</td><td><span class="pill good">подтверждено</span></td></tr>
+        <tr><td>Около 15 июня 2027</td><td>SUFE MIB: конец приёма (полный CSC)</td><td><span class="pill warn">проверить</span></td></tr>
         <tr><td>Июль 2027</td><td>Диплом и транскрипт на руках, оффер становится безусловным</td><td><span class="pill warn">ожидаемо</span></td></tr>
-        <tr><td>2 августа / 20 августа 2027</td><td>Последние сроки Warwick и Royal Holloway (по страницам программ)</td><td><span class="pill good">подтверждено</span></td></tr>
+        <tr><td>2 – 27 августа 2027</td><td>Последние сроки Warwick (2 августа), Bristol (около 13 и 27 августа, по циклу 2026) и Royal Holloway (20 августа)</td><td><span class="pill good">подтверждено</span></td></tr>
         <tr><td>Около 16 октября 2027</td><td>Закрытие приёма документов Болашак (в 2026 до 16 октября)</td><td><span class="pill warn">ожидаемо</span></td></tr>
         <tr><td>До 31 декабря 2027</td><td>Отбор Болашак: тест, собеседование, комиссия</td><td><span class="pill warn">ожидаемо</span></td></tr>
       </tbody>
@@ -528,14 +699,60 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
   </div>
 </section>
 
+<section id="programs">
+  <p class="kicker">Все три региона в одном списке</p>
+  <h2>11. Карта программ</h2>
+  <p class="sec-note">Порядок по приоритету: 1 Великобритания, 2 Европа (Erasmus Mundus), 3 Китай. «Шанс» оценён для твоего профиля внутри региона: Reach — сложно, Match — реально, Safety — высокая вероятность, «Не проверено» — порог неизвестен. Строки перенесены из «Карты полных грантов» от 11.10.2026 и сверены с данными от 22.11.2026; у строк с пометкой «карта 11.10» даты и цены ещё не перепроверены. Корея и другие страны в этот список не входят.</p>
+  <div class="filters" role="group" aria-label="Регион" id="p-region"></div>
+  <div class="p-controls">
+    <label class="p-field">Финансирование
+      <select id="p-full"><option value="all">Любое</option><option value="full">Только полный грант</option></select>
+    </label>
+    <label class="p-field">Код направления
+      <select id="p-dir"><option value="all">Все</option><option value="1.1">1.1 Данные и аналитика</option><option value="1.4">1.4 ИИ</option><option value="4.16">4.16 Предпринимательство</option><option value="4.18">4.18 Менеджмент</option><option value="other">Другие и не в перечне</option></select>
+    </label>
+    <label class="p-field">Шанс
+      <select id="p-tier"><option value="all">Любой</option><option value="R">Reach</option><option value="M">Match</option><option value="S">Safety</option><option value="U">Не проверено</option></select>
+    </label>
+    <label class="p-field">Сортировка
+      <select id="p-sort"><option value="region">По приоритету региона</option><option value="deadline">По дедлайну</option></select>
+    </label>
+    <label class="p-field">Поиск
+      <input id="p-q" type="search" placeholder="вуз или программа">
+    </label>
+    <span id="p-count" aria-live="polite"></span>
+  </div>
+  <div class="tablewrap">
+    <table class="p-table">
+      <thead><tr><th scope="col">Программа</th><th scope="col">Код</th><th scope="col">Финансирование</th><th scope="col">Дедлайн</th><th scope="col">Требования и цена</th><th scope="col">Шанс</th><th scope="col">На что смотреть</th></tr></thead>
+      <tbody id="p-rows"></tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:26px">Что покрывает каждый путь</h3>
+  <div class="grid" style="margin-top:8px">
+    <div class="card"><h3><span class="pill warn">Болашак</span> <span class="pill good">полный</span></h3><div class="lbl">Обучение, перелёт, страховка, виза, учебные материалы и ежемесячная стипендия. Нужны безусловный оффер и GPA от 3.0. Для Великобритании и Китая. Отработка в Казахстане: раздел 7.</div></div>
+    <div class="card"><h3><span class="pill info">Erasmus Mundus</span> <span class="pill good">полный</span></h3><div class="lbl">Обучение без оплаты и €1 400 в месяц до 24 месяцев, страховка. Не больше трёх заявок за год. Нельзя совмещать с Болашаком и нельзя получить второй раз.</div></div>
+    <div class="card"><h3><span class="pill info">CSC</span> <span class="pill good">полный</span></h3><div class="lbl">Стипендия правительства Китая: обучение, общежитие, ежемесячная выплата (в Fudan для магистров 3 000 юаней), страховка. Подача через вуз (Type B) или посольство (Type A). У некоторых программ покрывает только часть оплаты (Tongji).</div></div>
+    <div class="card"><h3><span class="pill info">Шанхайская стипендия</span></h3><div class="lbl">Type A: обучение, общежитие в двухместной комнате, 3 000 юаней в месяц, страховка. Type B: только обучение и страховка. В прошлом цикле приём с 1 декабря по 30 апреля, у вузов свои сроки.</div></div>
+  </div>
+
+  <h3 style="margin-top:22px">Что проверить напрямую</h3>
+  <ol class="docs">
+    <li>Пересчёт GPA 3.08 в британскую шкалу: написать Edinburgh, Bristol, KCL и Manchester, считается ли это 2:1 для выпускников из Казахстана.</li>
+    <li>Нужен ли HSK для CSC при поступлении на англоязычную программу (Tsinghua прямо предупреждает об этом).</li>
+    <li>Дедлайн Tongji MGM на 2027 год и покрывает ли Шанхайская стипендия всю оплату MGM.</li>
+  </ol>
+</section>
+
 <section id="decisions">
-  <h2>10. Что нужно решить</h2>
+  <h2>12. Что нужно решить</h2>
   <ol class="decide">
     <li><b>Добавить код 1.1 пятым направлением?</b> Рекомендация: да. Там Business Analytics, самые проходимые по GPA программы Sheffield, Nottingham, Royal Holloway, Leicester.</li>
-    <li><b>Подтвердить целевую точку</b> из раздела 4 или заменить вузы звёздочками в разделе 3.</li>
+    <li><b>Подтвердить целевую точку</b> из раздела 5 или заменить вузы звёздочками в разделе 4.</li>
     <li><b>Найти пороги GPA</b> у Glasgow, Durham, Southampton, Exeter, Liverpool, Newcastle, QUB, Cardiff, KCL и Imperial.</li>
     <li><b>Подобрать программы</b> под коды 1.4, 1.23, 4.16, 4.18 в Sheffield, Nottingham, Durham, Leeds и York и сверить названия с перечнем.</li>
-    <li><b>Записаться на IELTS</b> на начало декабря 2026 (British Council Казахстан, компьютерный Academic). Сертификат нужен для GLOCAL к 14 января.</li>
+    <li><b>Записаться на IELTS</b> на начало декабря 2026, крайний срок 31 декабря (British Council Казахстан, компьютерный Academic). Без него в январе не подать в британские вузы, для GLOCAL он нужен к 14 января.</li>
     <li><b>Какие три заявки Erasmus Mundus подавать.</b> Рекомендация: GLOCAL (14 января) и Global COOP (27 января); третью оставить под NavigAIte EU, если старт в январе 2028 подходит, иначе под другую программу из каталога EMJM.</li>
     <li><b>Китай: SJTU MIB и Tongji MGM основными</b>, параллельно CGS и Shanghai Government Scholarship в SJTU (15 февраля и 31 марта). NYU Shanghai и PKU HSBC держать запасными до ответа ЦМП.</li>
     <li><b>Написать в ЦМП</b> про сроки (оффер после защиты, окно подачи до середины октября), засчитывают ли NYU Shanghai и PKU HSBC, и можно ли подавать на CGS параллельно с Болашаком.</li>
@@ -556,6 +773,7 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
     <li>NYU Stern – NYU Shanghai: <a href="https://bulletins.nyu.edu/graduate/business/programs/organization-management-strategy-ms/">программа и условия приёма (bulletin)</a>, <a href="https://stern.shanghai.nyu.edu">сайт программы</a></li>
     <li>PKU HSBC: <a href="https://english.phbs.pku.edu.cn/academics/Master/apply/">сроки и тесты</a>, <a href="https://uk.phbs.pku.edu.cn/Study/How_to_Apply.htm">UK–China: требования к IELTS</a>. Tsinghua SEM: <a href="https://masters.sem.tsinghua.edu.cn/en/Admission/How_to_Apply.htm">How to Apply</a></li>
     <li>CSC через ЦМП: <a href="https://www.zakon.kz/obshestvo/6507244-kazakhstantsam-zhelayushchim-postupit-v-vuzy-kitaya-obyavili-o-prodlenii-sroka-priema-dokumentov.html">Zakon.kz, продление срока приёма</a>, <a href="https://bes.media/news/kazahstantsam-predlagayut-73-granta-na-obuchenie-v-vuzah-kitaya-42cdde/">bes.media, 73 гранта на 2026–2027</a></li>
+    <li>Карта программ (раздел 11): «Карта полных грантов 2027» от 11.10.2026, сверена с данными от 22.11.2026; официальные страницы вузов и стипендий по ссылкам в таблице</li>
     <li>Репозиторий с полным планом: github.com/svulee-jpg/masters-abroad-2027 (приватный)</li>
   </ul>
 </footer>
@@ -640,6 +858,252 @@ document.getElementById("copyPick").addEventListener("click", function () {
   } catch (err) { out.textContent = text; }
 });
 render();
+</script>
+<script>
+(function () {
+  var REGN = {UK: "Великобритания", EU: "Erasmus Mundus", CN: "Китай"};
+  var ORDER = ["UK", "EU", "CN"];
+  var RT = {
+    bol: ["Болашак", "warn"], emjm: ["Erasmus Mundus", "info"], csc: ["CSC", "info"], sgs: ["Шанх. стип.", "info"],
+    uni: ["Стипендия вуза", "mute"], beijing: ["Пекинская стип.", "info"]
+  };
+  var FL = {full: ["полный", "good"], partial: ["частичный", "warn"], closed: ["набор закрыт", "bad"], out: ["не подходит", "bad"]};
+  var TIER = {R: "Reach", M: "Match", S: "Safety", U: "Не проверено", X: "—"};
+  // d: ключ сортировки (9999 = дата неизвестна); dl и dls: подпись и пояснение к сроку
+  var P = [
+    // ---------- 1 · Великобритания (Болашак) ----------
+    {r: "UK", uni: "University of Edinburgh", p: "MSc Artificial Intelligence for Business", url: "https://www.business-school.ed.ac.uk/msc/ai-business", dir: "1.4", rt: ["bol"], f: "full", d: "2027-01-15", dl: "раунды", dls: "с октября; даты 2027 проверить на странице application-deadlines", req: "2:1 (GPA 3.25), любая специальность · IELTS 7.0 (минимумы по навыкам уточнить)", cost: "стоимость 2027 не опубликована", t: "R", n: "<strong>Создана для выпускников без технического диплома.</strong> Почти твоя специальность, но порог GPA 3.25 выше твоих 3.08."},
+    {r: "UK", uni: "University of Edinburgh", p: "MSc Entrepreneurship and Innovation", url: "https://www.business-school.ed.ac.uk/msc/entrepreneurship-innovation", dir: "4.16", rt: ["bol"], f: "full", d: "2027-01-20", dl: "раунды", dls: "по циклу 2026", req: "2:1 по любой специальности · опыт не нужен", cost: "депозит £1 500", t: "R", n: "Можно сделать бизнес-план вместо диссертации. Конкурс высокий, порог GPA Edinburgh 3.25."},
+    {r: "UK", uni: "University of Edinburgh", p: "MSc Management", url: "https://www.business-school.ed.ac.uk/msc/management", dir: "4.18", rt: ["bol"], f: "full", d: "2027-01-25", dl: "раунды", dls: "по циклу 2026", req: "Любая специальность · IELTS 7.0 (6.0)", cost: "£34 800 (2026)", t: "R", n: "Общий менеджмент без опыта работы. Порог GPA Edinburgh 3.25."},
+    {r: "UK", uni: "University of Manchester", p: "MSc Data Science (Business and Management)", url: "https://www.manchester.ac.uk/study/masters/courses/list/11426/msc-data-science-business-and-management/", dir: "1.1", rt: ["bol"], f: "full", d: "2027-01-30", dl: "этапы", dls: "этап 1 ≈ декабрь", req: "STEM, бизнес и гуманитарные степени · порог GPA 3.4", cost: "уточнить", t: "R", n: "Доступнее, чем Business Analytics and AI в той же школе, но порог GPA Manchester 3.4 выше твоего."},
+    {r: "UK", uni: "University of Manchester", p: "MSc Business Analytics and Artificial Intelligence", url: "https://www.manchester.ac.uk/study/masters/courses/list/22043/msc-business-analytics-and-artificial-intelligence/", dir: "1.1", rt: ["bol"], f: "full", d: "2027-01-30", dl: "этапы", dls: "этап 1 ≈ декабрь", req: "Количественная степень, математика обязательна · порог GPA 3.4", cost: "£35 700 (2026)", t: "R", n: "Нужна сильная математика в транскрипте."},
+    {r: "UK", uni: "University of Manchester", p: "MSc Innovation Management and Entrepreneurship", url: "https://www.alliancembs.manchester.ac.uk/study/masters/msc-innovation-management-and-entrepreneurship/", dir: "4.16", rt: ["bol"], f: "full", d: "2026-12-15", dl: "≈ декабрь", dls: "этап 1, далее до июля", req: "First или 2:1, любая специальность · порог GPA 3.4", cost: "£33 600 (2026)", t: "R", n: "Депозит £2 500 при принятии оффера."},
+    {r: "UK", uni: "University of Bristol", p: "MSc Artificial Intelligence for Business", url: "https://www.bristol.ac.uk/study/postgraduate/taught/msc-artificial-intelligence-for-business/", dir: "1.4", rt: ["bol"], f: "full", d: "2027-08-13", dl: "≈ 13 авг", dls: "по циклу 2026, лучше раньше", req: "2:1 в количественной области или 1 количественный курс от 60% · IELTS 7.0 (6.5) · порог GPA 3.3", cost: "£34 000 (2026)", t: "R", n: "Есть модуль «Entrepreneurship in the AI Age»."},
+    {r: "UK", uni: "University of Bristol", p: "MSc Data Science for Business", url: "https://www.bristol.ac.uk/study/postgraduate/taught/msc-data-science-for-business/", dir: "1.1", rt: ["bol"], f: "full", d: "2027-08-27", dl: "≈ 27 авг", dls: "по циклу 2026", req: "IELTS 7.0 (6.5) · порог GPA 3.3", cost: "£33 900 (2026)", t: "R", n: "Для недавних выпускников, специализации по маркетингу, финансам, цепям поставок."},
+    {r: "UK", uni: "University of Warwick", p: "MSc Business Analytics & Artificial Intelligence", url: "https://www.wbs.ac.uk/courses/masters/business-analytics-artificial-intelligence/", dir: "1.1", rt: ["bol"], f: "full", d: "2027-08-02", dl: "≈ 2 авг", dls: "по циклу 2026", req: "2:1, сильная математика и статистика", cost: "£38 150 (2026)", t: "R", n: "Берут из разных специальностей, но проверяют количественные навыки. 3.08 на уровне 2:2 по шкале Warwick."},
+    {r: "UK", uni: "University of Warwick", p: "MSc Programme and Project Management", url: "https://warwick.ac.uk/study/postgraduate/courses/msc-project-management/", dir: "4.18", rt: ["bol", "uni"], f: "full", d: "2027-08-02", dl: "≈ 2 авг", dls: "по циклу 2026", req: "Опыт не нужен · аккредитация APM", cost: "£37 460 (2026)", t: "R", n: "Стипендии WMG £5–15 тыс. как дополнение. 3.08 на уровне 2:2 по шкале Warwick."},
+    {r: "UK", uni: "University of Warwick", p: "MSc Innovation and Entrepreneurship", url: "https://warwick.ac.uk/study/postgraduate/courses/msc-innovation-entrepreneurship/", dir: "4.16", rt: ["bol"], f: "full", d: "2027-08-02", dl: "≈ 2 авг", dls: "по циклу 2026", req: "Опыт не нужен", cost: "уточнить", t: "R", n: "1-е место в Великобритании по предпринимательству (Eduniversal 2025). 3.08 на уровне 2:2 по шкале Warwick."},
+    {r: "UK", uni: "King's College London", p: "MSc Strategic Entrepreneurship & Innovation", url: "https://www.kcl.ac.uk/study/postgraduate-taught/courses/strategic-entrepreneurship-and-innovation-msc", dir: "4.16", rt: ["bol", "uni"], f: "full", d: "2027-03-09", dl: "≈ март", dls: "первый срок по циклу 2026", req: "Высокий 2:1 (от 65%)", cost: "£38 300 (2026)", t: "R", n: "GPA 3.08 может не дотянуть до высокого 2:1."},
+    {r: "UK", uni: "King's College London", p: "MSc International Management", url: "https://www.kcl.ac.uk/study/postgraduate-taught/courses/international-management-msc", dir: "4.18", rt: ["bol"], f: "full", d: "2027-03-09", dl: "≈ март", dls: "по циклу 2026", req: "Любая специальность · возможно видеоинтервью Kira", cost: "£40 450 (2026)", t: "U", n: "Топ-30 QS по менеджменту. Порог GPA у KCL для Казахстана не подтверждён."},
+    {r: "UK", uni: "Imperial College London", p: "MSc Entrepreneurship", url: "https://www.imperial.ac.uk/business-school/", dir: "4.16", rt: ["bol"], f: "full", d: "2026-12-31", dl: "раунды", dls: "ранние раунды выгоднее", req: "Опыт работы не нужен (проверено)", cost: "уточнить", t: "R", n: "Reach по престижу, порог GPA не проверен."},
+    {r: "UK", uni: "Imperial College London", p: "MSc Business Analytics & AI", url: "https://www.imperial.ac.uk/business-school/", dir: "1.1", rt: ["bol"], f: "full", d: "2027-01-06", dl: "6 янв 2027", dls: "раунд 2; приём до 28 апреля 2027", req: "Обычно 2:1 с квантитативной дисциплиной · IELTS 7.0 overall", cost: "—", t: "R", n: "Нужен квантитативный диплом. Совпадёт ли он с AI Business, проверить."},
+    {r: "UK", uni: "Royal Holloway, University of London", p: "MSc Artificial Intelligence for Business", url: "https://www.royalholloway.ac.uk/", dir: "1.4", rt: ["bol"], f: "full", d: "2027-08-21", dl: "≈ 21 авг", dls: "по циклу 2026", req: "IELTS 6.5", cost: "£29 300 (2026)", t: "S", n: "Самый дешёвый британский вариант по твоей специальности."},
+    {r: "UK", uni: "Royal Holloway, University of London", p: "MSc Entrepreneurship and Innovation", url: "https://www.royalholloway.ac.uk/studying-here/postgraduate/business-school/entrepreneurship-and-innovation/", dir: "4.16", rt: ["bol"], f: "full", d: "2027-08-21", dl: "≈ 21 авг", dls: "по циклу 2026", req: "2:2 · IELTS 6.5 (6.0)", cost: "£27 000 (2026)", t: "S", n: "Самый низкий порог по оценкам из всех."},
+    {r: "UK", uni: "Royal Holloway, University of London", p: "MSc International Management", url: "https://www.royalholloway.ac.uk/studying-here/postgraduate/business-school/international-business-management/", dir: "4.18", rt: ["bol"], f: "full", d: "2027-08-21", dl: "≈ 21 авг", dls: "по циклу 2026", req: "Для тех, кто не учил менеджмент", cost: "£27 000 (2026)", t: "S", n: "Есть и отдельная MSc Project Management."},
+    {r: "UK", uni: "Royal Holloway, University of London", p: "MSc Business Analytics", dir: "1.1", rt: ["bol"], f: "full", d: "2027-06-27", dl: "27 июня, 30 июля, 20 августа", dls: "три срока 2027 (страница программы)", req: "2:2, любой предмет · IELTS 6.5 (6.0)", cost: "£28 100 в год", t: "S", n: "Код 1.1: вне выбранных четырёх направлений, пока 1.1 не добавлено."},
+    {r: "UK", uni: "Lancaster University (вне Russell Group)", p: "MSc Management and Artificial Intelligence", dir: "1.4", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "нет на странице программы", req: "2:2, любая дисциплина · IELTS 6.5 (не ниже 6.0)", cost: "£30 900 в год", t: "M", n: "Название есть в перечне Болашака (коды 1.4 и 1.23)."},
+    {r: "UK", uni: "University of Sheffield", p: "MSc Business Analytics", dir: "1.1", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "нет на странице программы", req: "2:1 (GPA 3.0), любой предмет, количественной подготовки не нужно · IELTS 6.5 (не ниже 6.0)", cost: "стипендии до £7 000; цена не найдена", t: "M", n: "Код 1.1. По порогу GPA проходишь на 2:1."},
+    {r: "UK", uni: "University of Nottingham", p: "MSc Business Analytics", dir: "1.1", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "нет на странице программы", req: "2:1 (GPA 3.0) в любой дисциплине и 2:1 в модулях с математикой или статистикой · IELTS 6.5 (не ниже 6.0)", cost: "цена не найдена", t: "M", n: "Код 1.1. Проверить, что в транскрипте достаточно количественных модулей."},
+    {r: "UK", uni: "University of Leicester", p: "MSc Business Analytics", dir: "1.1", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "январский набор закрывался 20 ноября 2026; сентябрь проверить", req: "«Good second-class», предмет не указан · IELTS 6.5", cost: "£23 650 (на сентябрь 2027 проверить)", t: "S", n: "Код 1.1."},
+    {r: "UK", uni: "University of Strathclyde", p: "MSc Business Analysis & Consulting (путь with AI)", dir: "other", dirL: "нет в перечне", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "нет на странице программы", req: "Second-class · IELTS 6.5 (не ниже 5.5)", cost: "£29 350 в год; стипендия £6 000 после оффера", t: "S", n: "Точного названия в перечне Болашака нет: по правилу Болашака название сверять дословно."},
+
+    // ---------- 2 · Европа (Erasmus Mundus) ----------
+    {r: "EU", uni: "Haaga-Helia · Севилья · Кошице (UlysseusAI)", p: "AI for Business Transformation", url: "https://www.haaga-helia.fi/en/master-k/joint-degree-programme-ai-business-transformation-master-business-administration", dir: "1.4", rt: ["emjm"], f: "closed", d: "2026-09-11", dl: "закрыт", dls: "подача была 31 авг – 11 сен 2026, старт январь 2027", req: "Вступительный экзамен в два этапа", cost: "без стипендии €12 000 в год", t: "X", closed: true, n: "<strong>Самое точное совпадение по теме</strong>, но набор 2027 уже прошёл и стартует до выпуска. Следить за следующим набором."},
+    {r: "EU", uni: "Консорциум с координатором в Финляндии", p: "NavigAIte EU: Navigating AI Business Transformation", url: "https://erasmus-plus.ec.europa.eu/node/5906", dir: "1.4", rt: ["emjm"], f: "full", d: "2027-02-15", dl: "февраль 2027", dls: "по проверке до 22.11, не перепроверено", req: "Старт в январе 2028, а не в сентябре 2027; английский и приём выпускников 2027 уточнить", cost: "—", t: "M", n: "<strong>Лучшее совпадение по теме (AI для бизнеса).</strong> Выбрана Еврокомиссией в июле 2026. Проверить старт, английский и приём выпускников 2027."},
+    {r: "EU", uni: "Glasgow · Барселона · Роттердам · Гёттинген и др.", p: "GLOCAL: Global Markets, Local Creativities", url: "https://globallocal-erasmusmundus.eu/", dir: "4.16", rt: ["emjm"], f: "full", d: "2027-01-14", dl: "14 янв 2027", dls: "13:00 по Лондону; ответ в апреле", req: "Подходят бизнес и international business, выбрать трек · сертификат английского вместе с заявкой", cost: "без платы за подачу", t: "M", n: "Треки «Entrepreneurship in Global Markets» и «Sustainable Business Development». Совпадение среднее: уклон гуманитарный. Порог Glasgow для Казахстана не найден."},
+    {r: "EU", uni: "Siena · Campinas · Sorbonne · Compiègne и др.", p: "GLOBAL COOP: Economic Policies for New Global Cooperation and Alliances", dir: "other", dirL: "экономика", rt: ["emjm"], f: "full", d: "2027-01-27", dl: "27 янв 2027", dls: "13:00 по Парижу", req: "Нужны доказательства подготовки по экономике и количественным методам", cost: "€1 400 в месяц", t: "R", n: "Совпадение слабое: экономика, не AI Business. Примут ли выпускницу с дипломом после дедлайна, уточнить письмом."},
+    {r: "EU", uni: "CEU Вена · IBEI Барселона · York · ISS", p: "Mundus MAPP: Public Policy", url: "https://mundusmapp.org/", dir: "other", dirL: "4.4", rt: ["emjm"], f: "out", d: "2026-12-01", dl: "1 дек 2026", dls: "23:59 CET, только для стипендии", req: "IELTS 7.0 · GPA от 3.17", cost: "—", t: "X", closed: true, n: "<strong>Отпадает:</strong> GPA 3.08 ниже 3.17, нового IELTS нет, сертификат позже не догрузить."},
+    {r: "EU", uni: "Торунь · Гранада · Штайр · Харьков · Касабланка", p: "CLIDE: Intercultural Leadership in the Digital Era", url: "https://clide.umk.pl/", dir: "4.18", rt: ["emjm"], f: "full", d: "2027-04-15", dl: "≈ апрель", dls: "приём откроется в феврале 2027 (карта 11.10, не перепроверено)", req: "Видеовизитка ≈ 2 мин, две рекомендации", cost: "—", t: "M", n: "Около 12 стипендий Erasmus Mundus в год. Неполные заявки к дедлайну на стипендию не рассматриваются."},
+    {r: "EU", uni: "Льеж · ISM Вильнюс · ZSEM Загреб", p: "EMMIE: Impact Entrepreneurship", url: "https://www.emmie.uliege.be/", dir: "4.16", rt: ["emjm"], f: "out", d: "2027-01-06", dl: "≈ январь", dls: "нужен готовый диплом", req: "Бакалавр 240 ECTS, завершённый до дедлайна", cost: "—", t: "X", closed: true, n: "<strong>На 2027 не подходит:</strong> выпускников этого года не берут. Вариант на 2028."},
+    {r: "EU", uni: "ULB Брюссель · UPC Барселона и др.", p: "DEAI: Data Engineering and AI", url: "https://deai.ulb.be/", dir: "1.1", rt: ["emjm"], f: "full", d: "2026-12-20", dl: "≈ декабрь", dls: "по циклу BDMA (карта 11.10, не перепроверено)", req: "Бакалавр Computer Science", cost: "—", t: "R", n: "Технический трек, вероятно не пройдёт по профилю."},
+
+    // ---------- 3 · Китай ----------
+    {r: "CN", uni: "Tongji SEM (Шанхай)", p: "Master of Global Management (MGM)", url: "https://mgm.tongji.edu.cn/", dir: "4.18", rt: ["bol", "csc", "sgs"], f: "full", d: "2027-04-10", dl: "10 апреля", dls: "год на странице не указан: проверить", req: "Код 120202 в системе Tongji · предварительного письма не дают · IELTS не найден: проверить", cost: "79 000 ¥ в год, 158 000 ¥ всего", t: "M", n: "<strong>В списке Болашака.</strong> CSC покрывает лишь 25 000 ¥ в год, доплата 54 000 ¥. FT Masters in Management: 13-е место (2024), по другому источнику 8-е (2025)."},
+    {r: "CN", uni: "SJTU Antai (Шанхай)", p: "Master of International Business (MIB)", url: "https://www.acem.sjtu.edu.cn/mib/Data/List/MIB.html", dir: "4.16", rt: ["bol", "csc", "sgs"], f: "full", d: "2027-02-15", dl: "15 фев 2027", dls: "CGS 15.02; Shanghai Gov. и SJTU Scholarship 31.03; самоплатно 31.05. В карте 11.10 был ранний раунд ≈ 15 дек: проверить", req: "2 года, английский · IELTS 6.0 или TOEFL 90 (Mastersportal) · два курса китайского обязательны", cost: "94 000 ¥ в год, 188 000 ¥ всего", t: "M", n: "<strong>В списке Болашака.</strong> По старым правилам стипендия SJTU покрывала только 28 900 ¥ в год: уточнить покрытие."},
+    {r: "CN", uni: "SUFE (Шанхай)", p: "Master of International Business", url: "https://intlstu.sufe.edu.cn/2e/84/c12487a208516/page.htm", dir: "4.16", rt: ["csc"], f: "full", d: "2027-06-15", dl: "≈ 15 июня", dls: "приём ≈ с 16 ноября по 15 июня (цикл 2026)", req: "IELTS 6.5 · план от 1 000 слов · 2 рекомендации от доцентов · справка о несудимости", cost: "70 000 ¥ в год", t: "S", n: "<strong>Полный CSC:</strong> обучение, общежитие, страховка, 3 000 ¥ в месяц. Не в списке Болашака: запасной вариант через CSC."},
+    {r: "CN", uni: "NYU Shanghai × NYU Stern", p: "MS in Data Analytics and Business Computing", url: "https://stern.shanghai.nyu.edu/en/admissions", dir: "1.1", rt: ["uni"], f: "partial", d: "2027-01-15", dl: "≈ 15 янв 2027", dls: "раунд 2; раунд 1 был 31 окт", req: "Сильная аналитика · старт летом в Нью-Йорке", cost: "$74 736 обучение, всего ≈ $81 300", t: "R", n: "Ближе всех к AI Business, но <strong>летний старт конфликтует с защитой</strong>. Засчитает ли Болашак, вопрос в ЦМП."},
+    {r: "CN", uni: "NYU Shanghai × NYU Stern", p: "MS in Organization Management and Strategy", url: "https://stern.shanghai.nyu.edu/en/admissions", dir: "4.18", rt: ["uni", "bol"], f: "partial", d: "2027-01-15", dl: "15 янв 2027 (раунд 2)", dls: "раунд 1 был 31 окт 2026; раунд 3 — 5 апр 2027", req: "1 год: лето в Нью-Йорке, осень и весна в Шанхае · IELTS 6.5 · эссе с 6 фото", cost: "$74 736 обучение, около $113 000 с проживанием", t: "R", n: "Стипендии вуза только по заслугам. <strong>Полное покрытие только Болашаком</strong> (NYU в списке как вуз США, код 4.18), но летний старт идёт до защиты и до решения Болашака."},
+    {r: "CN", uni: "Tsinghua SEM (Пекин)", p: "Master in Management · Data Intelligence-Enabled Management", url: "https://masters.sem.tsinghua.edu.cn/en/info/1007/2103.htm", dir: "4.18", rt: ["bol", "csc", "beijing"], f: "full", d: "2026-12-15", dl: "≈ 15 дек", dls: "раунд 1; раунд 2 ≈ 27 фев (карта 11.10, не перепроверено)", req: "Эссе и резюме на английском и китайском · рекомендации от доцентов", cost: "30 000 ¥ в год", t: "R", n: "В списке Болашака. Для CSC может понадобиться HSK."},
+    {r: "CN", uni: "PKU HSBC Business School (Оксфорд + Шэньчжэнь)", p: "UK–China Master of Management", url: "https://www.educations.com/institutions/phbs/uk-china-master-of-management", dir: "4.18", rt: ["uni", "bol"], f: "partial", d: "2026-11-30", dl: "30 ноя 2026", dls: "ранний раунд; основной срок 31 марта 2027", req: "IELTS 6.5 или TOEFL 90, для британской части UKVI SELT · 2 года: Великобритания и Шэньчжэнь, не Шанхай", cost: "стипендии от £7 500 до 100% оплаты", t: "R", n: "Диплом Пекинского университета (PKU в списке Болашака). Засчитают ли PHBS, неизвестно: вопрос в ЦМП."}
+  ];
+
+  var S = {region: "all", full: "all", dir: "all", tier: "all", sort: "region", q: ""};
+  try { var sv = JSON.parse(localStorage.getItem("saule-programs") || "{}"); Object.keys(S).forEach(function (k) { if (sv[k] !== undefined) S[k] = sv[k]; }); } catch (e) {}
+  function save() { try { localStorage.setItem("saule-programs", JSON.stringify(S)); } catch (e) {} }
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]; }); }
+  var seg = document.getElementById("p-region");
+  [["all", "Все регионы"], ["UK", "1 · Великобритания"], ["EU", "2 · Европа (Erasmus Mundus)"], ["CN", "3 · Китай"]].forEach(function (r) {
+    var b = document.createElement("button");
+    b.type = "button"; b.textContent = r[1]; b.setAttribute("data-pr", r[0]);
+    b.addEventListener("click", function () { S.region = r[0]; draw(); });
+    seg.appendChild(b);
+  });
+  [["p-full", "full"], ["p-dir", "dir"], ["p-tier", "tier"], ["p-sort", "sort"], ["p-q", "q"]].forEach(function (a) {
+    var el = document.getElementById(a[0]); el.value = S[a[1]];
+    el.addEventListener("input", function () { S[a[1]] = el.value; draw(); });
+  });
+  function draw() {
+    seg.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-pr") === S.region)); });
+    var q = S.q.trim().toLowerCase();
+    var list = P.filter(function (x) {
+      return (S.region === "all" || x.r === S.region) && (S.full === "all" || x.f === "full") &&
+        (S.dir === "all" || x.dir === S.dir) && (S.tier === "all" || x.t === S.tier) &&
+        (!q || (x.uni + " " + x.p).toLowerCase().indexOf(q) >= 0);
+    });
+    list.sort(function (a, b) {
+      if (S.sort === "deadline") return a.d.localeCompare(b.d);
+      return (ORDER.indexOf(a.r) - ORDER.indexOf(b.r)) || a.d.localeCompare(b.d);
+    });
+    var today = new Date().toISOString().slice(0, 10);
+    var lim = new Date(Date.now() + 14 * 864e5).toISOString().slice(0, 10);
+    var tb = document.getElementById("p-rows");
+    if (!list.length) { tb.innerHTML = '<tr><td class="p-empty" colspan="7">Под эти фильтры ничего не подходит. Сбрось один из них.</td></tr>'; }
+    else tb.innerHTML = list.map(function (x) {
+      var routes = x.rt.map(function (k) { return '<span class="pill ' + RT[k][1] + '">' + RT[k][0] + '</span>'; }).join("");
+      var fl = FL[x.f];
+      var soon = !x.closed && x.d >= today && x.d <= lim;
+      var link = x.url ? '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">Официальная страница ↗</a>' : '<span class="p-note">Ссылка не сохранена</span>';
+      return '<tr class="' + (x.closed ? "p-closed" : "") + '">' +
+        '<td class="p-prog"><span class="p-uni">' + esc(REGN[x.r]) + ' · ' + esc(x.uni) + '</span><b>' + esc(x.p) + '</b>' + link + '</td>' +
+        '<td><span class="p-code">' + esc(x.dirL || x.dir) + '</span></td>' +
+        '<td><div class="p-routes">' + routes + '</div><span class="pill ' + fl[1] + '">' + fl[0] + '</span></td>' +
+        '<td class="p-dl"><b class="' + (soon ? "p-soon" : "") + '">' + esc(x.dl) + '</b><span>' + esc(x.dls) + '</span></td>' +
+        '<td class="p-note">' + esc(x.req) + '<br>' + esc(x.cost) + '</td>' +
+        '<td><span class="p-tier ' + x.t + '"><i></i>' + TIER[x.t] + '</span></td>' +
+        '<td class="p-note">' + x.n + '</td></tr>';
+    }).join("");
+    var nFull = list.filter(function (x) { return x.f === "full"; }).length;
+    document.getElementById("p-count").textContent = list.length + " программ · с полным грантом: " + nFull;
+    save();
+  }
+  draw();
+})();
+</script>
+<script>
+(function () {
+  var LANES = [
+    {k: "prep", t: "Подготовка: IELTS и документы", c: "var(--muted)"},
+    {k: "UK", t: "1 · Великобритания", c: "var(--accent)"},
+    {k: "EU", t: "2 · Европа: Erasmus Mundus", c: "var(--good)"},
+    {k: "CN", t: "3 · Китай", c: "var(--warn)"},
+    {k: "BOL", t: "Болашак (Великобритания и Китай)", c: "var(--tm-bol)"}
+  ];
+  var ITEMS = [
+    {lane: "prep", label: "Записаться и сдать IELTS", from: "2026-11-23", to: "2026-12-15", kind: "do", note: "British Council Казахстан, компьютерный Academic, цель 7.0. Результат приходит за 1–5 дней, до 15 декабря остаётся запас на пересдачу."},
+    {lane: "prep", label: "Крайний срок IELTS: конец декабря", from: "2026-12-31", to: "2026-12-31", kind: "due", note: "Чтобы подавать в британские вузы в январе, сертификат должен быть на руках. Для GLOCAL он нужен вместе с заявкой к 14 января."},
+    {lane: "prep", label: "Справка о выпуске и транскрипт на английском", from: "2026-11-23", to: "2026-12-20", kind: "do", note: "Официальный транскрипт AITU и справка, что диплом будет в июне 2027. Нужны почти каждой программе."},
+    {lane: "prep", label: "Рекомендации, CV, мотивационное письмо", from: "2026-11-23", to: "2027-01-10", kind: "do", note: "Договориться с 2–3 преподавателями AITU сейчас, чтобы письма были готовы к январю. CV и мотивационное письмо общие, под каждую программу письмо дописывается."},
+    {lane: "prep", label: "Защита диплома AITU", from: "2027-06-05", to: "2027-06-05", kind: "due", note: "Начало июня 2027."},
+    {lane: "prep", label: "Диплом и транскрипт на руках", from: "2027-07-01", to: "2027-07-15", kind: "do", note: "Июль 2027: условные офферы можно сделать безусловными, дальше документы на CAS и в Болашак."},
+
+    {lane: "UK", label: "Выбрать целевую точку, спросить вузы про GPA", from: "2026-11-23", to: "2026-12-15", kind: "do", note: "Подтвердить раскладку Reach / Match / Safety (раздел 5), решить про код 1.1. Edinburgh, Bristol, KCL и Manchester: спросить, считается ли 3.08 за 2:1."},
+    {lane: "UK", label: "Manchester: этап 1 (проверить)", from: "2026-12-15", to: "2026-12-15", kind: "due", note: "Около декабря по карте 11.10; официальные даты 2027 проверить. Порог GPA Manchester 3.4 выше твоего."},
+    {lane: "UK", label: "Imperial: раунд 2", from: "2027-01-06", to: "2027-01-06", kind: "due", note: "Business Analytics & AI: раунд 2 закрывается 6 января, приём до 28 апреля. Нужен квантитативный диплом."},
+    {lane: "UK", label: "Подача в британские вузы", from: "2027-01-05", to: "2027-02-28", kind: "do", note: "Edinburgh (раунды), Sheffield, Nottingham, Lancaster, Leicester, Royal Holloway и др. Даты у каждого свои (раздел 11). Цель: подать всё до конца февраля, IELTS к этому моменту уже на руках."},
+    {lane: "UK", label: "KCL: первый срок (проверить)", from: "2027-03-09", to: "2027-03-09", kind: "due", note: "По циклу 2026. Нужен высокий 2:1."},
+    {lane: "UK", label: "Условные офферы, ответы вузам", from: "2027-03-01", to: "2027-06-30", kind: "wait", note: "Офферы приходят условными: диплом, транскрипт, IELTS. Отвечать в сроки вуза."},
+    {lane: "UK", label: "Royal Holloway: 27 июня, 30 июля, 20 августа", from: "2027-06-27", to: "2027-08-20", kind: "due", note: "Три срока по странице программы."},
+    {lane: "UK", label: "Warwick 2 авг, Bristol ≈ 13 и 27 авг", from: "2027-08-02", to: "2027-08-27", kind: "due", note: "Сроки по циклу 2026. Порог GPA у Warwick и Bristol выше твоего (раздел 4)."},
+    {lane: "UK", label: "Безусловный оффер, CAS, виза", from: "2027-07-15", to: "2027-09-05", kind: "do", note: "CAS университет выдаёт только при безусловном оффере. Тот же оффер нужен для Болашака."},
+
+    {lane: "EU", label: "Написать программам, выбрать три заявки", from: "2026-11-23", to: "2026-12-20", kind: "do", note: "Спросить каждую программу: примут ли заявку с последним транскриптом и справкой о предстоящем выпуске. Выбрать три программы (GLOCAL, GLOBAL COOP и третью)."},
+    {lane: "EU", label: "GLOCAL: заявка и сертификат английского", from: "2026-12-20", to: "2027-01-14", kind: "due", note: "Срок 14 января 2027, 13:00 по Лондону. Сертификат английского загружается вместе с заявкой, позже не принимают. Без сбора, ответ в апреле."},
+    {lane: "EU", label: "GLOBAL COOP: заявка", from: "2027-01-05", to: "2027-01-27", kind: "due", note: "Срок 27 января 2027, 13:00 по Парижу. Нужны доказательства подготовки по экономике и количественным методам."},
+    {lane: "EU", label: "NavigAIte EU: приём (проверить)", from: "2027-02-01", to: "2027-02-28", kind: "due", note: "Ближайший приём в феврале 2027, старт в январе 2028. Условия проверить."},
+    {lane: "EU", label: "Результаты GLOCAL", from: "2027-04-15", to: "2027-04-15", kind: "wait", note: "Ответ в апреле 2027."},
+
+    {lane: "CN", label: "Вопросы в ЦМП", from: "2026-12-01", to: "2026-12-20", kind: "do", note: "Сроки (оффер после защиты), засчитывают ли NYU Shanghai и PKU HSBC, можно ли подавать на CGS параллельно с Болашаком. info@bolashak.gov.kz."},
+    {lane: "CN", label: "PKU HSBC: ранний раунд (проверить)", from: "2026-11-30", to: "2026-11-30", kind: "due", note: "Запасной вариант. Основной срок 31 марта 2027."},
+    {lane: "CN", label: "Окно CSC через ЦМП", from: "2027-01-21", to: "2027-02-18", kind: "due", note: "В 2026: 21 января – 10 февраля, продлено до 18 февраля. На 2027 ожидаемо такое же окно: следить за каналом ЦМП. Регистрация на Campus China."},
+    {lane: "CN", label: "NYU Shanghai: раунды 15 янв и 5 апр", from: "2027-01-15", to: "2027-04-05", kind: "due", note: "Летний старт. Засчитает ли Болашак, вопрос в ЦМП."},
+    {lane: "CN", label: "SJTU: CGS", from: "2027-02-15", to: "2027-02-15", kind: "due", note: "Заявка в SJTU с отметкой о стипендии CGS."},
+    {lane: "CN", label: "SJTU: Shanghai Gov. и SJTU Scholarship; PKU HSBC", from: "2027-03-31", to: "2027-03-31", kind: "due", note: "Закрытие приёма на Shanghai Government Scholarship и SJTU Scholarship; PKU HSBC закрывает приём."},
+    {lane: "CN", label: "Tongji MGM: 10 апреля (год проверить)", from: "2027-04-10", to: "2027-04-10", kind: "due", note: "Онлайн-заявка на study-info.tongji.edu.cn. Год на странице не указан."},
+    {lane: "CN", label: "SJTU MIB самоплатно 31 мая; SUFE ≈ 15 июня", from: "2027-05-31", to: "2027-06-15", kind: "due", note: "SUFE даёт полный CSC, срок по циклу 2026."},
+
+    {lane: "BOL", label: "KAZTEST, медсправка, ЭЦП", from: "2027-02-01", to: "2027-03-15", kind: "do", note: "KAZTEST или Qazaq Resmi Test не ниже B1, медсправка 072/у, действующая ЭЦП, мотивационное письмо до 500 слов."},
+    {lane: "BOL", label: "Приём документов Болашак", from: "2027-03-16", to: "2027-10-16", kind: "due", note: "Ожидаемо по циклу 2026 (16 марта – 16 октября). Подача через egov.kz, нужен безусловный оффер."},
+    {lane: "BOL", label: "Отбор: тест, собеседование, комиссия", from: "2027-04-13", to: "2027-12-31", kind: "wait", note: "В 2026: 13 апреля – 31 декабря. Решение придёт после начала учёбы: развилка по срокам в разделе 10."}
+  ];
+  var MN = ["Ноябрь", "Декабрь", "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь"];
+  var MS = ["Ноя", "Дек", "Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт"];
+  var MG = ["янв", "фев", "мар", "апр", "мая", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"];
+  var KIND = {do: "сделать", due: "срок", wait: "ждать"};
+  function parts(d) { var a = d.split("-"); return {y: +a[0], m: +a[1] - 1, d: +a[2]}; }
+  function idx(d) { var p = parts(d); return (p.y - 2026) * 12 + (p.m - 10); }
+  function dim(d) { var p = parts(d); return new Date(Date.UTC(p.y, p.m + 1, 0)).getUTCDate(); }
+  function pos(d) { return idx(d) + (parts(d).d - 1) / dim(d); }
+  function pend(d) { return idx(d) + parts(d).d / dim(d); }
+  function clamp(x) { return Math.max(0, Math.min(12, x)); }
+  function fmt(d) { var p = parts(d); return p.d + " " + MG[p.m]; }
+  function range(it) { return it.from === it.to ? fmt(it.from) : fmt(it.from) + " – " + fmt(it.to); }
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]; }); }
+
+  var today = new Date().toISOString().slice(0, 10);
+  var sel = 0;
+  var t0 = idx(today);
+  if (t0 >= 0 && t0 < 12) sel = t0;
+  var timer = null;
+
+  var mbox = document.getElementById("tm-months");
+  MS.forEach(function (n, i) {
+    var b = document.createElement("button");
+    b.type = "button"; b.setAttribute("data-m", i);
+    b.textContent = n + (i === 0 || i === 2 ? " " + (i === 0 ? "26" : "27") : "");
+    b.setAttribute("aria-label", MN[i] + " " + (i < 2 ? 2026 : 2027));
+    mbox.appendChild(b);
+  });
+
+  function overlaps(it, i) { return clamp(pos(it.from)) < i + 1 && pend(it.to) > i; }
+  function drawPanel() {
+    var yr = sel < 2 ? 2026 : 2027;
+    var html = '<h3>' + MN[sel] + ' ' + yr + '</h3>';
+    var any = false;
+    LANES.forEach(function (ln) {
+      var list = ITEMS.filter(function (it) { return it.lane === ln.k && overlaps(it, sel); }).sort(function (a, b) { return a.to.localeCompare(b.to); });
+      if (!list.length) return;
+      any = true;
+      html += '<p class="tm-ln" style="--c:' + ln.c + '">' + ln.t + '</p><ul class="plain">' + list.map(function (it) {
+        var pc = it.kind === "due" ? "bad" : it.kind === "do" ? "info" : "mute";
+        return '<li><span class="pill ' + pc + '">' + KIND[it.kind] + '</span> <b>' + esc(range(it)) + '.</b> ' + esc(it.label) + '. <span class="lbl-inline">' + esc(it.note) + '</span></li>';
+      }).join("") + '</ul>';
+    });
+    if (!any) html += '<p class="lbl-inline">В этом месяце ничего не запланировано.</p>';
+    document.getElementById("tm-panel").innerHTML = html;
+  }
+  function drawChart() {
+    var h = '<div class="tm-inner"><div class="tm-row"><div class="tm-lab"></div><div class="tm-track tm-mhead">';
+    MS.forEach(function (n, i) { h += '<button type="button" data-m="' + i + '" aria-pressed="' + (i === sel) + '">' + n + '</button>'; });
+    h += '</div></div>';
+    LANES.forEach(function (ln) {
+      h += '<div class="tm-lane" style="--c:' + ln.c + '">' + ln.t + '</div>';
+      ITEMS.filter(function (it) { return it.lane === ln.k; }).forEach(function (it) {
+        var l = clamp(pos(it.from)), r = clamp(pend(it.to));
+        var shape;
+        if (it.from === it.to) shape = '<span class="tm-dia ' + it.kind + '" style="left:' + ((l + (r - l) / 2) * 100 / 12) + '%"></span>';
+        else shape = '<span class="tm-shape ' + it.kind + '" style="left:' + (l * 100 / 12) + '%;width:' + (Math.max(r - l, 0.12) * 100 / 12) + '%"></span>';
+        h += '<div class="tm-row" style="--c:' + ln.c + '" title="' + esc(range(it) + ". " + it.note) + '"><div class="tm-lab"><i></i><span>' + esc(it.label) + '</span></div>' +
+          '<div class="tm-track"><span class="tm-sel" style="left:' + (sel * 100 / 12) + '%;width:' + (100 / 12) + '%"></span>' +
+          (t0 >= 0 && t0 < 12 ? '<span class="tm-today" style="left:' + (pos(today) * 100 / 12) + '%"></span>' : '') + shape + '</div></div>';
+      });
+    });
+    h += '</div>';
+    document.getElementById("tm-grid").innerHTML = h;
+  }
+  function nextDue() {
+    var c = ITEMS.filter(function (it) { return it.kind === "due" && it.to >= today && it.label.indexOf("проверить") < 0; })
+      .sort(function (a, b) { return a.to.localeCompare(b.to); }).slice(0, 3);
+    document.getElementById("tm-next").textContent = c.length ? "Ближайшие подтверждённые сроки: " + c.map(function (it) { return fmt(it.to) + ", " + it.label; }).join("; ") + "." : "Ближайших сроков нет.";
+  }
+  function draw() {
+    mbox.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", String(+b.getAttribute("data-m") === sel)); });
+    drawPanel(); drawChart();
+  }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } document.getElementById("tm-play").textContent = "▶ Проиграть год"; }
+  document.getElementById("tm-play").addEventListener("click", function () {
+    if (timer) { stop(); return; }
+    this.textContent = "⏸ Пауза";
+    if (sel >= 11) sel = 0;
+    timer = setInterval(function () { if (sel >= 11) { stop(); return; } sel++; draw(); }, 1800);
+    draw();
+  });
+  document.getElementById("timemap").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-m]");
+    if (!b) return;
+    sel = +b.getAttribute("data-m"); stop(); draw();
+  });
+  nextDue(); draw();
+})();
 </script>
 </body>
 </html>

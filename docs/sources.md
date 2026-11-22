@@ -67,7 +67,7 @@
 <a id="grant-map"></a>
 ## Карта грантов (11.10.2026)
 
-Документ `claude/full-grant-map-2027.md` в проекте Claude «Master's Degree Plan and Preparation» и живая таблица: https://claude.ai/artifact/D6ajABepsdbkd8ePB4fyc1
+Документ `claude/full-grant-map-2027.md` в проекте Claude «Master's Degree Plan and Preparation» (карта от 11.10.2026). Её данные по Великобритании, Европе и Китаю включены в карту программ на сайте (раздел 11), Корея и остальные гранты лежат в [архиве](archive-korea-and-other-grants.md): https://claude.ai/artifact/AXHfRcDkEWumWTCgvQ7yVi
 
 <a id="project-notes"></a>
 ## Заметки проекта
