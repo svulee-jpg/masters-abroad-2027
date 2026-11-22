@@ -32,9 +32,9 @@
 
 GPA 3.09 из 4.0 в британский эквивалент 2:1 по требованиям каждого вуза. В списке оставлены только вузы, где GPA проходит ([04-uk.md](04-uk.md)): на 2:1 Sheffield, Nottingham и Newcastle (2:1 = 3.0); Liverpool (общий минимум магистратуры 2.9, программа AI for Digital Business просит 2:2, но названия нет в перечне Болашака); на уровне 2:2 Leeds, York, Warwick, Queen Mary, Lancaster и UEA. Остальные убраны с порогом выше или без подтверждения, данные в [docs/archive-gpa-filter.md](docs/archive-gpa-filter.md). Открыто: порог UEA в баллах для Казахстана; Exeter вернуть в список, если подтвердит эквивалент 3.09/4.0 в своей пятибалльной таблице (2:2 = 3.9–4.29).
 
-## 4a. Код 1.1 (Business Analytics)
+## 4a. Код 1.1 (Business Analytics): решено
 
-Добавить ли код 1.1 пятым направлением. Business Analytics стоит только под 1.1, а самые проходимые по GPA программы (Sheffield, Nottingham, Royal Holloway, Leicester) называются именно так.
+Решено 22.11.2026: код 1.1 добавлен пятым направлением. Business Analytics стоит только под 1.1, а самые проходимые по GPA программы (Sheffield, Nottingham, Royal Holloway, Leicester) называются именно так. Выбор сузится сам, когда определится список вузов.
 
 ## 4b. Целевая точка
 

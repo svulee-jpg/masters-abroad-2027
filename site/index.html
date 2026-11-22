@@ -115,6 +115,13 @@ td.num, th.num { text-align: right; white-space: nowrap; }
 button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .star { font: inherit; font-size: 18px; line-height: 1; background: none; border: 0; cursor: pointer; color: var(--muted); padding: 0 4px; }
 .star[aria-pressed="true"] { color: var(--warn); }
+.sortbtn { font: inherit; font-size: 12.5px; font-weight: 600; letter-spacing: .03em; color: var(--muted); background: none; border: 0; padding: 0; cursor: pointer; text-align: inherit; }
+.sortbtn:hover, th[aria-sort="ascending"] .sortbtn, th[aria-sort="descending"] .sortbtn { color: var(--accent); }
+.sortbtn .arr { display: inline-block; min-width: 1em; }
+#rank-table th.num { white-space: normal; min-width: 104px; vertical-align: bottom; }
+td.lead { background: var(--good-soft); color: var(--good); font-weight: 600; }
+.rk-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.leaders .card .big { font-size: 19px; }
 .pick { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 12px; }
 .pick output { color: var(--muted); font-size: 14px; }
 .tools { display: flex; gap: 8px; align-items: center; }
@@ -225,11 +232,11 @@ tr.p-closed td { opacity: .62; }
     </ol>
   </nav>
   <div class="grid" style="margin-top:14px">
-    <a class="card prio" href="#directions"><div class="big" style="font-size:22px">1 · Великобритания</div><div class="lbl">Болашак. Вузы Russell Group и ещё несколько из списка. Основные программы: AI for Business, Management and AI, Business Analytics (код 1.1 ждёт решения). Разделы 3–7</div></a>
+    <a class="card prio" href="#directions"><div class="big" style="font-size:22px">1 · Великобритания</div><div class="lbl">Болашак. Вузы Russell Group и ещё несколько из списка. Основные программы: AI for Business, Management and AI, Business Analytics (код 1.1). Разделы 3–7</div></a>
     <a class="card prio" href="#europe"><div class="big" style="font-size:22px">2 · Европа</div><div class="lbl">Erasmus Mundus, грант ЕС: GLOCAL до 14 января, GLOBAL COOP до 27 января, NavigAIte EU в феврале. Раздел 8</div></a>
     <a class="card prio" href="#china"><div class="big" style="font-size:22px">3 · Китай</div><div class="lbl">Болашак: SJTU MIB и Tongji MGM; параллельно CGS и Shanghai Government Scholarship. Раздел 9</div></a>
     <a class="card prio" href="#timemap"><div class="big" style="font-size:22px">Карта времени</div><div class="lbl">Что и когда делать: IELTS до 31 декабря, подача в Великобританию в январе, Европа, Китай и Болашак по месяцам. Раздел 2</div></a>
-    <a class="card prio" href="#programs"><div class="big" style="font-size:22px">Все программы</div><div class="lbl">Фильтры по региону, коду, шансу и сроку, 39 программ. Раздел 11</div></a>
+    <a class="card prio" href="#programs"><div class="big" style="font-size:22px">Все программы</div><div class="lbl">Фильтры по региону, коду, шансу и сроку,  программ. Раздел 11</div></a>
   </div>
 </header>
 
@@ -259,7 +266,7 @@ tr.p-closed td { opacity: .62; }
       </tbody>
     </table>
   </div>
-  <div class="tablewrap" style="margin-top:14px">
+  <div class="tablewrap" style="margin-top:14px;position:relative">
     <table>
       <thead>
         <tr><th scope="col">Первый триместр 3 курса, Robotics</th><th scope="col" class="num">GPA триместра</th><th scope="col" class="num">Общий GPA</th></tr>
@@ -293,40 +300,47 @@ tr.p-closed td { opacity: .62; }
 
 <section id="directions">
   <p class="kicker">Приоритет 1 · Великобритания (разделы 3–7)</p>
-  <h2>3. Четыре направления из перечня Болашака</h2>
-  <p class="sec-note">Выбраны 22.11.2026 из «Перечня приоритетных специальностей на 2026 год». Ниже программы из перечня, которые подходят под профиль AI Business. Выделены те, что в твоём списке встречаются точно по названию у британских вузов, проверенных ниже. Чисто инженерные и робототехнические названия пропущены.</p>
+  <h2>3. Пять направлений из перечня Болашака</h2>
+  <p class="sec-note">Четыре направления выбраны 22.11.2026 из «Перечня приоритетных специальностей на 2026 год», пятое (код 1.1) добавлено в тот же день. Ниже программы из перечня, которые подходят под профиль AI Business. Выделены те, что в твоём списке встречаются точно по названию у британских вузов, проверенных ниже. Чисто инженерные и робототехнические названия пропущены.</p>
+
+  <article class="dir">
+    <header><h3>1.1 Данные и аналитика · Business Analytics</h3><span class="pill info">магистратура 1.1 М</span></header>
+    <ul class="chips">
+      <li class="hit">Business Analytics</li><li>Business Analytics and Artificial Intelligence (AI)</li><li>Marketing Analytics</li><li>Data Science (Business and Management)</li><li>Data Science with Business</li><li>Business Analytics and Intelligence</li><li>Applied Business Analytics</li><li>Business Analytics and Information Management</li><li>Digital Business and Data Analytics</li><li>Data Analysis for Business Intelligence</li><li>Business Data Science and Analytics</li><li>Big Data and Business Analytics</li><li>Data Science and Business Management</li>
+    </ul>
+  </article>
 
   <article class="dir">
     <header><h3>1.4 Искусственный интеллект</h3><span class="pill info">магистратура 1.4 М</span></header>
     <ul class="chips">
-      <li class="hit">Artificial Intelligence for Business</li><li>AI for Business</li><li>AI for Business Intelligence</li><li class="hit">Management and Artificial Intelligence</li><li>AI + Management</li><li>Applied AI and Business Analytics</li><li>Artificial Intelligence in Business</li><li>Digital Business and AI</li><li>Digital Transformation and Artificial Intelligence</li><li>Artificial Intelligence and Decision Making</li><li>Artificial Intelligence and Innovation</li><li>Data Analytics and AI</li>
+      <li class="hit">Artificial Intelligence for Business</li><li>AI for Business</li><li class="hit">AI for Business Intelligence</li><li class="hit">Management and Artificial Intelligence</li><li>AI + Management</li><li>Applied AI and Business Analytics</li><li class="hit">Artificial Intelligence in Business</li><li>Digital Business and AI</li><li>Digital Transformation and Artificial Intelligence</li><li>Artificial Intelligence and Decision Making</li><li>Artificial Intelligence and Innovation</li><li>Data Analytics and AI</li>
     </ul>
   </article>
 
   <article class="dir">
     <header><h3>1.23 ИТ и системы · менеджмент технологий · финтех</h3><span class="pill info">магистратура 1.23 М</span></header>
     <ul class="chips">
-      <li class="hit">Artificial Intelligence for Business</li><li class="hit">Management and Artificial Intelligence</li><li>Business Information Systems</li><li>Management of Information Systems and Digital Innovation</li><li>Information Systems Management</li><li>Management Information Systems</li><li>Management of Technology</li><li>Technology Management</li><li>Business Strategy and Innovation Management</li><li>Strategic Innovation Management</li><li>Entrepreneurship and Innovation</li><li>Fintech Management</li>
+      <li class="hit">Artificial Intelligence for Business</li><li class="hit">Management and Artificial Intelligence</li><li>Business Information Systems</li><li>Management of Information Systems and Digital Innovation</li><li>Information Systems Management</li><li>Management Information Systems</li><li>Management of Technology</li><li>Technology Management</li><li>Business Strategy and Innovation Management</li><li class="hit">Strategic Innovation Management</li><li class="hit">Entrepreneurship and Innovation</li><li>Fintech Management</li>
     </ul>
   </article>
 
   <article class="dir">
     <header><h3>4.16 Предпринимательство</h3><span class="pill info">магистратура 4.16 М</span></header>
     <ul class="chips">
-      <li>Entrepreneurship</li><li>Innovation and Entrepreneurship</li><li>Management (Entrepreneurship)</li><li>Strategy, Innovation, and Entrepreneurship</li><li>Business with Consulting</li><li>Business Technology Consulting</li><li>Business Analytics and Management Science</li><li>Business Analytics: Operational Research and Risk Analysis</li><li>Marketing Analytics and Insights</li><li>International Business</li><li>Digital Business and AI</li><li>Business Finance with Applied AI</li>
+      <li>Entrepreneurship</li><li>Innovation and Entrepreneurship</li><li>Management (Entrepreneurship)</li><li>Strategy, Innovation, and Entrepreneurship</li><li>Business with Consulting</li><li>Business Technology Consulting</li><li>Business Analytics and Management Science</li><li>Business Analytics: Operational Research and Risk Analysis</li><li>Marketing Analytics and Insights</li><li class="hit">International Business</li><li>Digital Business and AI</li><li>Business Finance with Applied AI</li>
     </ul>
   </article>
 
   <article class="dir">
     <header><h3>4.18 Менеджмент · проекты · риск-менеджмент</h3><span class="pill info">магистратура 4.18 М</span></header>
     <ul class="chips">
-      <li>Management</li><li>International Management</li><li>Strategic Management</li><li>Management of Innovation</li><li>Applied Business Analytics</li><li>Business Analytics and Risk Management</li><li>Data Analysis for Business Intelligence</li><li>AI for Business Intelligence</li><li>Digital Business and Management</li><li>Project Management</li><li>Risk Management</li><li>Product Management</li>
+      <li>Management</li><li class="hit">International Management</li><li>Strategic Management</li><li>Management of Innovation</li><li>Applied Business Analytics</li><li>Business Analytics and Risk Management</li><li>Data Analysis for Business Intelligence</li><li class="hit">AI for Business Intelligence</li><li>Digital Business and Management</li><li>Project Management</li><li>Risk Management</li><li>Product Management</li>
     </ul>
   </article>
 
-  <div class="callout warn">
-    <p><b>Business Analytics без дополнений стоит под кодом 1.1, а не в твоих четырёх.</b> Под 1.1 в перечне также «Business Analytics and Artificial Intelligence (AI)» и «Marketing Analytics».</p>
-    <p>Из-за этого Business Analytics в Sheffield, Nottingham, Leicester и Royal Holloway сейчас вне выбранных направлений. Это решение ждёт тебя: добавить 1.1 пятым направлением или искать программы только внутри четырёх (раздел 12).</p>
+  <div class="callout">
+    <p><b>Код 1.1 добавлен пятым направлением (22.11.2026).</b> Business Analytics без дополнений стоит именно под 1.1, поэтому Business Analytics в Sheffield, Nottingham, Leicester и Royal Holloway теперь входит в выбранные направления.</p>
+    <p>Когда определишься со списком вузов, выбор сузится сам: лишние программы можно будет убрать (раздел 12).</p>
   </div>
   <p class="sec-note">Название программы у вуза должно совпадать с названием из перечня. Перед подачей сверяй дословно.</p>
 </section>
@@ -354,7 +368,23 @@ tr.p-closed td { opacity: .62; }
     <div class="tools"><button type="button" id="copyPick">Скопировать мой выбор</button></div>
     <output id="pickStatus" aria-live="polite">Отметь звёздочкой вузы, которые хочешь разбирать дальше.</output>
   </div>
-  <p class="sec-note" style="margin-top:14px">«Только программы с 2:2» значит: проходишь там, где вуз принимает уровень 2:2. У бизнес-школ программы чаще требуют 2:1, поэтому смотри требования конкретной программы. Из британского списка вне Russell Group в перечне Болашака ещё Bath, UEA, Reading, Sussex, Aberdeen, Leicester, а во втором блоке перечня Strathclyde, Surrey, Royal Holloway, Loughborough и другие. Regent's University London в списке Болашака 2024–2026 не найден: порог GPA у него низкий (3/5.0), но учёба там только на свои деньги. Он оставлен как запас, программы пока не выбраны.</p>
+  <p class="sec-note" style="margin-top:14px">«Только программы с 2:2» значит: проходишь там, где вуз принимает уровень 2:2. У бизнес-школ программы чаще требуют 2:1, поэтому смотри требования конкретной программы. Из британского списка вне Russell Group в перечне Болашака ещё Bath, UEA, Reading, Sussex, Aberdeen, Leicester, Heriot-Watt, а во втором блоке перечня Strathclyde, Surrey, Royal Holloway, Loughborough и другие. Regent's University London в списке Болашака 2024–2026 не найден: порог GPA у него низкий (3/5.0), но учёба там только на свои деньги. Он оставлен как запас, программы пока не выбраны.</p>
+
+  <h3 id="rankings" style="margin-top:34px">Рейтинги: кто в топе и в чём лидирует</h3>
+  <p class="sec-note">Данные на ноябрь 2026. Лидер считается среди 14 вузов этой таблицы, а не среди всех вузов страны. У Heriot-Watt заполнены только мировые рейтинги и общий ранг CUG. Нажми на название колонки, чтобы отсортировать. Зелёная ячейка со значком ▲ это лучшее значение в колонке.</p>
+  <div class="grid leaders" id="leaders" aria-label="Лидеры по колонкам"></div>
+  <div class="tablewrap" style="margin-top:14px;position:relative">
+    <table id="rank-table">
+      <caption class="rk-sr">Рейтинги вузов: мировые, британский, наука, индустрия, трудоустройство</caption>
+      <thead id="rankhead"></thead>
+      <tbody id="rankrows"></tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <p><b>Как читать.</b> Единого лидера нет: победители в колонках разные (карточки выше). Мировые рейтинги сильнее зависят от репутации и науки, британские таблицы от студенческого опыта и работы выпускников. Рейтинг описывает университет целиком, а не твою программу. Когда определишься с программами, можно добавить предметные рейтинги (бизнес, данные и ИИ).</p>
+  </div>
+  <p class="sec-note">Колонки: QS и THE это мировые рейтинги 2027 (в одном вузе ранг может сильно отличаться). «Наука: THE» это Research quality, баллы из 100 (влияние публикаций и сила исследований). «Наука: CUG» это Research quality в Complete University Guide, из 4 (оценка исследований по REF). «Индустрия: THE» это доход от бизнеса и патенты, баллы из 100. «Трудоустройство: CUG» это доля выпускников, которые через 15 месяцев работают или учатся дальше (Graduate prospects, %).</p>
+  <p class="sec-note">Источники: <a href="https://www.timeshighereducation.com/student/best-universities/best-universities-uk">THE World University Rankings 2027, таблица Великобритании</a>; QS World University Rankings 2027 (июнь 2026) по страницам вузов и <a href="https://www.topuniversities.com/world-university-rankings">QS</a>; <a href="https://www.thecompleteuniversityguide.co.uk/league-tables/rankings">Complete University Guide 2027</a>. Цифры CUG взяты из сводной таблицы стороннего сайта; ранги Lancaster (10), Sussex (36), Leicester (33) и York (в двадцатке) сверены с сайтами вузов. У Sheffield по сайту вуза 16-е место (в сводной таблице 13=), поставлено 16. Heriot-Watt: QS 325 (36-й в Великобритании) и CUG 31 по странице вуза и странице CUG, THE 451–500. Колонки науки, индустрии и трудоустройства для него пустые: цифры THE 2027 по этим показателям и CUG по REF и Graduate prospects не подтверждены. Перед подачей сверяй цифры на сайтах рейтингов. Regent's University London в этих рейтингах не найден.</p>
 </section>
 
 <section id="tiers">
@@ -370,11 +400,12 @@ tr.p-closed td { opacity: .62; }
     <div class="tier match">
       <h3>Match</h3>
       <ul>
-        <li><b>Sheffield</b> (QS 82): 2:1 при GPA 3.0, запас 0.09. International Management: название есть под кодом 4.18; Business Analytics стоит под кодом 1.1</li>
+        <li><b>Sheffield</b> (QS 82): 2:1 при GPA 3.0, запас 0.09. International Management: название есть под кодом 4.18; Business Analytics стоит под кодом 1.1 (пятое направление)</li>
         <li><b>Reading</b> (QS =196, THE =219), Applied Artificial Intelligence for Business: «good second class», для Казахстана диапазон 2.6–3.0 из 4.0, название совпадает с перечнем (код 1.4). Рейтинг ниже остальных вузов списка</li>
-        <li><b>Sussex</b> (QS joint 273, THE 201–250), Strategic Innovation Management и Entrepreneurship and Innovation: достаточно 2:2, для Казахстана общий минимум 3.0 из 4.0 (запас 0.09), названия есть в перечне (коды 1.23, 4.16, 4.18). Не про ИИ, рейтинг ниже большинства</li>
+        <li><b>Sussex</b> (QS =273, THE =273), Strategic Innovation Management и Entrepreneurship and Innovation: достаточно 2:2, для Казахстана общий минимум 3.0 из 4.0 (запас 0.09), названия есть в перечне (коды 1.23, 4.16, 4.18). Не про ИИ, рейтинг ниже большинства</li>
         <li><b>York</b> (QS 158, THE =168), Entrepreneurship and Innovation Management и International Business: достаточно 2:2, для Казахстана это GPA 3.0 из 4.0 (запас 0.09; 2:1 = 3.4). Названия есть в перечне (коды 1.23, 4.16 и 4.12, 4.16, 4.18). Не про ИИ</li>
         <li><b>Queen's University Belfast</b> (QS 174, THE =196, Russell Group), International Business: достаточно 2:2, для Казахстана это GPA 3.0 из 4.0 (запас 0.09; 2:1 = 3.4). Название есть в перечне (коды 4.12, 4.16, 4.18). Не про ИИ, но в программе есть модуль Analytics with AI</li>
+        <li><b>Leicester</b> (QS =314, THE =209), AI for Business Intelligence: достаточно 2:2, для Казахстана общий минимум магистратуры 3.0 из 4.0 (запас 0.09). Название есть в перечне (коды 1.4 и 4.18), IELTS 6.0. Главный риск: программа просит 2:2 по математике или близкому предмету, диплом AI Business надо показать вузу заранее. Рядом запасной вариант Business Analytics (код 1.1): «good second-class», предмет не указан, IELTS 6.5. Последний вуз британского списка Болашака (№ 59)</li>
         <li><b>Nottingham</b> (QS 97): 2:1 при GPA 3.0</li>
         <li><b>Lancaster</b> (THE UK 23), Management and Artificial Intelligence: достаточно 2:2 (GPA 3.0 при твоих 3.09), название совпадает с перечнем</li>
         <li><b>Queen Mary (QMUL)</b> (QS 103), Entrepreneurship and Innovation Management: достаточно 2:2 (GPA 2.67 при твоих 3.09), название есть под кодами 1.23 и 4.16</li>
@@ -388,11 +419,11 @@ tr.p-closed td { opacity: .62; }
         <li><b>Royal Holloway</b>: 2:2 любой предмет, последний срок для иностранных 20 августа</li>
         <li><b>UEA</b> (вне Russell Group), Sustainable Business Management: 2:2 любой предмет, IELTS 6.0. Старт только в январе, это надо уточнить в ЦМП</li>
         <li><b>Strathclyde</b>: «second-class», есть стипендия £6 000</li>
-        <li><b>Leicester</b>: «good second-class», IELTS 6.5</li>
+        <li><b>Heriot-Watt</b> (QS 325, THE 451–500), International Business Management: достаточно 2:2 в любом предмете, для Казахстана это 3.0 из 4.0 (запас 0.09). Название есть в перечне (коды 4.16 и 4.18), IELTS 6.0. Программа, которую ты открыла (Business Strategy, Leadership and Change), названия в перечне не имеет. Цена £24 952 по ставке 2026/27</li>
       </ul>
     </div>
   </div>
-  <p class="sec-note" style="margin-top:14px">В раскладке остались только вузы, где твой GPA 3.09 проходит. Убраны, потому что порог выше: Imperial (3.6/4), King's College London (3.57), LSE (3.5), Manchester (3.33), UCL (3.3), Bristol (3.3), Birmingham (3.4 для Bakalavr), Edinburgh (3.25), Glasgow (3.4 для International Business), Durham (3.4 прямой вход), St Andrews (3.33). Exeter убран как неподтверждённый: его таблица для Казахстана только по пятибалльной шкале (2:2 = 3.9–4.29), твой эквивалент не подтверждён. Oxford и Cambridge по GPA не проверялись, у Southampton, Queen's Belfast и Cardiff порог не найден. Safety-программы Royal Holloway, Leicester и часть Sheffield/Nottingham стоят под кодом 1.1.</p>
+  <p class="sec-note" style="margin-top:14px">В раскладке остались только вузы, где твой GPA 3.09 проходит. Убраны, потому что порог выше: Imperial (3.6/4), King's College London (3.57), LSE (3.5), Manchester (3.33), UCL (3.3), Bristol (3.3), Birmingham (3.4 для Bakalavr), Edinburgh (3.25), Glasgow (3.4 для International Business), Durham (3.4 прямой вход), St Andrews (3.33). Exeter убран как неподтверждённый: его таблица для Казахстана только по пятибалльной шкале (2:2 = 3.9–4.29), твой эквивалент не подтверждён. Oxford и Cambridge по GPA не проверялись, у Southampton и Cardiff порог не найден. Business Analytics (Sheffield, Nottingham, Royal Holloway, Leicester) стоит под кодом 1.1, который добавлен пятым направлением.</p>
 </section>
 
 <section id="requirements">
@@ -416,16 +447,19 @@ tr.p-closed td { opacity: .62; }
         <tr><td><b>York</b><br>International Business</td><td><span class="pill good">4.12 · 4.16 · 4.18</span></td><td>2:2 или эквивалент, любой предмет (для Казахстана 2:2 = 3.0 из 4.0, у тебя 3.09)</td><td>6.5, не ниже 6.0</td><td>£32 900 в год. Срок: нет на странице. Старт сентябрь 2027, 1 год</td></tr>
         <tr><td><b>Queen's Belfast</b><br>International Business</td><td><span class="pill good">4.12 · 4.16 · 4.18</span></td><td>2:2 (для Казахстана 2:2 = 3.0 из 4.0, у тебя 3.09; 2:1 = 3.4)</td><td>6.5, не ниже 6.0 (по буклету 2025/26, на 2027 проверить)</td><td>Цена 2027/28 не опубликована (около £26 500 по агрегаторам, проверить). Срок: нет на странице. Старт 2027/28, 1 год, набор открыт</td></tr>
         <tr><td><b>Sheffield</b><br>International Management</td><td><span class="pill good">4.18</span></td><td>2:1 или профессиональная квалификация (2:1 = GPA 3.0)</td><td>6.5, не ниже 6.0</td><td>Цена и срок: нет на странице. Старт сентябрь 2027, 1 год</td></tr>
-        <tr><td><b>Sheffield</b><br>Business Analytics</td><td><span class="pill warn">1.1</span></td><td>2:1, любой предмет, количественная подготовка не нужна</td><td>6.5, в каждом не ниже 6</td><td>Срок и цена: нет на странице</td></tr>
-        <tr><td><b>Nottingham</b><br>Business Analytics</td><td><span class="pill warn">1.1</span></td><td>2:1 в любой дисциплине и 2:1 в модулях с математикой или статистикой</td><td>6.5, не ниже 6.0</td><td>Цена: нет на странице</td></tr>
-        <tr><td><b>Royal Holloway</b><br>Business Analytics</td><td><span class="pill warn">1.1</span></td><td>2:2, любой предмет</td><td>6.5, не ниже 6.0</td><td>Подать до 20 августа 2027 (иностранные). £28 100 в год</td></tr>
-        <tr><td><b>Leicester</b><br>Business Analytics</td><td><span class="pill warn">1.1</span></td><td>«Good second-class», предмет не указан</td><td>6.5</td><td>£23 650 (цену на сентябрь 2027 проверить)</td></tr>
+        <tr><td><b>Sheffield</b><br>Business Analytics</td><td><span class="pill good">1.1</span></td><td>2:1, любой предмет, количественная подготовка не нужна</td><td>6.5, в каждом не ниже 6</td><td>Срок и цена: нет на странице</td></tr>
+        <tr><td><b>Nottingham</b><br>Business Analytics</td><td><span class="pill good">1.1</span></td><td>2:1 в любой дисциплине и 2:1 в модулях с математикой или статистикой</td><td>6.5, не ниже 6.0</td><td>Цена: нет на странице</td></tr>
+        <tr><td><b>Royal Holloway</b><br>Business Analytics</td><td><span class="pill good">1.1</span></td><td>2:2, любой предмет</td><td>6.5, не ниже 6.0</td><td>Подать до 20 августа 2027 (иностранные). £28 100 в год</td></tr>
+        <tr><td><b>Leicester</b><br>AI for Business Intelligence</td><td><span class="pill good">1.4 · 4.18</span></td><td>2:2 по математике или близкому предмету (например физика); информатику вуз оценивает по транскрипту. Для Казахстана общий минимум магистратуры 3.0 из 4.0, у тебя 3.09</td><td>6.0 (по странице набора 2026, на 2027 проверить)</td><td>£24 250 в год (страница с пометкой 2025/26, цену на сентябрь 2027 проверить). Срок: нет на странице. 12 месяцев, вариант with Industry 28 месяцев</td></tr>
+        <tr><td><b>Leicester</b><br>Business Analytics</td><td><span class="pill good">1.1</span></td><td>«Good second-class», предмет не указан</td><td>6.5</td><td>£23 650 (цену на сентябрь 2027 проверить)</td></tr>
+        <tr><td><b>Heriot-Watt</b><br>International Business Management</td><td><span class="pill good">4.16 · 4.18</span></td><td>2:2 или эквивалент в любом предмете, в дипломе должны быть следы эссе и критического мышления. Для Казахстана 3.0 из 4.0 это 2:2, у тебя 3.09</td><td>6.0, не ниже 5.5, письмо 6.0</td><td>£24 952 за год (ставка 2026/27 по странице вуза, цену на сентябрь 2027 проверить). Срок: нет на странице. Старт в сентябре и в январе</td></tr>
+        <tr><td><b>Heriot-Watt</b><br>Business Strategy, Leadership and Change</td><td><span class="pill mute">точного названия нет</span></td><td>2:2 в любом предмете, нужны следы эссе и критического мышления</td><td>6.0</td><td>£24 952 за год (ставка 2026/27). Срок: нет на странице</td></tr>
         <tr><td><b>Strathclyde</b><br>Business Analysis &amp; Consulting, путь with AI</td><td><span class="pill mute">точного названия нет</span></td><td>Second-class, бизнес, экономика, инженерия или соцнауки; другие тоже можно</td><td>6.5, не ниже 5.5</td><td>£29 350 в год, стипендия £6 000 после оффера. Срок: нет на странице</td></tr>
       </tbody>
     </table>
   </div>
   <div class="callout">
-    <p><b>Какой IELTS брать.</b> Warwick (убран из списка по классу диплома) просит 7.0 overall. Для Sheffield, Nottingham, Lancaster, Newcastle, Queen Mary, Liverpool, Reading, York, Queen's Belfast, Sussex (6.0), Royal Holloway, Strathclyde и Leicester хватает 6.5 (минимумы по навыкам 5.5–6.0). Поэтому цель 7.0 покрывает весь список, а 7.5 из прежних заметок не нужна. Результат IELTS действует 2 года и должен быть действителен на дату старта программы. Минимумы по навыкам для 7.0 проверить на странице каждой программы.</p>
+    <p><b>Какой IELTS брать.</b> Warwick (убран из списка по классу диплома) просит 7.0 overall. Для Sheffield, Nottingham, Lancaster, Newcastle, Queen Mary, Liverpool, Reading, York, Queen's Belfast, Sussex (6.0), Royal Holloway, Strathclyde и Leicester хватает 6.5 (у Leicester AI for Business Intelligence и Heriot-Watt International Business Management достаточно 6.0; минимумы по навыкам 5.5–6.0). Поэтому цель 7.0 покрывает весь список, а 7.5 из прежних заметок не нужна. Результат IELTS действует 2 года и должен быть действителен на дату старта программы. Минимумы по навыкам для 7.0 проверить на странице каждой программы.</p>
   </div>
   <p class="sec-note">Warwick Business with Artificial Intelligence не найден в твоём перечне, поэтому для Болашака эта программа не подходит; к тому же она просит 2:1, а твои 3.09 это 2:2 по шкале Warwick. QMUL по аналитике и AI ждёт количественную подготовку.</p>
   <h3 style="margin-top:28px">Критерии и документы: Великобритания</h3>
@@ -433,7 +467,7 @@ tr.p-closed td { opacity: .62; }
     <div>
       <h3>Критерии приёма</h3>
       <ul class="plain">
-        <li><b>Диплом.</b> Вуз сам переводит GPA в британский класс. Пороги для 2:1 у вузов в списке: Sheffield, Nottingham и Newcastle 3.0 (твой GPA 3.09 проходит). Мягче всего Lancaster и Royal Holloway (2:2), Leicester («good second-class») и Strathclyde (second-class).</li>
+        <li><b>Диплом.</b> Вуз сам переводит GPA в британский класс. Пороги для 2:1 у вузов в списке: Sheffield, Nottingham и Newcastle 3.0 (твой GPA 3.09 проходит). Мягче всего Lancaster, Royal Holloway и Heriot-Watt (2:2, предмет любой), Leicester («good second-class») и Strathclyde (second-class).</li>
         <li><b>Английский.</b> IELTS Academic 7.0 покрывает весь список; для остальных хватает 6.5 (по навыкам 5.5–6.0). Сертификат должен быть на руках к подаче в январе.</li>
         <li><b>Профиль.</b> QMUL на аналитике и AI ждёт количественную подготовку (математика, статистика). Sheffield количественную базу не требует.</li>
         <li><b>Болашак.</b> Название программы должно дословно совпадать с перечнем (раздел 3), а оффер должен быть безусловным.</li>
@@ -766,9 +800,8 @@ tr.p-closed td { opacity: .62; }
 <section id="decisions">
   <h2>12. Что нужно решить</h2>
   <ol class="decide">
-    <li><b>Добавить код 1.1 пятым направлением?</b> Рекомендация: да. Там Business Analytics, самые проходимые по GPA программы Sheffield, Nottingham, Royal Holloway, Leicester.</li>
     <li><b>Подтвердить целевую точку</b> из раздела 5 или заменить вузы звёздочками в разделе 4.</li>
-    <li><b>Подобрать программы</b> под коды 1.4, 1.23, 4.16, 4.18 в Nottingham и Leeds и сверить названия с перечнем. У York и Sheffield программы уже подобраны.</li>
+    <li><b>Подобрать программы</b> под коды 1.1, 1.4, 1.23, 4.16, 4.18 в Nottingham и Leeds и сверить названия с перечнем. У York и Sheffield программы уже подобраны.</li>
     <li><b>Записаться на IELTS</b> на начало декабря 2026, крайний срок 31 декабря (British Council Казахстан, компьютерный Academic). Без него в январе не подать в британские вузы, для GLOCAL он нужен к 14 января.</li>
     <li><b>Какие три заявки Erasmus Mundus подавать.</b> Рекомендация: GLOCAL (14 января) и Global COOP (27 января); третью оставить под NavigAIte EU, если старт в январе 2028 подходит, иначе под другую программу из каталога EMJM.</li>
     <li><b>Китай: SJTU MIB и Tongji MGM основными</b>, параллельно CGS и Shanghai Government Scholarship в SJTU (15 февраля и 31 марта). NYU Shanghai и PKU HSBC держать запасными до ответа ЦМП.</li>
@@ -783,7 +816,7 @@ tr.p-closed td { opacity: .62; }
     <li>Russell Group: <a href="https://www.informedchoices.ac.uk/universities">informedchoices.ac.uk/universities</a></li>
     <li>Рейтинги: QS World University Rankings 2027, THE World University Rankings 2027 (<a href="https://www.timeshighereducation.com/student/best-universities/best-universities-uk">THE, лучшие вузы Великобритании</a>)</li>
     <li>Пороги GPA для Казахстана: страницы Edinburgh, Sheffield, Nottingham, Leeds, York, Warwick, UCL, Bristol, Manchester, Birmingham, QMUL, Newcastle, LSE, St Andrews, Reading, Southampton, Sussex</li>
-    <li>Программы: страницы Lancaster, Newcastle, Queen Mary, Sheffield, Nottingham, Leicester, Royal Holloway, Strathclyde, Reading (UCAS, Prospects), Sheffield International Management (Prospects), Sussex (страницы программ Strategic Innovation Management и Entrepreneurship and Innovation), York (страницы программ Entrepreneurship and Innovation Management и International Business, год входа 2027), Queen's Belfast (страница International Business 2027/28 по скриншоту, страница для Казахстана)</li>
+    <li>Программы: страницы Lancaster, Newcastle, Queen Mary, Sheffield, Nottingham, Leicester, Royal Holloway, Strathclyde, Heriot-Watt (Prospects, страница вуза для Казахстана по скриншоту, страница программы Business Strategy, Leadership and Change), Reading (UCAS, Prospects), Sheffield International Management (Prospects), Sussex (страницы программ Strategic Innovation Management и Entrepreneurship and Innovation), York (страницы программ Entrepreneurship and Innovation Management и International Business, год входа 2027), Queen's Belfast (страница International Business 2027/28 по скриншоту, страница для Казахстана)</li>
     <li>Erasmus Mundus (вторичные страницы, сверить с сайтами консорциумов): <a href="https://fellowshipsguide.com/?p=7387">GLOCAL, дедлайн 14 января 2027</a>, <a href="https://daadscholarship.com/?p=31544">GLOBAL COOP, 27 января 2027, €1 400 в месяц</a>, <a href="https://www.gla.ac.uk/postgraduate/erasmusmundus/clmce/howtoapply">Glasgow: правило о сертификате английского к дедлайну (на примере другой EM-программы)</a></li>
     <li>SJTU: <a href="https://en.sjtu.edu.cn/study-sjtu/prospective/degree-programs/268">2027 International Graduate Admissions Guide</a> (сроки CGS, Shanghai Government Scholarship, самоплатных), <a href="https://acem.sjtu.edu.cn/mib/faqs.html">Antai MIB: FAQ</a>, <a href="https://www.globaladmissions.com/program/masters-international-business-mib/pMSJTETB0">MIB: цена и срок (вторичный источник)</a></li>
     <li>Tongji MGM: <a href="https://sem.tongji.edu.cn/semen/?p=17867">процесс подачи</a>, <a href="https://mgm.tongji.edu.cn/Admissions/FAQ.htm">FAQ программы</a></li>
@@ -804,12 +837,14 @@ var UNIS = [
   {n:"Queen Mary University of London", qs:103, the:"=129", gpa:"2:1 = 3.33, 2:2 = 2.67, у тебя 3.09", cat:"ok22", fit:"Достаточно 2:2"},
   {n:"University of Liverpool", qs:139, the:"=154", gpa:"общий минимум для магистратуры 2.9/4.0 (3.2/4.33, 3.75/5.0), 2:1 и 2:2 отдельно не названы; программа просит 2:2, у тебя 3.09", cat:"ok21", fit:"Проходит (минимум 2.9)"},
   {n:"University of Reading (вне RG)", qs:196, the:"=219", gpa:"для Казахстана диапазон 2.6–3.0/4.0 (3.5–4.0/5.0), точной привязки к 2:1 и 2:2 нет; программа просит «good second class», у тебя 3.09 выше верхней границы", cat:"ok21", fit:"Проходит (выше 3.0)"},
-  {n:"University of Sussex (вне RG)", qs:273, the:"201–250", gpa:"для Казахстана один минимум для магистратуры: 3.0/4.0 (3.5/5.0), отдельных 2:1 и 2:2 нет; обе программы просят 2:2, у тебя 3.09", cat:"ok22", fit:"Достаточно 2:2 (минимум 3.0)"},
+  {n:"University of Sussex (вне RG)", qs:273, the:"=273", gpa:"для Казахстана один минимум для магистратуры: 3.0/4.0 (3.5/5.0), отдельных 2:1 и 2:2 нет; обе программы просят 2:2, у тебя 3.09", cat:"ok22", fit:"Достаточно 2:2 (минимум 3.0)"},
   {n:"Newcastle University", qs:149, the:"=154", gpa:"2:1 = 3.0/4.0 (2:2 = 2.5), у тебя 3.09", cat:"ok21", fit:"Проходит на 2:1"},
   {n:"University of York", qs:158, the:"=168", gpa:"для Казахстана 2:1 = 3.4, 2:2 = 3.0 из 4.0; обе программы просят 2:2, у тебя 3.09", cat:"ok22", fit:"Достаточно 2:2 (3.0)"},
   {n:"Queen's University Belfast", qs:174, the:"=196", gpa:"для Казахстана 2:1 = 3.4, 2:2 = 3.0 из 4.0; International Business просит 2:2, у тебя 3.09", cat:"ok22", fit:"Достаточно 2:2 (3.0)"},
-  {n:"Lancaster University (вне RG)", qs:null, the:"=183", gpa:"2:2 = 3.0/4.0 (2:1 = 3.3), у тебя 3.09", cat:"ok22", fit:"Достаточно 2:2"},
-  {n:"University of East Anglia (вне RG)", qs:null, the:"—", gpa:"программа просит 2:2; баллов для Казахстана на странице нет, у тебя 3.09", cat:"ok22", fit:"Достаточно 2:2"},
+  {n:"Lancaster University (вне RG)", qs:164, the:"=183", gpa:"2:2 = 3.0/4.0 (2:1 = 3.3), у тебя 3.09", cat:"ok22", fit:"Достаточно 2:2"},
+  {n:"University of East Anglia (вне RG)", qs:381, the:"301–325", gpa:"программа просит 2:2; баллов для Казахстана на странице нет, у тебя 3.09", cat:"ok22", fit:"Достаточно 2:2"},
+  {n:"University of Leicester (вне RG)", qs:314, the:"=209", gpa:"для Казахстана общий минимум магистратуры 3.0/4.0 (4/5, 3.5/4.33); AI for Business Intelligence просит 2:2 по математике или близкому предмету, у тебя 3.09", cat:"ok22", fit:"Достаточно 2:2 (3.0), нужен подходящий предмет"},
+  {n:"Heriot-Watt University (вне RG)", qs:325, the:"451–500", gpa:"для Казахстана 3.0/4.0 это 2:2, 3.4/4.0 это 2:1 (страница вуза для Казахстана); International Business Management просит 2:2 в любом предмете, у тебя 3.09", cat:"ok22", fit:"Достаточно 2:2 (3.0), предмет любой"},
   {n:"Regent's University London (вне RG, нет в списке Болашака)", qs:null, the:"—", gpa:"3.0/5.0 (Казахстан, магистратура)", cat:"selfpay", fit:"Запас на свои деньги"}
 ];
 var CAT = {ok21:["good","Проходит"], ok22:["warn","2:2"], near:["warn","Чуть выше"], above:["bad","Выше"], unknown:["mute","Нет данных"], selfpay:["info","Без Болашака"]};
@@ -865,6 +900,77 @@ render();
 </script>
 <script>
 (function () {
+  var R = [
+    {n: "Leeds", qs: 77, qsd: "=77", the: 113, thed: "=113", cug: 18, rq: 86.6, cq: 3.35, ind: 70.8, gp: 79.9},
+    {n: "Sheffield", qs: 82, qsd: "=82", the: 104, thed: "=104", cug: 16, rq: 86.8, cq: 3.40, ind: 76.6, gp: 79.9},
+    {n: "Nottingham", qs: 97, qsd: "97", the: 157, thed: "=157", cug: 26, rq: 85.3, cq: 3.34, ind: 72.6, gp: 79.7},
+    {n: "Queen Mary (QMUL)", qs: 103, qsd: "103", the: 129, thed: "=129", cug: 40, rq: 95.2, cq: 3.39, ind: 74.6, gp: 69.8},
+    {n: "Liverpool", qs: 139, qsd: "139", the: 154, thed: "=154", cug: 22, rq: 90.1, cq: 3.34, ind: 67.0, gp: 78.8},
+    {n: "Newcastle", qs: 149, qsd: "149", the: 154, thed: "=154", cug: 35, rq: 93.1, cq: 3.29, ind: 80.0, gp: 77.8},
+    {n: "York", qs: 158, qsd: "=158", the: 168, thed: "=168", cug: 20, rq: 87.6, cq: 3.45, ind: 67.2, gp: 76.4},
+    {n: "Lancaster", qs: 164, qsd: "164", the: 183, thed: "=183", cug: 10, rq: 84.3, cq: 3.37, ind: 66.4, gp: 78.3},
+    {n: "Queen's Belfast", qs: 174, qsd: "=174", the: 196, thed: "=196", cug: 23, rq: 89.4, cq: 3.27, ind: 68.6, gp: 83.6},
+    {n: "Reading", qs: 196, qsd: "196", the: 219, thed: "=219", cug: 43, rq: 82.8, cq: 3.24, ind: 65.1, gp: 74.9},
+    {n: "Leicester", qs: 314, qsd: "=314", the: 209, thed: "=209", cug: 33, rq: 94.4, cq: 3.30, ind: 67.7, gp: 76.9},
+    {n: "Sussex", qs: 273, qsd: "=273", the: 273, thed: "=273", cug: 36, rq: 86.5, cq: 3.29, ind: 64.3, gp: 67.9},
+    {n: "UEA", qs: 381, qsd: "=381", the: 313, thed: "301–325", cug: 34, rq: 87.3, cq: 3.38, ind: 63.0, gp: 76.3},
+    {n: "Heriot-Watt", qs: 325, qsd: "325", the: 475, thed: "451–500", cug: 31, rq: null, cq: null, ind: null, gp: null}
+  ];
+  var COLS = [
+    {k: "qs", h: "QS мир 2027", lbl: "Мировой рейтинг QS", best: "min", f: function (r) { return r.qsd; }},
+    {k: "the", h: "THE мир 2027", lbl: "Мировой рейтинг THE", best: "min", f: function (r) { return r.thed; }},
+    {k: "cug", h: "Британия: CUG 2027", lbl: "Британская таблица CUG", best: "min", f: function (r) { return String(r.cug); }},
+    {k: "rq", h: "Наука: THE, из 100", lbl: "Наука: качество исследований (THE)", best: "max", f: function (r) { return r.rq == null ? "—" : r.rq.toFixed(1); }},
+    {k: "cq", h: "Наука: CUG, из 4", lbl: "Наука: исследования по REF (CUG)", best: "max", f: function (r) { return r.cq == null ? "—" : r.cq.toFixed(2); }},
+    {k: "ind", h: "Индустрия: THE, из 100", lbl: "Связь с индустрией (THE)", best: "max", f: function (r) { return r.ind == null ? "—" : r.ind.toFixed(1); }},
+    {k: "gp", h: "Трудоустройство: CUG, %", lbl: "Трудоустройство выпускников (CUG)", best: "max", f: function (r) { return r.gp == null ? "—" : r.gp.toFixed(1) + "%"; }}
+  ];
+  var BEST = {};
+  COLS.forEach(function (c) {
+    var vals = R.map(function (r) { return r[c.k]; }).filter(function (v) { return v != null; });
+    BEST[c.k] = c.best === "min" ? Math.min.apply(null, vals) : Math.max.apply(null, vals);
+  });
+  var S = {k: "qs", d: 1};
+  function head() {
+    var h = '<tr><th scope="col">Университет</th>';
+    COLS.forEach(function (c) {
+      var on = S.k === c.k;
+      var srt = on ? (S.d === 1 ? "ascending" : "descending") : "none";
+      var arr = on ? (S.d === 1 ? "↑" : "↓") : "";
+      h += '<th scope="col" class="num" aria-sort="' + srt + '"><button type="button" class="sortbtn" data-sort="' + c.k + '">' + c.h + '<span class="arr" aria-hidden="true"> ' + arr + '</span></button></th>';
+    });
+    document.getElementById("rankhead").innerHTML = h + "</tr>";
+  }
+  function body() {
+    var rows = R.slice().sort(function (a, b) { var x = a[S.k], y = b[S.k]; if (x == null) { return y == null ? 0 : 1; } if (y == null) { return -1; } return (x - y) * S.d; });
+    document.getElementById("rankrows").innerHTML = rows.map(function (r) {
+      var t = "<tr><td>" + r.n + "</td>";
+      COLS.forEach(function (c) {
+        var lead = r[c.k] === BEST[c.k];
+        t += '<td class="num' + (lead ? " lead" : "") + '">' + (lead ? "▲ " : "") + c.f(r) + (lead ? '<span class="rk-sr"> (лучшее в колонке)</span>' : "") + "</td>";
+      });
+      return t + "</tr>";
+    }).join("");
+  }
+  function leaders() {
+    document.getElementById("leaders").innerHTML = COLS.map(function (c) {
+      var win = R.filter(function (r) { return r[c.k] === BEST[c.k]; });
+      return '<div class="card"><div class="lbl">' + c.lbl + '</div><div class="big">' + win.map(function (r) { return r.n; }).join(" и ") + '</div><div class="lbl">' + c.f(win[0]) + "</div></div>";
+    }).join("");
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-sort]");
+    if (!b) return;
+    var k = b.getAttribute("data-sort");
+    if (S.k === k) { S.d = -S.d; }
+    else { S.k = k; S.d = COLS.filter(function (c) { return c.k === k; })[0].best === "min" ? 1 : -1; }
+    head(); body();
+  });
+  leaders(); head(); body();
+})();
+</script>
+<script>
+(function () {
   var REGN = {UK: "Великобритания", EU: "Erasmus Mundus", CN: "Китай"};
   var ORDER = ["UK", "EU", "CN"];
   var RT = {
@@ -892,10 +998,13 @@ render();
     {r: "UK", uni: "University of York", p: "MSc International Business", url: "https://www.york.ac.uk/study/postgraduate-taught/courses/msc-international-business/", dir: "4.12", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "нет на странице программы", req: "2:2 или эквивалент, любой предмет · для Казахстана 2:2 = 3.0/4.0, 2:1 = 3.4/4.0, у тебя 3.09 · IELTS 6.5 (не ниже 6.0)", cost: "£32 900 в год (год входа 2027)", t: "M", pk: true, n: "Название дословно есть в перечне Болашака под кодами 4.12, 4.16 и 4.18. Старт сентябрь 2027, 1 год. Запас по GPA 0.09. Рейтинг: QS 158, THE =168."},
     {r: "UK", uni: "Queen's University Belfast (Russell Group)", p: "MSc International Business", url: "https://www.qub.ac.uk/courses/postgraduate-taught/international-business-msc/", dir: "4.12", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "нет на странице программы", req: "2:2 · для Казахстана 2:2 = 3.0/4.0, 2:1 = 3.4/4.0, у тебя 3.09 · IELTS 6.5 (не ниже 6.0)", cost: "2027/28 не опубликована; около £26 500 по агрегаторам, проверить", t: "M", pk: true, n: "Название дословно есть в перечне Болашака под кодами 4.12, 4.16 и 4.18. Entry year 2027/28, 1 год full-time, набор открыт (скриншот страницы программы). Queen's Belfast стоит под № 58 в списке вузов Болашака. Не про ИИ, но среди модулей Analytics with AI. Запас по GPA 0.09. Рейтинг: QS 174, THE =196. IELTS по буклету 2025/26, на 2027 проверить."},
     {r: "UK", uni: "University of Sheffield", p: "MSc International Management", url: "https://www.sheffield.ac.uk/postgraduate/taught/courses/2027/international-management-msc", dir: "4.18", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "нет на странице программы", req: "2:1 или профессиональная квалификация (2:1 = GPA 3.0, у тебя 3.09) · IELTS 6.5 (не ниже 6.0)", cost: "не найдена", t: "M", pk: true, n: "Название дословно есть в перечне Болашака под кодом 4.18. Старт сентябрь 2027, 1 год, Management School (AMBA и CMI). Запас по GPA всего 0.09. Требования взяты из Prospects и скриншота, на странице 2027/28 проверить диплом, IELTS и цену."},
-    {r: "UK", uni: "University of Sheffield", p: "MSc Business Analytics", dir: "1.1", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "нет на странице программы", req: "2:1 (GPA 3.0), любой предмет, количественной подготовки не нужно · IELTS 6.5 (не ниже 6.0)", cost: "стипендии до £7 000; цена не найдена", t: "M", n: "Код 1.1. По порогу GPA проходишь на 2:1."},
-    {r: "UK", uni: "University of Nottingham", p: "MSc Business Analytics", dir: "1.1", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "нет на странице программы", req: "2:1 (GPA 3.0) в любой дисциплине и 2:1 в модулях с математикой или статистикой · IELTS 6.5 (не ниже 6.0)", cost: "цена не найдена", t: "M", n: "Код 1.1. Проверить, что в транскрипте достаточно количественных модулей."},
+    {r: "UK", uni: "University of Sheffield", p: "MSc Business Analytics", dir: "1.1", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "нет на странице программы", req: "2:1 (GPA 3.0), любой предмет, количественной подготовки не нужно · IELTS 6.5 (не ниже 6.0)", cost: "стипендии до £7 000; цена не найдена", t: "M", pk: true, n: "Код 1.1, пятое направление (добавлено 22.11.2026). По порогу GPA проходишь на 2:1."},
+    {r: "UK", uni: "University of Nottingham", p: "MSc Business Analytics", dir: "1.1", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "нет на странице программы", req: "2:1 (GPA 3.0) в любой дисциплине и 2:1 в модулях с математикой или статистикой · IELTS 6.5 (не ниже 6.0)", cost: "цена не найдена", t: "M", pk: true, n: "Код 1.1, пятое направление (добавлено 22.11.2026). По порогу GPA проходишь на 2:1. Проверить, что в транскрипте достаточно количественных модулей."},
     {r: "UK", uni: "University of Nottingham", p: "MSc Business, Analytics and AI", url: "https://www.nottingham.ac.uk/pgstudy/course/taught/business-analytics-and-ai-msc", dir: "other", dirL: "нет в перечне", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "страница программы не открыта", req: "2:1 (так указано в шапке страницы); для Казахстана 2:1 = GPA 3.0, у тебя 3.09 · IELTS и предметные требования не проверены", cost: "£34 000 (International)", t: "M", pk: true, n: "Вуз добавлен в «Мой выбор» 22.11.2026 по просьбе Сауле. Название «Business, Analytics and AI» в перечне Болашака нет; похожее «Business Analytics and Artificial Intelligence (AI)» стоит под кодом 1.1, вне четырёх направлений, и написано иначе. Страницу программы целиком не открывали: IELTS, срок подачи и количественные требования проверить. Старт сентябрь 2027, 12 месяцев."},
-    {r: "UK", uni: "University of Leicester", p: "MSc Business Analytics", dir: "1.1", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "январский набор закрывался 20 ноября 2026; сентябрь проверить", req: "«Good second-class», предмет не указан · IELTS 6.5", cost: "£23 650 (на сентябрь 2027 проверить)", t: "S", n: "Код 1.1."},
+    {r: "UK", uni: "University of Leicester", p: "MSc AI for Business Intelligence", url: "https://le.ac.uk/courses/ai-for-business-intelligence-msc/2027", dir: "1.4", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "нет на странице программы", req: "2:2 по математике или близкому предмету (физика и т.п.), информатику оценивают по транскрипту · для Казахстана минимум магистратуры 3.0/4.0, у тебя 3.09 · IELTS 6.0", cost: "£24 250 (страница 2025/26; на сентябрь 2027 проверить)", t: "M", pk: true, n: "Название дословно есть в перечне Болашака под кодами 1.4 и 4.18. 12 месяцев (с Industry 28 месяцев). Главный риск: требование по математике или близкому предмету, уточнить у приёмной Leicester (pgadmissions@le.ac.uk), примут ли диплом AI Business. Запас по GPA 0.09. Leicester стоит под № 59, последний в британском списке Болашака. Рейтинг: QS =314, THE =209. Данные со скриншотов страницы и поиска; страницу программы напрямую открыть не удалось, срок подачи на сентябрь 2027 не найден."},
+    {r: "UK", uni: "University of Leicester", p: "MSc Business Analytics", dir: "1.1", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "январский набор закрывался 20 ноября 2026; сентябрь проверить", req: "«Good second-class», предмет не указан · IELTS 6.5", cost: "£23 650 (на сентябрь 2027 проверить)", t: "S", pk: true, n: "Код 1.1, пятое направление (добавлено 22.11.2026). Запасной вариант рядом с AI for Business Intelligence: «good second-class», предмет не указан. Запас по GPA 0.09 (минимум Leicester для магистратуры 3.0)."},
+    {r: "UK", uni: "Heriot-Watt University", p: "MSc International Business Management", url: "https://www.hw.ac.uk/uk/study/postgraduate/international-business-management.htm", dir: "4.18", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "нет на странице программы; старт в сентябре и в январе", req: "2:2 или эквивалент в любом предмете, в дипломе должны быть следы эссе и критического мышления · для Казахстана 3.0/4.0 это 2:2, у тебя 3.09 · IELTS 6.0, не ниже 5.5, письмо 6.0", cost: "£24 952 (ставка 2026/27 по странице вуза; на сентябрь 2027 проверить)", t: "S", pk: true, n: "Название International Business Management дословно есть в перечне Болашака под кодами 4.16 и 4.18. 12 месяцев, конверсионная программа Edinburgh Business School. Запас по GPA 0.09. Рейтинг: QS 325, THE 451–500, CUG 31. Heriot-Watt есть в списке вузов Болашака. Срок подачи на сентябрь 2027 и цена 2027/28 не подтверждены."},
+    {r: "UK", uni: "Heriot-Watt University", p: "MSc Business Strategy, Leadership and Change", url: "https://www.hw.ac.uk/study/postgraduate/business-strategy-leadership-change", dir: "other", dirL: "нет в перечне", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "нет на странице программы", req: "2:2 в любом предмете, нужны следы эссе и критического мышления · для Казахстана 3.0/4.0 это 2:2 · IELTS 6.0", cost: "£24 952 (ставка 2026/27; на сентябрь 2027 проверить)", t: "S", n: "Точного названия в перечне Болашака нет: по правилу Болашака название сверять дословно. Ближайшие названия в перечне: Business Strategy and Entrepreneurship (код 4.16) и Business Strategy and Innovation Management. У этого вуза есть программа с точным названием: International Business Management."},
     {r: "UK", uni: "University of Strathclyde", p: "MSc Business Analysis & Consulting (путь with AI)", dir: "other", dirL: "нет в перечне", rt: ["bol"], f: "full", d: "9999-01-01", dl: "не найден", dls: "нет на странице программы", req: "Second-class · IELTS 6.5 (не ниже 5.5)", cost: "£29 350 в год; стипендия £6 000 после оффера", t: "S", n: "Точного названия в перечне Болашака нет: по правилу Болашака название сверять дословно."},
 
     // ---------- 2 · Европа (Erasmus Mundus) ----------
@@ -987,7 +1096,7 @@ render();
     {lane: "prep", label: "Защита диплома AITU", from: "2027-06-05", to: "2027-06-05", kind: "due", note: "Начало июня 2027."},
     {lane: "prep", label: "Диплом и транскрипт на руках", from: "2027-07-01", to: "2027-07-15", kind: "do", note: "Июль 2027: условные офферы можно сделать безусловными, дальше документы на CAS и в Болашак."},
 
-    {lane: "UK", label: "Выбрать целевую точку, спросить вузы про GPA", from: "2026-11-23", to: "2026-12-15", kind: "do", note: "Подтвердить раскладку Reach / Match / Safety (раздел 5), решить про код 1.1. UEA: уточнить порог в баллах для Казахстана."},
+    {lane: "UK", label: "Выбрать целевую точку, спросить вузы про GPA", from: "2026-11-23", to: "2026-12-15", kind: "do", note: "Подтвердить раскладку Reach / Match / Safety (раздел 5), код 1.1 уже добавлен пятым направлением. UEA: уточнить порог в баллах для Казахстана."},
     {lane: "UK", label: "Подача в британские вузы", from: "2027-01-05", to: "2027-02-28", kind: "do", note: "Sheffield, Nottingham, Lancaster, Newcastle, Queen Mary, Liverpool, Leicester, Royal Holloway и др. Даты у каждого свои (раздел 11). Цель: подать всё до конца февраля, IELTS к этому моменту уже на руках."},
     {lane: "UK", label: "Условные офферы, ответы вузам", from: "2027-03-01", to: "2027-06-30", kind: "wait", note: "Офферы приходят условными: диплом, транскрипт, IELTS. Отвечать в сроки вуза."},
     {lane: "UK", label: "Royal Holloway: 27 июня, 30 июля, 20 августа", from: "2027-06-27", to: "2027-08-20", kind: "due", note: "Три срока по странице программы."},
