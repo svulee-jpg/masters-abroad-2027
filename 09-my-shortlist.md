@@ -33,7 +33,7 @@
 
 **Oxford Brookes University, MSc Management** (добавлено 22.11.2026 19:46 по скриншоту Saule). Oxford Brookes есть в списке вузов Болашака (второй блок). Название Management дословно есть в перечне под кодами 4.9 и 4.18. Для Казахстана по странице вуза 3.0/4.0 это 2:2, 3.3/4.0 это 2:1; у Saule 3.09, запас 0.09. Программа просит 2:2 в любом предмете и один академический рекомендатель. IELTS 6.0, чтение и письмо 6.0, аудирование и говорение 5.5. £20 800 за 2027/28 (на 2026/27 £19 600), старт в сентябре 2027; срок подачи на странице не найден. Рейтинг: QS =411, THE 701–800. Уровень Safety.
 
-Не записаны: Leeds (программа с 2:2 пока не подобрана) и Regent's (запасной вариант на свои деньги, программы не выбраны). Strathclyde не записан: порог GPA для Казахстана у него не найден.
+Не записан: Regent's (запасной вариант на свои деньги, программы не выбраны). Strathclyde не записан: порог GPA для Казахстана у него не найден.
 
 Сняты: Imperial College London 22.11.2026 (порог GPA 3.6/4 против 3.09), подробности в [docs/archive-imperial.md](docs/archive-imperial.md). UCL снят 22.11.2026 (порог 3.3/4.0 против 3.09), см. [docs/archive-ucl.md](docs/archive-ucl.md). Manchester снят 22.11.2026 (порог 3.33/4.0 против 3.09), см. [docs/archive-manchester.md](docs/archive-manchester.md). 22.11.2026 по просьбе Saule из списка вузов убраны все, где GPA 3.09 не проходит или порог не подтверждён (Edinburgh, Bristol, Birmingham, Glasgow, Durham, St Andrews, Exeter, Oxford, Cambridge, Southampton, Liverpool, Queen's Belfast, Cardiff и др.), данные в [docs/archive-gpa-filter.md](docs/archive-gpa-filter.md).
 
