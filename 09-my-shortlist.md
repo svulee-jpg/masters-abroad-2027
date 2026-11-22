@@ -10,7 +10,17 @@
 
 **University of Nottingham, MSc Business, Analytics and AI** (добавлено 22.11.2026 по просьбе Saule, потому что GPA проходит). Для Казахстана 2:1 = 3.0/4.0, у Saule 3.09; в шапке страницы программы указан 2:1. Старт сентябрь 2027, 12 месяцев, £34 000 для иностранных. Название программы в перечне Болашака нет (похожее «Business Analytics and Artificial Intelligence (AI)» стоит под кодом 1.1, вне четырёх направлений). Страницу программы целиком не открывали: IELTS, срок подачи, количественные требования проверить. Страница: https://www.nottingham.ac.uk/pgstudy/course/taught/business-analytics-and-ai-msc
 
-На рассмотрении, но не в «Моём выборе»: Queen Mary, MSc Entrepreneurship and Innovation Management (код 1.23 и 4.16, 2:2 = 2.67/4.0, £34 650, IELTS 6.5/6.0, срок на странице не найден), Lancaster, Liverpool (MSc AI for Digital Business: 2:2, минимум для Казахстана 2.9/4.0, £33 000, IELTS 6.5/6.0, срок 23 августа 2027; названия «AI for Digital Business» нет в перечне Болашака).
+**Добавлено 22.11.2026 (18:38) по просьбе Saule: «запиши те вузы, где я прохожу порог»** (все вузы из таблицы, где GPA 3.09 проходит; программы из четырёх её направлений 1.4, 1.23, 4.16, 4.18):
+
+- Queen Mary, MSc Entrepreneurship and Innovation Management (коды 1.23 и 4.16, 2:2 = 2.67/4.0, £34 650, IELTS 6.5/6.0, срок на странице не найден).
+- Lancaster, MSc Management and Artificial Intelligence (коды 1.4 и 1.23, 2:2 = 3.0/4.0, £30 900, IELTS 6.5/6.0, срок на странице не найден).
+- Liverpool, MSc AI for Digital Business (2:2, минимум для Казахстана 2.9/4.0, £33 000, IELTS 6.5/6.0, срок 23 августа 2027; названия «AI for Digital Business» нет в перечне Болашака).
+- Reading, MSc Applied Artificial Intelligence for Business (код 1.4, good second class, диапазон для Казахстана 2.6–3.0/4.0, IELTS 6.5/5.5).
+- Sussex, MSc Strategic Innovation Management и MSc Entrepreneurship and Innovation (коды 1.23, 4.16, 4.18; общий минимум для Казахстана 3.0/4.0, запас 0.09; срок 1 августа 2027).
+- York, MSc Entrepreneurship and Innovation Management (коды 1.23 и 4.16) и MSc International Business (коды 4.12, 4.16, 4.18): 2:2 = 3.0/4.0, запас 0.09, £32 900, IELTS 6.5/6.0, срок на странице не найден.
+- Sheffield, MSc International Management (код 4.18, 2:1 = 3.0/4.0, запас 0.09, IELTS 6.5/6.0).
+
+Не записаны: Leeds (программа с 2:2 пока не подобрана) и Regent's (запасной вариант на свои деньги, программы не выбраны). Программы Business Analytics под кодом 1.1 (Sheffield, Nottingham, Royal Holloway, Leicester) не записаны, пока решение «добавить код 1.1» открыто. Royal Holloway, Strathclyde и Leicester не записаны: порог GPA для Казахстана у них не найден.
 
 Сняты: Imperial College London 22.11.2026 (порог GPA 3.6/4 против 3.09), подробности в [docs/archive-imperial.md](docs/archive-imperial.md). UCL снят 22.11.2026 (порог 3.3/4.0 против 3.09), см. [docs/archive-ucl.md](docs/archive-ucl.md). Manchester снят 22.11.2026 (порог 3.33/4.0 против 3.09), см. [docs/archive-manchester.md](docs/archive-manchester.md). 22.11.2026 по просьбе Saule из списка вузов убраны все, где GPA 3.09 не проходит или порог не подтверждён (Edinburgh, Bristol, Birmingham, Glasgow, Durham, St Andrews, Exeter, Oxford, Cambridge, Southampton, Liverpool, Queen's Belfast, Cardiff и др.), данные в [docs/archive-gpa-filter.md](docs/archive-gpa-filter.md).
 
