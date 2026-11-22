@@ -4,7 +4,7 @@
 
 ## Сейчас в списке
 
-Пока пусто. Imperial College London снят 22.11.2026 (порог GPA 3.6/4 против 3.09), подробности в [docs/archive-imperial.md](docs/archive-imperial.md). UCL снят 22.11.2026 (порог 3.3/4.0 против 3.09), см. [docs/archive-ucl.md](docs/archive-ucl.md).
+Пока пусто. Imperial College London снят 22.11.2026 (порог GPA 3.6/4 против 3.09), подробности в [docs/archive-imperial.md](docs/archive-imperial.md). UCL снят 22.11.2026 (порог 3.3/4.0 против 3.09), см. [docs/archive-ucl.md](docs/archive-ucl.md). Manchester снят 22.11.2026 (порог 3.33/4.0 против 3.09), см. [docs/archive-manchester.md](docs/archive-manchester.md).
 
 ## Запасной вариант без Болашака
 
