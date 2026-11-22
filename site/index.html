@@ -76,7 +76,7 @@ h2 { font-family: var(--font-display); font-weight: 600; font-size: 26px; line-h
 h3 { font-size: 16px; margin: 0 0 6px; }
 section { margin-top: 48px; }
 .sec-note { color: var(--muted); margin: 0 0 18px; max-width: 70ch; }
-ol.steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 26px 0 0; padding: 0; list-style: none; }
+ol.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 26px 0 0; padding: 0; list-style: none; }
 ol.steps li { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 14px; }
 ol.steps b { display: block; font-size: 12px; letter-spacing: .04em; color: var(--muted); font-weight: 500; }
 ol.steps li.done { border-color: var(--good); }
@@ -91,6 +91,7 @@ ol.steps li.now { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(-
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
 .card .big { font-family: var(--font-display); font-size: 28px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.1; }
 .card .lbl { color: var(--muted); font-size: 13px; }
+.lbl-inline { color: var(--muted); font-size: 13px; }
 .dir { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; }
 .dir header { padding: 0 0 8px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
 .dir h3 { margin: 0; font-size: 17px; }
@@ -147,16 +148,17 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
 <div class="wrap">
 
 <header>
-  <p class="kicker">Великобритания · Болашак · набор осени 2027 · обновлено 22.11.2026</p>
+  <p class="kicker">Великобритания · Европа · Китай · Болашак · набор осени 2027 · обновлено 22.11.2026</p>
   <h1>Saule — Master's Admission 2027</h1>
-  <p class="lead">Всё в одном месте: направление, вузы, требования к GPA и IELTS, шаги Болашака и сроки. Данные взяты из официальных источников; чего нет на страницах вузов, помечено «проверить».</p>
+  <p class="lead">Всё в одном месте: направление, вузы, требования к GPA и IELTS, Erasmus Mundus, Китай, шаги Болашака и сроки. Данные взяты со страниц вузов и программ; цифры из вторичных источников и всё, чего нет на официальных страницах, помечено «проверить».</p>
   <nav aria-label="Этапы плана">
     <ol class="steps">
       <li class="done"><b>1</b>Направления выбраны</li>
-      <li class="done"><b>2</b>Список вузов (черновик)</li>
-      <li class="now"><b>3</b>Целевая точка: ждёт выбора</li>
-      <li><b>4</b>GPA и IELTS по каждому вузу</li>
-      <li><b>5</b>Болашак: документы и тесты</li>
+      <li class="done"><b>2</b>Список вузов UK (черновик)</li>
+      <li class="now"><b>3</b>Целевая точка UK: ждёт выбора</li>
+      <li class="now"><b>4</b>Erasmus Mundus: заявки до 14 и 27 января</li>
+      <li><b>5</b>Китай по Болашаку: черновик программ</li>
+      <li><b>6</b>IELTS в декабре, GPA, документы Болашака</li>
     </ol>
   </nav>
 </header>
@@ -168,7 +170,7 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
     <div class="card"><div class="big">3.09</div><div class="lbl">GPA из 4.0 (октябрь 2026). Порог Болашака 3.00 пройден</div></div>
     <div class="card"><div class="big">AI Business</div><div class="lbl">Бакалавриат AITU, первый выпуск, защита в начале июня 2027</div></div>
     <div class="card"><div class="big">нет IELTS</div><div class="lbl">Прошлый результат (6.0, 2023) просрочен. Нужна новая сдача</div></div>
-    <div class="card"><div class="big">UK + Китай</div><div class="lbl">Страны, где можно использовать Болашак. Здесь разбираем Великобританию</div></div>
+    <div class="card"><div class="big">UK + Китай</div><div class="lbl">Страны, где можно использовать Болашак. Европа идёт отдельно, по Erasmus Mundus</div></div>
   </div>
 </section>
 
@@ -295,8 +297,143 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
   <p class="sec-note">Warwick Business with Artificial Intelligence не найден в твоём перечне, поэтому для Болашака эта программа не подходит. Edinburgh AI for Business принимает бакалавриат любой специальности. Imperial, Manchester, Bristol и QMUL по аналитике и AI ждут количественную подготовку.</p>
 </section>
 
+<section id="europe">
+  <h2>6. Европа: Erasmus Mundus</h2>
+  <p class="sec-note">Отдельная ставка на полный грант ЕС: Болашак здесь не нужен. Заявка подаётся напрямую в каждый консорциум, всего можно подать не больше трёх. Грант покрывает обучение, страховку и €1 400 в месяц на оба года (сумма указана на странице Global COOP; у остальных программ проверить). Даты ниже сверены 22.11.2026 по нескольким страницам, перед подачей сверить с сайтом консорциума.</p>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th scope="col">Программа</th><th scope="col">Срок подачи</th><th scope="col">О чём и что нужно</th><th scope="col">Совпадение с профилем</th><th scope="col">Статус</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>GLOCAL</b><br>Global Markets, Local Creativities<br><span class="lbl-inline">Glasgow (координатор), Uppsala, Rotterdam, Los Andes, Kyoto и др.</span></td>
+          <td><b>14 января 2027</b>, 13:00 по Лондону. Без сбора за подачу. Ответ в апреле 2027</td>
+          <td>2 года, 120 ECTS, старт в сентябре 2027. Глобальный капитализм, история, культура, городская экономика; 8 треков (бизнес, экономика, история, международные отношения). Сертификат английского загружается вместе с заявкой, позже не принимают. Порог Glasgow для Казахстана не найден</td>
+          <td>Среднее: уклон гуманитарный, про AI ничего. Есть бизнес-треки</td>
+          <td><span class="pill good">подавать</span></td>
+        </tr>
+        <tr>
+          <td><b>GLOBAL COOP</b><br>Economic Policies for New Global Cooperation and Alliances<br><span class="lbl-inline">Siena, Campinas, Sorbonne, Compiègne и др.</span></td>
+          <td><b>27 января 2027</b>, 13:00 по Парижу</td>
+          <td>2 года (2027–2029), 3 трека: международная торговля, мировая финансовая система, справедливый экологический переход. €1 400 в месяц. Комиссия ждёт подтверждения подготовки по экономике и количественным методам. Примут ли выпускницу, у которой диплом появится после дедлайна: уточнить письмом</td>
+          <td>Слабое: экономика, не AI Business</td>
+          <td><span class="pill warn">подавать, если соберёшь доказательства по экономике и математике</span></td>
+        </tr>
+        <tr>
+          <td><b>NavigAIte EU</b><br>AI для бизнеса<br><span class="lbl-inline">Финляндия и партнёры</span></td>
+          <td>Ближайший приём в феврале 2027 (по прошлой проверке, сегодня не перепроверено)</td>
+          <td>Старт, по прошлой проверке, в январе 2028, а не в сентябре 2027. Нужны: ответ программы, подходит ли такой старт, условия по английскому, принимают ли выпускников 2027 года</td>
+          <td>Лучшее по теме</td>
+          <td><span class="pill warn">проверить</span></td>
+        </tr>
+        <tr>
+          <td><b>Mundus MAPP</b></td>
+          <td>1 декабря 2026</td>
+          <td>IELTS 7.0, GPA от 3.17; сертификат позже не догрузить</td>
+          <td>Не проходит: GPA 3.09, нового IELTS нет</td>
+          <td><span class="pill bad">отпадает</span></td>
+        </tr>
+        <tr>
+          <td><b>EMMIE, UlysseusAI</b></td>
+          <td>—</td>
+          <td>EMMIE ждёт готовый диплом до дедлайна. UlysseusAI закрыт на январь 2027</td>
+          <td>—</td>
+          <td><span class="pill bad">отпадает</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout warn">
+    <p><b>IELTS теперь жёсткий дедлайн.</b> Сертификат нужен в день подачи: для GLOCAL до 14 января, для Global COOP до 27 января. Сдавать в первых числах декабря: результат компьютерного теста приходит за 1–5 дней, остаётся запас на ошибку. Нужный балл смотреть на странице каждой программы.</p>
+  </div>
+  <p class="sec-note">Правила EMJM: одна и та же стипендия Erasmus Mundus присуждается человеку один раз. Диплом бакалавра появится после защиты в июне 2027, поэтому перед подачей отправь каждой программе письмо: примут ли заявку с последним транскриптом и справкой о предстоящем выпуске. Подбор третьей программы по каталогу EMJM пока не сделан.</p>
+</section>
+
+<section id="china">
+  <h2>7. Китай: Болашак и другие полные гранты</h2>
+  <p class="sec-note">Полный грант на англоязычную магистратуру в Шанхае можно получить тремя путями. Болашак самый надёжный по покрытию, но привязан к безусловному офферу и срокам (раздел 8). Два остальных пути работают через сам Китай и закрываются раньше.</p>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th scope="col">Путь</th><th scope="col">Как устроен</th><th scope="col">Сроки</th><th scope="col">Статус</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Болашак</b></td>
+          <td>Вуз из списка 2024–2026: Tongji, SJTU, Fudan, Tsinghua, PKU, Zhejiang и ещё около десяти китайских вузов. NYU в списке только как вуз США. Нужен безусловный оффер</td>
+          <td>Общие сроки Болашака (раздел 8): приём ожидается с марта 2027</td>
+          <td><span class="pill good">основной</span></td>
+        </tr>
+        <tr>
+          <td><b>CSC через ЦМП</b><br>межправительственные гранты КНР</td>
+          <td>В 2026 году для Казахстана было 73 гранта; регистрация на Campus China, документы через egov.kz или лично в ЦМП. По сообщению bes.media, в 2026 в приоритеты добавили искусственный интеллект. Что покрывает грант и какие расходы остаются на тебе: уточнить</td>
+          <td>2026: 21 января – 10 февраля, продлено до 18 февраля. На 2027 ожидается такое же окно: следить за каналом ЦМП</td>
+          <td><span class="pill warn">ожидаемо</span></td>
+        </tr>
+        <tr>
+          <td><b>CGS, Shanghai Government Scholarship, SJTU Scholarship</b><br>через вуз</td>
+          <td>Заявка в SJTU с отметкой о стипендии. Покрытие для MIB смотреть в каталоге SJTU на 2027 год</td>
+          <td>CGS до <b>15 февраля 2027</b>; Shanghai Government и SJTU Scholarship до <b>31 марта 2027</b>; без стипендии до 31 мая 2027</td>
+          <td><span class="pill good">подтверждено</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <p><b>Параллельная подача.</b> CGS и Shanghai Government Scholarship в SJTU закрываются в феврале и марте, раньше Болашака. Это второй шанс на полный грант, если Болашак не сработает по срокам. Запрета на параллельные заявки в правилах Болашака не найдено; одним вопросом уточнить в ЦМП.</p>
+  </div>
+
+  <h3 style="margin-top:22px">Программы</h3>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th scope="col">Вуз и программа</th><th scope="col">Код Болашака</th><th scope="col">Срок</th><th scope="col">Язык, IELTS, цена</th><th scope="col">Статус</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>SJTU Antai</b>, Шанхай<br>Master of International Business (MIB)</td>
+          <td><span class="pill good">4.18</span> также 4.16 и 4.12: название «International Business» есть в перечне</td>
+          <td>CGS 15.02.2027, Shanghai Government и SJTU Scholarship 31.03.2027, самоплатно 31.05.2027</td>
+          <td>2 года, английский. Два курса китайского обязательны (язык и культура). IELTS 6.0 или TOEFL 90 по Mastersportal. Цена 94 000 CNY в год по globaladmissions. Обе цифры сверить с каталогом SJTU 2027</td>
+          <td><span class="pill good">основной</span></td>
+        </tr>
+        <tr>
+          <td><b>Tongji SEM</b>, Шанхай<br>Master of Global Management (MGM)</td>
+          <td><span class="pill good">4.18</span> название «Global Management» есть в перечне</td>
+          <td>10 апреля (страница процесса подачи; год проверить). Заявка в study-info.tongji.edu.cn</td>
+          <td>2 года, английский. IELTS не найден: проверить. Около 79 000 CNY в год, CSC покрывает около 25 000 (карта грантов 11.10.2026). Программа на 13 месте в рейтинге FT Masters in Management 2024</td>
+          <td><span class="pill good">основной</span></td>
+        </tr>
+        <tr>
+          <td><b>NYU Stern – NYU Shanghai</b><br>MS Organization Management and Strategy</td>
+          <td><span class="pill warn">4.18</span> название «Management and Strategy» есть, но NYU в списке Болашака стоит как вуз США</td>
+          <td>Приём на лето 2027 открыт. Дедлайн на странице не найден: проверить. Принимают только на летний старт</td>
+          <td>1 год, 36 кредитов. Около $113 000 в год с проживанием, полного гранта от вуза нет (карта грантов)</td>
+          <td><span class="pill warn">вопрос в ЦМП</span></td>
+        </tr>
+        <tr>
+          <td><b>PKU HSBC Business School</b><br>UK–China Cross Border MA in Management</td>
+          <td><span class="pill warn">проверить</span> PKU в списке, но засчитают ли PHBS, неизвестно</td>
+          <td><b>31 марта 2027</b></td>
+          <td>2 года: Великобритания (Witney) и Шэньчжэнь, не Шанхай. IELTS 6.5 или TOEFL 90, тест не раньше 1 сентября 2025; для британской части нужен UKVI SELT. Цена: проверить</td>
+          <td><span class="pill info">запасной</span></td>
+        </tr>
+        <tr>
+          <td><b>Tsinghua SEM</b>, Пекин<br>Master in Management; Tsinghua–Columbia Business Analytics</td>
+          <td><span class="pill mute">не сопоставлено</span></td>
+          <td>Сроки 2027 не найдены: проверить</td>
+          <td>Преподавание двуязычное, нужен английский документ об успеваемости. Условия не проверены</td>
+          <td><span class="pill mute">проверить</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sec-note" style="margin-top:14px">Fudan и Zhejiang есть в списке Болашака, но их англоязычные магистерские программы пока не проверены. SUFE MIB остаётся запасным вариантом через полный CSC (SUFE в списке Болашака нет).</p>
+</section>
+
 <section id="bolashak">
-  <h2>6. Болашак: что нужно для категории «самостоятельно поступившие»</h2>
+  <h2>8. Болашак: что нужно для категории «самостоятельно поступившие»</h2>
   <p class="sec-note">Источник: bolashak.gov.kz, правила для претендентов. Приказ на 2027 год пока не опубликован: сроки ниже даны по 2026 году.</p>
   <div class="two">
     <div>
@@ -330,15 +467,24 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
 </section>
 
 <section id="timeline">
-  <h2>7. Календарь</h2>
+  <h2>9. Календарь</h2>
   <div class="tablewrap">
     <table>
       <thead><tr><th scope="col">Когда</th><th scope="col">Что</th><th scope="col">Статус</th></tr></thead>
       <tbody>
-        <tr><td>Декабрь 2026</td><td>Сдать IELTS на компьютере (результат за 1–5 дней)</td><td><span class="pill info">рекомендация</span></td></tr>
+        <tr><td>1 декабря 2026</td><td>Mundus MAPP: не проходит по GPA и IELTS</td><td><span class="pill bad">отпадает</span></td></tr>
+        <tr><td>Начало декабря 2026</td><td>Сдать IELTS на компьютере (результат за 1–5 дней). Сертификат нужен для GLOCAL к 14 января</td><td><span class="pill info">рекомендация</span></td></tr>
+        <tr><td>14 января 2027</td><td>GLOCAL (Erasmus Mundus): заявка и сертификат английского, до 13:00 по Лондону</td><td><span class="pill good">подтверждено</span></td></tr>
+        <tr><td>27 января 2027</td><td>GLOBAL COOP (Erasmus Mundus): заявка, до 13:00 по Парижу</td><td><span class="pill good">подтверждено</span></td></tr>
         <tr><td>Янв – апр 2027</td><td>Раунды заявок британских вузов (у каждого свои даты)</td><td><span class="pill warn">проверить</span></td></tr>
-        <tr><td>Конец февраля 2027</td><td>Крайний срок IELTS с запасом на пересдачу</td><td><span class="pill info">рекомендация</span></td></tr>
+        <tr><td>Янв – фев 2027</td><td>Окно CSC через ЦМП (в 2026: 21 января – 10 февраля, продлено до 18 февраля)</td><td><span class="pill warn">ожидаемо</span></td></tr>
+        <tr><td>Февраль 2027</td><td>NavigAIte EU: ближайший приём, старт в январе 2028</td><td><span class="pill warn">проверить</span></td></tr>
+        <tr><td>15 февраля 2027</td><td>SJTU: заявка на CGS через вуз</td><td><span class="pill good">подтверждено</span></td></tr>
+        <tr><td>Конец февраля 2027</td><td>Крайний срок IELTS с запасом на пересдачу (для UK и Болашака)</td><td><span class="pill info">рекомендация</span></td></tr>
         <tr><td>Около 16 марта 2027</td><td>Открытие приёма документов Болашак (в 2026 было 16 марта)</td><td><span class="pill warn">ожидаемо</span></td></tr>
+        <tr><td>31 марта 2027</td><td>SJTU: Shanghai Government Scholarship и SJTU Scholarship. PKU HSBC: закрытие приёма</td><td><span class="pill good">подтверждено</span></td></tr>
+        <tr><td>10 апреля</td><td>Tongji MGM: онлайн-заявка (год на странице не указан)</td><td><span class="pill warn">проверить</span></td></tr>
+        <tr><td>31 мая 2027</td><td>SJTU MIB: последний срок для самоплатных заявок</td><td><span class="pill good">подтверждено</span></td></tr>
         <tr><td>Начало июня 2027</td><td>Защита диплома AITU</td><td><span class="pill good">подтверждено</span></td></tr>
         <tr><td>Июль 2027</td><td>Диплом и транскрипт на руках, оффер становится безусловным</td><td><span class="pill warn">ожидаемо</span></td></tr>
         <tr><td>2 августа / 20 августа 2027</td><td>Последние сроки Warwick и Royal Holloway (по страницам программ)</td><td><span class="pill good">подтверждено</span></td></tr>
@@ -353,14 +499,16 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
 </section>
 
 <section id="decisions">
-  <h2>8. Что нужно решить</h2>
+  <h2>10. Что нужно решить</h2>
   <ol class="decide">
     <li><b>Добавить код 1.1 пятым направлением?</b> Рекомендация: да. Там Business Analytics, самые проходимые по GPA программы Sheffield, Nottingham, Royal Holloway, Leicester.</li>
     <li><b>Подтвердить целевую точку</b> из раздела 4 или заменить вузы звёздочками в разделе 3.</li>
     <li><b>Найти пороги GPA</b> у Glasgow, Durham, Southampton, Exeter, Liverpool, Newcastle, QUB, Cardiff, KCL и Imperial.</li>
     <li><b>Подобрать программы</b> под коды 1.4, 1.23, 4.16, 4.18 в Sheffield, Nottingham, Durham, Leeds и York и сверить названия с перечнем.</li>
-    <li><b>Записаться на IELTS</b> на декабрь 2026 (British Council Казахстан, компьютерный Academic).</li>
-    <li><b>Написать в ЦМП</b> про сроки: оффер после защиты и окно подачи до середины октября.</li>
+    <li><b>Записаться на IELTS</b> на начало декабря 2026 (British Council Казахстан, компьютерный Academic). Сертификат нужен для GLOCAL к 14 января.</li>
+    <li><b>Какие три заявки Erasmus Mundus подавать.</b> Рекомендация: GLOCAL (14 января) и Global COOP (27 января); третью оставить под NavigAIte EU, если старт в январе 2028 подходит, иначе под другую программу из каталога EMJM.</li>
+    <li><b>Китай: SJTU MIB и Tongji MGM основными</b>, параллельно CGS и Shanghai Government Scholarship в SJTU (15 февраля и 31 марта). NYU Shanghai и PKU HSBC держать запасными до ответа ЦМП.</li>
+    <li><b>Написать в ЦМП</b> про сроки (оффер после защиты, окно подачи до середины октября), засчитывают ли NYU Shanghai и PKU HSBC, и можно ли подавать на CGS параллельно с Болашаком.</li>
   </ol>
 </section>
 
@@ -372,6 +520,12 @@ footer ul { margin: 6px 0 0; padding-left: 18px; }
     <li>Рейтинги: QS World University Rankings 2027, THE World University Rankings 2027 (<a href="https://www.timeshighereducation.com/student/best-universities/best-universities-uk">THE, лучшие вузы Великобритании</a>)</li>
     <li>Пороги GPA для Казахстана: страницы Edinburgh, Sheffield, Nottingham, Leeds, York, Warwick, UCL, Bristol, Manchester, Birmingham, QMUL, LSE, St Andrews</li>
     <li>Программы: страницы Lancaster, Sheffield, Nottingham, Leicester, Royal Holloway, Strathclyde</li>
+    <li>Erasmus Mundus (вторичные страницы, сверить с сайтами консорциумов): <a href="https://fellowshipsguide.com/?p=7387">GLOCAL, дедлайн 14 января 2027</a>, <a href="https://daadscholarship.com/?p=31544">GLOBAL COOP, 27 января 2027, €1 400 в месяц</a>, <a href="https://www.gla.ac.uk/postgraduate/erasmusmundus/clmce/howtoapply">Glasgow: правило о сертификате английского к дедлайну (на примере другой EM-программы)</a></li>
+    <li>SJTU: <a href="https://en.sjtu.edu.cn/study-sjtu/prospective/degree-programs/268">2027 International Graduate Admissions Guide</a> (сроки CGS, Shanghai Government Scholarship, самоплатных), <a href="https://acem.sjtu.edu.cn/mib/faqs.html">Antai MIB: FAQ</a>, <a href="https://www.globaladmissions.com/program/masters-international-business-mib/pMSJTETB0">MIB: цена и срок (вторичный источник)</a></li>
+    <li>Tongji MGM: <a href="https://sem.tongji.edu.cn/semen/?p=17867">процесс подачи</a>, <a href="https://mgm.tongji.edu.cn/Admissions/FAQ.htm">FAQ программы</a></li>
+    <li>NYU Stern – NYU Shanghai: <a href="https://bulletins.nyu.edu/graduate/business/programs/organization-management-strategy-ms/">программа и условия приёма (bulletin)</a>, <a href="https://stern.shanghai.nyu.edu">сайт программы</a></li>
+    <li>PKU HSBC: <a href="https://english.phbs.pku.edu.cn/academics/Master/apply/">сроки и тесты</a>, <a href="https://uk.phbs.pku.edu.cn/Study/How_to_Apply.htm">UK–China: требования к IELTS</a>. Tsinghua SEM: <a href="https://masters.sem.tsinghua.edu.cn/en/Admission/How_to_Apply.htm">How to Apply</a></li>
+    <li>CSC через ЦМП: <a href="https://www.zakon.kz/obshestvo/6507244-kazakhstantsam-zhelayushchim-postupit-v-vuzy-kitaya-obyavili-o-prodlenii-sroka-priema-dokumentov.html">Zakon.kz, продление срока приёма</a>, <a href="https://bes.media/news/kazahstantsam-predlagayut-73-granta-na-obuchenie-v-vuzah-kitaya-42cdde/">bes.media, 73 гранта на 2026–2027</a></li>
     <li>Репозиторий с полным планом: github.com/svulee-jpg/masters-abroad-2027 (приватный)</li>
   </ul>
 </footer>
