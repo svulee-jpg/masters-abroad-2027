@@ -37,6 +37,7 @@
 - UEA: MSc Sustainable Business Management https://www.uea.ac.uk/course/postgraduate/msc-sustainable-business-management (2:2, IELTS 6.0/5.5, старт в январе; по скриншотам Saule 22.11.2026); общая страница https://www.uea.ac.uk/study/international-students/country-map/central-asia (для большинства курсов 2:1)
 - Exeter: MSc International Business https://www.exeter.ac.uk/masters-degrees/msc-international-business/ (2:2, 12 месяцев, сентябрь 2027), порог для Казахстана https://www.exeter.ac.uk/international-students/kazakhstan/ (2:1 = 4.3–4.69, 2:2 = 3.9–4.29), IELTS профиль B1 https://www.exeter.ac.uk/study/englishlanguagerequirements/profile-b1/, сроки https://www.exeter.ac.uk/masters-degrees/apply/application-deadlines/ (проверено 22.11.2026)
 - Glasgow: MSc International Business https://www.gla.ac.uk/postgraduate/taught/internationalbusiness (требования для Казахстана 3.4/4, 4.2/5, 3.67/4.33 по скриншоту страницы; стоимость 2026/27 £34 470 https://www.gla.ac.uk/postgraduate/taught/internationalbusiness/contact/; IELTS 6.5 с двумя навыками по 6.5 и двумя по 6.0 по каталогу Prospects; проверено 22.11.2026)
+- Leeds: пороги для Казахстана https://leeds.ac.uk/dir-record/profiles/21847/kazakhstan (2:1 = 3.4/4, 2:2 = 3.0/4; проверено 22.11.2026); страница Corporate Communications, Marketing and Public Relations MA (скриншот, courses.leeds.ac.uk/g921)
 - Программы: страницы Lancaster, Newcastle, Queen Mary, Sheffield, Nottingham, Leicester, Royal Holloway, Strathclyde (проверено 22.11.2026)
 
 ## Европа: Erasmus Mundus (проверено 22.11.2026)
