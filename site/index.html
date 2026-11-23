@@ -396,6 +396,31 @@ header.hero { padding: 0; }
 .skip:focus { left: 8px; z-index: 100; background: var(--accent); color: var(--accent-ink); padding: 8px 12px; }
 ::selection { background: var(--accent); color: var(--accent-ink); }
 @media (prefers-reduced-motion: reduce) { a.prio { transition: none; } a.prio:hover { transform: none; } html { scroll-behavior: auto; } }
+
+/* Mantras */
+.mantras { border-bottom: 1px solid var(--line); }
+.mt-in { max-width: 1240px; margin: 0 auto; padding: 72px 24px 80px; }
+.mt-head { margin: 0 0 32px; }
+.mt-head h2 { max-width: 18em; }
+.mt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 18px; }
+.mt { position: relative; margin: 0; aspect-ratio: 9 / 13; min-height: 340px; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 28px; border-radius: 3px; isolation: isolate; }
+.mt blockquote { margin: 0; position: relative; z-index: 2; }
+.mt-dark { background: #050403; border: 1px solid var(--line); }
+.mt-dark::before { content: ""; position: absolute; left: -6%; bottom: -4%; width: 92%; height: 46%; z-index: 1;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='124'%3E%3Cg fill='none' stroke='%23120803' stroke-width='4.5' stroke-linecap='round'%3E%3Cellipse cx='20' cy='22' rx='10' ry='6.5' transform='rotate(-28 20 22)' stroke-dasharray='44 9'/%3E%3Cellipse cx='72' cy='12' rx='7' ry='5' transform='rotate(14 72 12)' stroke-dasharray='28 8'/%3E%3Cellipse cx='118' cy='30' rx='11' ry='7' transform='rotate(38 118 30)' stroke-dasharray='46 10'/%3E%3Cellipse cx='46' cy='56' rx='8' ry='6' transform='rotate(-8 46 56)' stroke-dasharray='30 9'/%3E%3Cellipse cx='98' cy='70' rx='10' ry='6' transform='rotate(-35 98 70)' stroke-dasharray='40 9'/%3E%3Cellipse cx='14' cy='92' rx='8' ry='5.5' transform='rotate(22 14 92)' stroke-dasharray='28 8'/%3E%3Cellipse cx='68' cy='100' rx='11' ry='7' transform='rotate(-18 68 100)' stroke-dasharray='46 10'/%3E%3Cellipse cx='132' cy='104' rx='7' ry='5' transform='rotate(30 132 104)' stroke-dasharray='26 8'/%3E%3C/g%3E%3Cg fill='%23120803'%3E%3Ccircle cx='46' cy='34' r='3'/%3E%3Ccircle cx='93' cy='44' r='2.6'/%3E%3Ccircle cx='134' cy='62' r='3'/%3E%3Ccircle cx='28' cy='66' r='2.4'/%3E%3Ccircle cx='84' cy='88' r='2.6'/%3E%3Ccircle cx='112' cy='112' r='2.4'/%3E%3Ccircle cx='36' cy='116' r='2.8'/%3E%3C/g%3E%3C/svg%3E"),
+    radial-gradient(75% 85% at 30% 100%, #d9a35a 0%, #9a6532 45%, #4a2c14 80%);
+  -webkit-mask-image: radial-gradient(85% 90% at 28% 100%, #000 18%, transparent 72%);
+  mask-image: radial-gradient(85% 90% at 28% 100%, #000 18%, transparent 72%);
+  opacity: .9; }
+.mt-dark.right::before { left: auto; right: -6%; -webkit-mask-image: radial-gradient(85% 90% at 72% 100%, #000 18%, transparent 72%); mask-image: radial-gradient(85% 90% at 72% 100%, #000 18%, transparent 72%); }
+.mt-copper blockquote { font-family: var(--font-display); font-size: clamp(13px, 1.5vw, 15.5px); letter-spacing: .16em; text-transform: uppercase; color: #c98f5a; margin-bottom: 38%; }
+.mt-born blockquote { font-family: var(--font-display); font-size: clamp(26px, 3vw, 34px); color: #e9dfcc; margin-bottom: 36%; }
+.mt-pink { background: #e8a9c4; color: #1b0f14; }
+.mt-pink blockquote { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: .07em; line-height: 1.28; font-size: clamp(25px, 2.9vw, 36px); margin-top: -6%; text-wrap: balance; }
+.mt-pink .bow { position: absolute; right: 9%; top: 27%; width: 54px; z-index: 3; transform: rotate(12deg); }
+.mt-pink .swan { position: absolute; left: 50%; bottom: 7%; width: 54%; transform: translateX(-50%); z-index: 2; }
+@media (max-width: 700px) { .mt-in { padding: 52px 20px 56px; } .mt { aspect-ratio: 4 / 5; } }
 </style>
 </head>
 <body>
@@ -433,6 +458,17 @@ header.hero { padding: 0; }
       <p class="kicker">Ближайшие шаги</p>
       <h2>Один шаг сегодня важнее десяти планов на потом.</h2>
       <ol id="next-list"><li>Загрузка…</li></ol>
+    </div>
+  </div>
+</div>
+
+<div class="mantras">
+  <div class="mt-in">
+    <div class="mt-head"><p class="kicker">Каждый день</p><h2>Visualize it. Believe it. Then do the work.</h2></div>
+    <div class="mt-grid">
+      <div class="mt mt-dark mt-copper"><blockquote>Visualize. Believe. Manifest. Create.</blockquote></div>
+      <div class="mt mt-dark mt-born right"><blockquote>Born to win.</blockquote></div>
+      <div class="mt mt-pink"><svg class="bow" viewBox="0 0 80 60" aria-hidden="true"><g fill="#8b8b8b" stroke="#6d6d6d" stroke-width="1.2" stroke-linejoin="round"><path d="M38 28C26 10 6 8 4 18c-2 11 18 16 34 10z"/><path d="M42 28C54 10 74 8 76 18c2 11-18 16-34 10z"/><path d="M38 30C34 42 30 52 26 58l9-3 3-12z"/><path d="M42 30C46 42 52 50 58 57l-3-10-9-10z"/></g><ellipse cx="40" cy="28" rx="6" ry="7" fill="#8b8b8b" stroke="#6d6d6d" stroke-width="1.2"/></svg><blockquote>A winner is a dreamer who never gives up</blockquote><svg class="swan" viewBox="0 0 240 160" aria-hidden="true"><g stroke-linecap="round" stroke-linejoin="round"><path d="M92 106C58 102 50 70 64 50C74 36 68 22 54 25" fill="none" stroke="#6f6f6b" stroke-width="16"/><path d="M92 106C58 102 50 70 64 50C74 36 68 22 54 25" fill="none" stroke="#9a9a96" stroke-width="12"/><ellipse cx="55" cy="25" rx="10" ry="7" fill="#9a9a96" stroke="#6f6f6b" stroke-width="2"/><path d="M46 26L30 31L47 34Z" fill="#555552"/><path d="M86 110C74 134 118 146 166 142C206 138 230 108 234 66C208 92 176 96 146 92C116 88 94 94 86 110Z" fill="#9a9a96" stroke="#6f6f6b" stroke-width="2"/><path d="M150 94C178 76 206 58 232 44C222 88 198 116 154 124Z" fill="#a9a9a5" stroke="#6f6f6b" stroke-width="1.6"/><path d="M168 100C184 92 200 82 214 70M166 112C186 104 204 92 220 78M160 122C180 116 198 104 212 92" fill="none" stroke="#7c7c78" stroke-width="2"/></g></svg></div>
     </div>
   </div>
 </div>
