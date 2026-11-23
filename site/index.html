@@ -406,10 +406,108 @@ header.hero { padding: 0; }
 .mt { margin: 0; background: #000; border: 1px solid var(--line); border-radius: 3px; overflow: hidden; line-height: 0; }
 .mt img { display: block; width: 100%; height: auto; }
 @media (max-width: 700px) { .mt-in { padding: 52px 20px 56px; } }
+
+/* Left menu */
+:root { --sbw: 252px; }
+.sb { position: fixed; top: 0; left: 0; bottom: 0; width: var(--sbw); z-index: 70; display: flex; flex-direction: column; background: #0a0907; border-right: 1px solid var(--line); visibility: hidden; transform: translateX(-100%); transition: transform .28s ease, visibility 0s linear .28s; }
+html.nav-open .sb { visibility: visible; transform: none; transition: transform .28s ease, visibility 0s; }
+.sb-prog { position: absolute; top: 0; left: 0; height: 2px; width: 0; background: var(--accent); }
+.sb-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 22px 14px 16px 22px; border-bottom: 1px solid var(--line); }
+.sb-brand { color: var(--ink); text-decoration: none; }
+.sb-brand b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 21px; letter-spacing: .42em; line-height: 1.1; }
+.sb-brand span { display: block; margin-top: 5px; font-size: 9px; letter-spacing: .34em; color: var(--muted); }
+.sb-x { flex: none; width: 32px; height: 32px; display: grid; place-items: center; background: none; border: 1px solid var(--line); border-radius: 50%; color: var(--muted); cursor: pointer; font: 400 18px/1 var(--font-body); padding: 0; }
+.sb-x:hover { color: var(--accent); border-color: var(--accent); }
+.sb-find { padding: 14px 18px 6px 22px; }
+.sb-find input { width: 100%; box-sizing: border-box; background: transparent; border: 0; border-bottom: 1px solid var(--line); color: var(--ink); font: 400 13px/1.2 var(--font-body); padding: 8px 0; outline: none; }
+.sb-find input::placeholder { color: var(--muted); }
+.sb-find input:focus { border-bottom-color: var(--accent); }
+.sb-nav { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 8px 0 22px; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.sb-g { margin-top: 14px; }
+.sb-g[hidden], .sb-nav a[hidden] { display: none; }
+.sb-gt { margin: 0; padding: 0 22px 6px; font-size: 9.5px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+.sb-nav a { position: relative; display: flex; align-items: baseline; gap: 10px; padding: 8px 18px 8px 22px; color: #d9d0c0; text-decoration: none; font-size: 13.5px; line-height: 1.35; }
+.sb-nav a i { flex: none; width: 1.7em; font-family: var(--font-quote, var(--font-display)); font-style: italic; font-size: 14px; color: var(--accent); opacity: .75; }
+.sb-nav a:hover { color: var(--ink); background: rgba(210, 173, 106, .06); }
+.sb-nav a.on { color: var(--accent); background: var(--accent-soft); }
+.sb-nav a.on::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--accent); }
+.sb-nav a.on i { opacity: 1; }
+.sb-none { display: none; margin: 18px 22px; font-size: 12.5px; color: var(--muted); }
+.sb-foot { padding: 14px 22px 18px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 10.5px; letter-spacing: .08em; color: var(--muted); }
+.sb-foot a { color: var(--accent); text-decoration: none; letter-spacing: .2em; text-transform: uppercase; font-size: 10px; }
+.sb-foot a:hover { text-decoration: underline; }
+.sb-tab { position: fixed; z-index: 71; top: 50%; left: 0; transform: translateY(-50%); width: 26px; padding: 14px 0; display: flex; flex-direction: column; align-items: center; gap: 12px; background: #0a0907; color: var(--accent); border: 1px solid var(--accent); border-left: 0; border-radius: 0 8px 8px 0; cursor: pointer; font-family: var(--font-body); transition: left .28s ease, background .2s; }
+.sb-tab:hover { background: var(--accent-soft); }
+.sb-ico { display: block; width: 12px; height: 9px; border-top: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; position: relative; }
+.sb-ico::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; margin-top: -.75px; height: 1.5px; background: currentColor; }
+.sb-txt { writing-mode: vertical-rl; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; }
+html.nav-open .sb-tab { left: var(--sbw); }
+.sb-back { display: none; }
+.sb-tab:focus-visible, .sb-x:focus-visible, .sb-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+@media (min-width: 1100px) {
+  html.nav-open body { padding-left: var(--sbw); }
+  html.nav-open .tb-left a, html.nav-open .tb-right a:not(.tb-cta) { display: none; }
+}
+@media (max-width: 1099px) {
+  .sb { width: min(292px, 86vw); box-shadow: 0 0 60px rgba(0, 0, 0, .6); }
+  html.nav-open .sb-tab { left: 0; display: none; }
+  .sb-tab { top: auto; bottom: 18px; left: 14px; transform: none; width: auto; height: 44px; padding: 0 18px 0 16px; flex-direction: row; gap: 10px; border: 1px solid var(--accent); border-radius: 999px; box-shadow: 0 6px 24px rgba(0, 0, 0, .5); }
+  .sb-txt { writing-mode: horizontal-tb; font-size: 11px; }
+  .sb-back { position: fixed; inset: 0; z-index: 69; background: rgba(0, 0, 0, .55); opacity: 0; pointer-events: none; transition: opacity .28s ease; display: block; }
+  html.nav-open .sb-back { opacity: 1; pointer-events: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .sb, .sb-tab, .sb-back { transition: none !important; } }
+@media print { .sb, .sb-tab, .sb-back { display: none !important; } html.nav-open body { padding-left: 0 !important; } }
 </style>
+<script>(function(){var d=document.documentElement,o=innerWidth>=1100;try{if(localStorage.getItem('sb')==='0')o=false}catch(e){}if(o)d.classList.add('nav-open')})();</script>
 </head>
 <body>
 <a class="skip" href="#overview">К содержанию</a>
+<aside id="sidebar" class="sb" aria-label="Меню сайта">
+  <div class="sb-prog" id="sb-prog"></div>
+  <div class="sb-head">
+    <a class="sb-brand" href="#top"><b>SAULE</b><span>MASTER'S · 2027</span></a>
+    <button class="sb-x" type="button" id="sb-x" aria-label="Скрыть меню">&times;</button>
+  </div>
+  <div class="sb-find"><label class="rk-sr" for="sb-q">Найти раздел</label><input id="sb-q" type="search" placeholder="Найти раздел…" autocomplete="off"></div>
+  <nav class="sb-nav" aria-label="Разделы сайта">
+    <div class="sb-g"><p class="sb-gt">Начало</p>
+      <a href="#next" data-k="дедлайны неделя"><i>·</i><span>Ближайшие шаги</span></a>
+      <a href="#overview" data-k="содержание"><i>·</i><span>Обзор</span></a>
+    </div>
+    <div class="sb-g"><p class="sb-gt">Основа</p>
+      <a href="#profile" data-k="gpa профиль"><i>1</i><span>Исходные данные</span></a>
+      <a href="#timemap" data-k="график план месяцы"><i>2</i><span>Карта времени</span></a>
+    </div>
+    <div class="sb-g"><p class="sb-gt">Великобритания</p>
+      <a href="#directions" data-k="uk англия болашак направления"><i>3</i><span>Направления</span></a>
+      <a href="#universities" data-k="russell group вузы"><i>4</i><span>Университеты</span></a>
+      <a href="#tiers" data-k="reach match safety предложение"><i>5</i><span>Целевая точка</span></a>
+    </div>
+    <div class="sb-g"><p class="sb-gt">Требования и Болашак</p>
+      <a href="#requirements" data-k="ielts gpa программы"><i>6</i><span>Требования</span></a>
+      <a href="#bolashak" data-k="стипендия самостоятельно"><i>7</i><span>Болашак</span></a>
+    </div>
+    <div class="sb-g"><p class="sb-gt">Европа и Китай</p>
+      <a href="#europe" data-k="эразмус европа emjmd"><i>8</i><span>Erasmus Mundus</span></a>
+      <a href="#china" data-k="csc fudan sjtu шанхай"><i>9</i><span>Китай</span></a>
+    </div>
+    <div class="sb-g"><p class="sb-gt">Сроки и программы</p>
+      <a href="#timeline" data-k="дедлайны сроки"><i>10</i><span>Календарь</span></a>
+      <a href="#programs" data-k="msc программы"><i>11</i><span>Карта программ</span></a>
+    </div>
+    <div class="sb-g"><p class="sb-gt">Портфолио</p>
+      <a href="#contests" data-k="стартап портфолио кейс"><i>12</i><span>Конкурсы и хакатоны</span></a>
+    </div>
+    <div class="sb-g"><p class="sb-gt">Решения</p>
+      <a href="#decisions" data-k="вопросы выбор"><i>13</i><span>Что нужно решить</span></a>
+    </div>
+    <p class="sb-none" id="sb-none">Ничего не найдено</p>
+  </nav>
+  <div class="sb-foot"><span>Обновлено 23.11.2026</span><a href="#top">Наверх ↑</a></div>
+</aside>
+<button class="sb-tab" type="button" id="sb-tab" aria-controls="sidebar" aria-expanded="false" aria-label="Открыть меню"><span class="sb-ico" aria-hidden="true"></span><span class="sb-txt" id="sb-txt">Меню</span></button>
+<div class="sb-back" id="sb-back"></div>
 <nav class="topbar" aria-label="Основная навигация">
   <div class="tb-in">
     <div class="tb-left"><a href="#timemap">Карта времени</a><a href="#directions">Великобритания</a><a href="#europe">Европа</a></div>
@@ -1693,6 +1791,102 @@ render();
     if (f.st === "mine") render();
   });
   drawChips(); render();
+})();
+</script>
+<script>
+(function () {
+  var root = document.documentElement;
+  var sb = document.getElementById("sidebar"), tab = document.getElementById("sb-tab"), txt = document.getElementById("sb-txt");
+  var back = document.getElementById("sb-back"), xb = document.getElementById("sb-x");
+  var nav = sb.querySelector(".sb-nav"), q = document.getElementById("sb-q"), prog = document.getElementById("sb-prog");
+  var none = document.getElementById("sb-none");
+  var links = [].slice.call(nav.querySelectorAll("a"));
+  var desk = function () { return window.innerWidth >= 1100; };
+  function save(v) { try { localStorage.setItem("sb", v ? "1" : "0"); } catch (e) {} }
+  function set(open, remember) {
+    root.classList.toggle("nav-open", open);
+    tab.setAttribute("aria-expanded", open ? "true" : "false");
+    tab.setAttribute("aria-label", open ? "Скрыть меню" : "Открыть меню");
+    txt.textContent = open ? "Скрыть" : "Меню";
+    if (remember && desk()) save(open);
+  }
+  function isOpen() { return root.classList.contains("nav-open"); }
+  set(isOpen(), false);
+  tab.addEventListener("click", function () { set(!isOpen(), true); });
+  xb.addEventListener("click", function () { set(false, true); tab.focus(); });
+  back.addEventListener("click", function () { set(false, false); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && isOpen() && !desk()) { set(false, false); tab.focus(); }
+  });
+  nav.addEventListener("click", function (e) {
+    if (e.target.closest("a") && !desk()) set(false, false);
+  });
+  var lastDesk = desk();
+  window.addEventListener("resize", function () {
+    var d = desk();
+    if (d === lastDesk) return;
+    lastDesk = d;
+    var pref = true;
+    try { pref = localStorage.getItem("sb") !== "0"; } catch (e) {}
+    set(d ? pref : false, false);
+  });
+
+  /* active section */
+  var targets = links.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
+  var cur = -1, tick = false;
+  function mark(i) {
+    if (i === cur) return;
+    cur = i;
+    links.forEach(function (a, j) {
+      if (j === i) { a.classList.add("on"); a.setAttribute("aria-current", "true"); }
+      else { a.classList.remove("on"); a.removeAttribute("aria-current"); }
+    });
+    if (i >= 0 && isOpen()) {
+      var a = links[i], top = a.offsetTop, h = nav.clientHeight;
+      if (top < nav.scrollTop + 40 || top + a.offsetHeight > nav.scrollTop + h - 40) {
+        nav.scrollTop = Math.max(0, top - h / 2);
+      }
+    }
+  }
+  function update() {
+    tick = false;
+    var y = 150, idx = -1;
+    for (var i = 0; i < targets.length; i++) {
+      if (targets[i] && targets[i].getBoundingClientRect().top <= y) idx = i;
+    }
+    var de = document.documentElement;
+    if (window.innerHeight + window.scrollY >= de.scrollHeight - 4) idx = links.length - 1;
+    mark(idx);
+    var max = de.scrollHeight - window.innerHeight;
+    prog.style.width = (max > 0 ? Math.min(100, Math.max(0, window.scrollY / max * 100)) : 0) + "%";
+  }
+  function req() { if (!tick) { tick = true; requestAnimationFrame(update); } }
+  window.addEventListener("scroll", req, { passive: true });
+  window.addEventListener("resize", req);
+  window.addEventListener("load", req);
+  update();
+
+  /* filter */
+  function filter() {
+    var v = q.value.trim().toLowerCase(), shown = 0;
+    links.forEach(function (a) {
+      var hay = (a.textContent + " " + (a.getAttribute("data-k") || "")).toLowerCase();
+      var ok = !v || hay.indexOf(v) !== -1;
+      a.hidden = !ok;
+      if (ok) shown++;
+    });
+    [].forEach.call(nav.querySelectorAll(".sb-g"), function (g) {
+      g.hidden = !g.querySelector("a:not([hidden])");
+    });
+    none.style.display = shown ? "none" : "block";
+  }
+  q.addEventListener("input", filter);
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      var f = nav.querySelector("a:not([hidden])");
+      if (f) { f.click(); q.blur(); }
+    } else if (e.key === "Escape") { q.value = ""; filter(); }
+  });
 })();
 </script>
 </body>
