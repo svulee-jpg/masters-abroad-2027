@@ -3,6 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0d0b09">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <title>Saule's Master's Degree Roadmap</title>
 <style>
 /* Layout idea: one long working document. Stepper on top, numbered sections, one filterable table, plain tables elsewhere. */
@@ -214,14 +219,230 @@ tr.p-closed td { opacity: .62; }
 .tm-dia { position: absolute; top: 6px; width: 12px; height: 12px; margin-left: -6px; transform: rotate(45deg); background: var(--c); border-radius: 2px; z-index: 1; }
 @media (prefers-reduced-motion: reduce) { .tm-play { transition: none; } }
 </style>
+<style id="luxe">
+/* Luxe layer. Layout idea: full-bleed hero under a three-part sticky nav, then the long working document in a dark editorial skin with one champagne-gold accent. */
+:root:root, :root:not([data-theme="light"]), :root[data-theme="dark"], :root[data-theme="light"] {
+  color-scheme: dark;
+  --bg: #0d0b09;
+  --surface: #15120f;
+  --surface-2: #1c1813;
+  --ink: #f2ece1;
+  --muted: #a79e8e;
+  --line: #2d2820;
+  --accent: #d2ad6a;
+  --accent-soft: #2a2113;
+  --accent-ink: #17120a;
+  --good: #86d3a4;
+  --good-soft: #14281e;
+  --warn: #e6b45c;
+  --warn-soft: #2e2411;
+  --bad: #f19186;
+  --bad-soft: #361a19;
+  --tm-bol: #bca5f3;
+  --font-display: "Playfair Display", "Bodoni MT", Didot, Georgia, "Times New Roman", serif;
+  --font-body: Manrope, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-quote: "Cormorant Garamond", Garamond, Georgia, serif;
+}
+body { background: var(--bg); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1140px; padding: 0 24px 96px; }
+h1, h2 { font-family: var(--font-display); font-weight: 500; letter-spacing: -.01em; }
+h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.15; margin-bottom: 10px; }
+section { margin-top: 0; padding-top: 72px; scroll-margin-top: 72px; }
+section + section { border-top: 1px solid var(--line); margin-top: 72px; }
+section#overview { padding-top: 56px; }
+.kicker { text-transform: uppercase; letter-spacing: .2em; font-size: 11.5px; color: var(--accent); margin: 0 0 14px; }
+.sec-note { color: var(--muted); max-width: 72ch; }
+.card, .dir, .tier, .tablewrap, .tm-panel, .tm-grid, .callout, ol.steps li { border-radius: 3px; }
+.card, .dir, .tier, .tm-panel { background: var(--surface); }
+.card .big, .tm-panel h3 { font-family: var(--font-display); font-weight: 500; }
+th { background: var(--surface-2); text-transform: uppercase; letter-spacing: .08em; font-size: 11.5px; }
+.filters button, .tools button { letter-spacing: .02em; }
+.filters button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink) !important; }
+.tm-play { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+a.prio { transition: border-color .2s, transform .2s; }
+a.prio:hover { border-color: var(--accent); transform: translateY(-2px); }
+footer { margin-top: 80px; }
+.pill { letter-spacing: .02em; }
+
+/* Top bar */
+.topbar { position: sticky; top: 0; z-index: 50; background: rgba(13, 11, 9, .86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.tb-in { max-width: 1240px; margin: 0 auto; padding: 12px 24px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
+.tb-left, .tb-right { display: flex; gap: 28px; align-items: center; }
+.tb-right { justify-content: flex-end; }
+.topbar a { color: var(--ink); text-decoration: none; font-size: 11.5px; letter-spacing: .24em; text-transform: uppercase; }
+.topbar a:hover { color: var(--accent); }
+.tb-brand { text-align: center; }
+.tb-brand b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 24px; letter-spacing: .5em; padding-left: .5em; line-height: 1.1; }
+.tb-brand span { display: block; margin-top: 4px; font-size: 9.5px; letter-spacing: .36em; color: var(--muted); padding-left: .36em; }
+.topbar a.tb-cta { border: 1px solid var(--accent); color: var(--accent); padding: 11px 18px; }
+.topbar a.tb-cta:hover { background: var(--accent); color: var(--accent-ink); }
+.tb-scroll { display: none; }
+@media (max-width: 960px) {
+  .tb-in { grid-template-columns: 1fr; gap: 8px; padding: 10px 16px 0; }
+  .tb-left, .tb-right { display: none; }
+  .tb-brand b { font-size: 20px; }
+  .tb-scroll { display: flex; gap: 22px; overflow-x: auto; padding: 8px 0 12px; scrollbar-width: none; }
+  .tb-scroll::-webkit-scrollbar { display: none; }
+  .tb-scroll { -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
+  .hero::before { -webkit-text-stroke-color: rgba(210, 173, 106, .12); top: 30%; }
+  .tb-scroll a { white-space: nowrap; font-size: 10.5px; }
+  .tb-scroll a.tb-cta { padding: 6px 12px; }
+}
+
+/* Hero */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(900px 520px at 86% 8%, rgba(210, 173, 106, .20), transparent 62%),
+    radial-gradient(720px 500px at 4% 100%, rgba(150, 82, 46, .22), transparent 62%),
+    linear-gradient(180deg, #17120d 0%, #0d0b09 100%); }
+.hero::before { content: "2027"; position: absolute; right: -1vw; top: 18%; font-family: var(--font-display); font-size: clamp(170px, 32vw, 500px); line-height: .8; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1px rgba(210, 173, 106, .22); pointer-events: none; user-select: none; }
+.hero-in { position: relative; max-width: 1240px; margin: 0 auto; padding: clamp(48px, 8vw, 104px) 24px 0; }
+.eyebrow { margin: 0; color: var(--accent); font-size: 12px; letter-spacing: .3em; text-transform: uppercase; }
+.hero h1 { margin: 22px 0 0; max-width: 9.5em; font-weight: 400; font-size: clamp(46px, 8.6vw, 116px); line-height: .98; letter-spacing: -.02em; color: #f5efe4; text-wrap: balance; }
+.hero h1 em { color: var(--accent); font-style: italic; }
+.hero-lead { margin: 28px 0 0; max-width: 54ch; font-size: clamp(16px, 1.6vw, 19px); line-height: 1.65; color: #cfc6b6; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+.btn { display: inline-block; padding: 14px 26px; font-size: 11.5px; letter-spacing: .24em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); font-weight: 700; }
+.btn:hover { background: #e6c27f; border-color: #e6c27f; }
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn.ghost:hover { background: var(--accent); color: var(--accent-ink); }
+.count { position: relative; margin-top: clamp(48px, 8vw, 88px); display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255, 255, 255, .12); }
+.count > div { padding: 22px 20px 26px 0; border-right: 1px solid rgba(255, 255, 255, .08); }
+.count > div + div { padding-left: 24px; }
+.count > div:last-child { border-right: 0; }
+.count .n { font-family: var(--font-display); font-size: clamp(40px, 5.4vw, 68px); line-height: 1; font-variant-numeric: tabular-nums; color: #f5efe4; }
+.count .n small { font-family: var(--font-body); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-left: 8px; }
+.count .l { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.4; }
+.count .l b { display: block; color: var(--ink); font-weight: 600; }
+@media (max-width: 760px) {
+  .count { grid-template-columns: 1fr 1fr; }
+  .count > div:nth-child(2) { border-right: 0; }
+  .count > div:nth-child(3) { padding-left: 0; border-top: 1px solid rgba(255, 255, 255, .08); }
+  .count > div:nth-child(4) { border-top: 1px solid rgba(255, 255, 255, .08); }
+}
+
+/* Quote band */
+.qband { border-bottom: 1px solid var(--line); }
+.qb-in { max-width: 1240px; margin: 0 auto; padding: 80px 24px; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+.paper { position: relative; background: #e7e0d3; color: #17130d; padding: clamp(32px, 5vw, 60px) clamp(26px, 4.5vw, 54px); transform: rotate(-1.4deg); box-shadow: 0 34px 70px rgba(0, 0, 0, .55); }
+.paper::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .35 0 0 0 0 .3 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.paper blockquote { margin: 0; font-family: var(--font-quote); font-weight: 600; font-size: clamp(30px, 4vw, 48px); line-height: 1.5; position: relative; z-index: 1; }
+.paper mark { display: table; margin: 4px 0; padding: 0 .16em; background: #e4ea3e; color: #17130d; }
+.paper mark.u { text-decoration: underline; text-decoration-color: #d23a22; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.next h2 { font-size: clamp(26px, 3vw, 36px); max-width: 16em; }
+.next ol { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.next li { display: grid; grid-template-columns: 92px 1fr auto; gap: 14px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.next .dt { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); font-variant-numeric: tabular-nums; }
+.next a { color: var(--ink); text-decoration: none; }
+.next a:hover { color: var(--accent); }
+.next .dd { font-size: 13px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.next .dd.hot { color: var(--bad); font-weight: 700; }
+@media (max-width: 900px) { .qb-in { grid-template-columns: 1fr; gap: 44px; padding: 56px 20px; } .next li { grid-template-columns: 78px 1fr; } .next .dd { grid-column: 2; } }
+
+/* Contests */
+.ct-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 0 0 8px; }
+.ct-tile { border: 1px solid var(--line); background: var(--surface); padding: 16px 18px; }
+.ct-tile b { display: block; font-family: var(--font-display); font-weight: 500; font-size: 40px; line-height: 1; font-variant-numeric: tabular-nums; }
+.ct-tile span { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; }
+.ct-sub { font-family: var(--font-display); font-weight: 500; font-size: 26px; line-height: 1.2; margin: 48px 0 14px; }
+.ct-know { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: 12px; }
+.ct-know .card h3 { font-family: var(--font-display); font-weight: 500; font-size: 19px; margin-bottom: 8px; }
+.ct-know .card p { margin: 0 0 10px; font-size: 14.5px; }
+.ct-know .card p.do { color: var(--accent); margin: 0; font-size: 13.5px; }
+.ct-plan { list-style: none; margin: 0; padding: 0 0 0 4px; border-left: 1px solid var(--accent); }
+.ct-plan li { position: relative; padding: 0 0 24px 28px; }
+.ct-plan li::before { content: ""; position: absolute; left: -5px; top: 6px; width: 9px; height: 9px; background: var(--accent); transform: rotate(45deg); }
+.ct-plan .d { font-size: 11.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); }
+.ct-plan h4 { margin: 4px 0 4px; font-family: var(--font-display); font-weight: 500; font-size: 21px; }
+.ct-plan p { margin: 0; color: var(--muted); max-width: 72ch; font-size: 14.5px; }
+.ct-week { border: 1px solid var(--accent); background: var(--accent-soft); padding: 22px 26px; margin-top: 8px; }
+.ct-week h3 { font-family: var(--font-display); font-weight: 500; font-size: 22px; margin-bottom: 8px; }
+.ct-week ol { margin: 0; padding-left: 20px; }
+.ct-week li { margin: 0 0 8px; max-width: 78ch; }
+.ct-controls { display: flex; flex-wrap: wrap; gap: 12px 14px; align-items: end; margin: 0 0 12px; }
+.ct-controls .p-field input { width: 220px; max-width: 100%; }
+.ct-check { display: inline-flex; gap: 8px; align-items: center; font-size: 14px; padding-bottom: 7px; cursor: pointer; }
+.ct-check input { accent-color: var(--accent); width: 16px; height: 16px; }
+.ct-count { margin-left: auto; color: var(--muted); font-size: 13.5px; padding-bottom: 7px; }
+.ct-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.ct-chips button { font: inherit; font-size: 13.5px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); padding: 5px 14px; border-radius: 999px; cursor: pointer; }
+.ct-chips button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 700; }
+.ct-chips .sep { width: 1px; background: var(--line); margin: 2px 4px; }
+.ct-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr)); gap: 14px; }
+.ct-card { background: var(--surface); border: 1px solid var(--line); padding: 20px; display: flex; flex-direction: column; gap: 14px; min-width: 0; border-radius: 3px; }
+.ct-card.past { opacity: .66; }
+.ct-card.marked { border-color: var(--accent); }
+.ct-card h3 { font-family: var(--font-display); font-weight: 500; font-size: 20px; line-height: 1.25; margin: 0; overflow-wrap: anywhere; }
+.ct-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.ct-card p.ct-lbl { margin: 0 0 3px; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+.ct-card p { margin: 0; font-size: 14.5px; }
+.ct-card p.note { color: var(--accent); font-size: 13.5px; }
+.ct-days { display: inline-block; margin-top: 8px; font-size: 12.5px; font-weight: 700; color: var(--accent); }
+.ct-days.hot { color: var(--bad); }
+details.ct-more summary { cursor: pointer; color: var(--accent); font-size: 13px; }
+details.ct-more p { margin-top: 8px; color: var(--muted); }
+.ct-foot { margin-top: auto; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13px; }
+.ct-dots { letter-spacing: .14em; color: var(--accent); white-space: nowrap; }
+.ct-dots i { font-style: normal; opacity: .25; }
+.ct-foot a { color: var(--accent); }
+.ct-status { margin-left: auto; font: inherit; font-size: 13px; color: var(--ink); background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; max-width: 100%; }
+.ct-empty { padding: 40px 20px; text-align: center; color: var(--muted); border: 1px dashed var(--line); }
+.ct-fine { color: var(--muted); font-size: 13px; margin-top: 14px; }
+
+a { color: var(--accent); }
+header.hero { padding: 0; }
+#next { scroll-margin-top: 90px; }
+.skip { position: absolute; left: -999px; top: 8px; }
+.skip:focus { left: 8px; z-index: 100; background: var(--accent); color: var(--accent-ink); padding: 8px 12px; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+@media (prefers-reduced-motion: reduce) { a.prio { transition: none; } a.prio:hover { transform: none; } html { scroll-behavior: auto; } }
+</style>
 </head>
 <body>
+<a class="skip" href="#overview">К содержанию</a>
+<nav class="topbar" aria-label="Основная навигация">
+  <div class="tb-in">
+    <div class="tb-left"><a href="#timemap">Карта времени</a><a href="#directions">Великобритания</a><a href="#europe">Европа</a></div>
+    <a class="tb-brand" href="#top" aria-label="Saule, Master's 2027, наверх"><b>SAULE</b><span>MASTER'S · 2027</span></a>
+    <div class="tb-right"><a href="#china">Китай</a><a href="#contests">Конкурсы</a><a class="tb-cta" href="#programs">Все программы</a></div>
+    <div class="tb-scroll"><a href="#timemap">Карта времени</a><a href="#directions">Великобритания</a><a href="#europe">Европа</a><a href="#china">Китай</a><a href="#contests">Конкурсы</a><a class="tb-cta" href="#programs">Программы</a></div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-in">
+    <p class="eyebrow">Saule · AI Business · AITU · набор осени 2027</p>
+    <h1>Number one starts with a <em>plan.</em></h1>
+    <p class="hero-lead">Великобритания, Erasmus Mundus и Китай по Болашаку в одном месте: сроки, программы, IELTS, документы, а теперь ещё конкурсы и хакатоны для портфолио. Заходи сюда каждый день: сначала блок «Ближайшие шаги», потом всё остальное.</p>
+    <div class="hero-cta"><a class="btn" href="#next">Что делать сейчас</a><a class="btn ghost" href="#contests">Конкурсы и хакатоны</a></div>
+    <div class="count" aria-label="Обратный отсчёт до главных дат">
+      <div data-d="2026-12-31"><div class="n"><span class="v">38</span><small>дн.</small></div><div class="l"><b>IELTS</b>сдать до 31 декабря 2026</div></div>
+      <div data-d="2027-01-14"><div class="n"><span class="v">52</span><small>дн.</small></div><div class="l"><b>GLOCAL</b>дедлайн Erasmus Mundus, 14 января</div></div>
+      <div data-d="2027-06-01"><div class="n"><span class="v">190</span><small>дн.</small></div><div class="l"><b>Защита диплома</b>начало июня 2027</div></div>
+      <div data-d="2027-09-01"><div class="n"><span class="v">282</span><small>дн.</small></div><div class="l"><b>Старт магистратуры</b>осень 2027</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="qband">
+  <div class="qb-in">
+    <div class="paper">
+      <blockquote><mark>win in your</mark><mark class="u">mind</mark><mark>and you will win</mark><mark>in your</mark><mark class="u">reality.</mark></blockquote>
+    </div>
+    <div class="next" id="next">
+      <p class="kicker">Ближайшие шаги</p>
+      <h2>Один шаг сегодня важнее десяти планов на потом.</h2>
+      <ol id="next-list"><li>Загрузка…</li></ol>
+    </div>
+  </div>
+</div>
+
 <div class="wrap">
 
-<header>
-  <p class="kicker">Приоритеты: 1 Великобритания · 2 Европа (Erasmus Mundus) · 3 Китай · набор осени 2027 · обновлено 22.11.2026</p>
-  <h1>Saule's Master's Degree Roadmap</h1>
-  <p class="lead">Всё в одном файле: карта времени, направления, вузы и программы по трём регионам, требования к GPA и IELTS, Erasmus Mundus, Китай, шаги Болашака, сроки и карта программ с фильтрами. Данные взяты со страниц вузов и программ; цифры из вторичных источников и всё, чего нет на официальных страницах, помечено «проверить».</p>
+<section id="overview">
+  <p class="kicker">Обзор · приоритеты: 1 Великобритания · 2 Европа (Erasmus Mundus) · 3 Китай · набор осени 2027 · обновлено 23.11.2026</p>
+  <h2>Всё в одном файле</h2>
+  <p class="sec-note">Карта времени, направления, вузы и программы по трём регионам, требования к GPA и IELTS, Erasmus Mundus, Китай, шаги Болашака, сроки, карта программ с фильтрами и конкурсы для портфолио. Данные взяты со страниц вузов и программ; цифры из вторичных источников и всё, чего нет на официальных страницах, помечено «проверить».</p>
   <nav aria-label="Этапы плана">
     <ol class="steps">
       <li class="done"><b>1</b>Направления выбраны</li>
@@ -236,9 +457,10 @@ tr.p-closed td { opacity: .62; }
     <a class="card prio" href="#europe"><div class="big" style="font-size:22px">2 · Европа</div><div class="lbl">Erasmus Mundus, грант ЕС: GLOCAL до 14 января, GLOBAL COOP до 27 января, NavigAIte EU в феврале. Раздел 8</div></a>
     <a class="card prio" href="#china"><div class="big" style="font-size:22px">3 · Китай</div><div class="lbl">Болашак: SJTU MIB и Tongji MGM; параллельно CGS и Shanghai Government Scholarship. Раздел 9</div></a>
     <a class="card prio" href="#timemap"><div class="big" style="font-size:22px">Карта времени</div><div class="lbl">Что и когда делать: IELTS до 31 декабря, подача в Великобританию в январе, Европа, Китай и Болашак по месяцам. Раздел 2</div></a>
-    <a class="card prio" href="#programs"><div class="big" style="font-size:22px">Все программы</div><div class="lbl">Фильтры по региону, коду, шансу и сроку,  программ. Раздел 11</div></a>
+    <a class="card prio" href="#programs"><div class="big" style="font-size:22px">Все программы</div><div class="lbl">Фильтры по региону, коду, шансу и сроку для программ из карты полных грантов. Раздел 11</div></a>
+    <a class="card prio" href="#contests"><div class="big" style="font-size:22px">Конкурсы и хакатоны</div><div class="lbl">40 событий для портфолио, LinkedIn и Instagram. Ближайшие: Kiroween до 4 декабря, United Hacks V8 с 8 января. Раздел 12</div></a>
   </div>
-</header>
+</section>
 
 <section id="profile">
   <h2>1. Исходные данные</h2>
@@ -340,7 +562,7 @@ tr.p-closed td { opacity: .62; }
 
   <div class="callout">
     <p><b>Код 1.1 добавлен пятым направлением (22.11.2026).</b> Business Analytics без дополнений стоит именно под 1.1, поэтому Business Analytics в Sheffield, Nottingham, Leicester и Royal Holloway теперь входит в выбранные направления.</p>
-    <p>Когда определишься со списком вузов, выбор сузится сам: лишние программы можно будет убрать (раздел 12).</p>
+    <p>Когда определишься со списком вузов, выбор сузится сам: лишние программы можно будет убрать (раздел 13).</p>
   </div>
   <p class="sec-note">Название программы у вуза должно совпадать с названием из перечня. Перед подачей сверяй дословно.</p>
 </section>
@@ -804,14 +1026,63 @@ tr.p-closed td { opacity: .62; }
   </ol>
 </section>
 
+<section id="contests">
+  <p class="kicker">Портфолио, LinkedIn, Instagram · не грант</p>
+  <h2>12. Конкурсы и хакатоны</h2>
+  <p class="sec-note">Таблица из 40 событий для направлений AI и Business. Это не про оплату обучения: цель в проектах, ссылках и сертификатах, которые усиливают Motivation Letter и профиль. Данные проверены 23.11.2026; там, где источники расходятся, это сказано в «Подводных камнях».</p>
+  <div class="ct-tiles" id="ct-tiles"></div>
+
+  <h3 class="ct-sub">Что нужно знать</h3>
+  <div class="ct-know">
+    <div class="card"><h3>Хакатонам компания не нужна</h3><p>Kiroween, United Hacks V8, DeveloperWeek и Hack-Nation принимают соло или команду. Нужен аккаунт на Devpost или Luma; у Hack-Nation ещё одобрение заявки организаторами.</p><p class="do">Выбери два или три, не больше.</p></div>
+    <div class="card"><h3>Hult Prize: команда 2–4 человека</h3><p>Всем 18+ к 28.02.2027, студенты вузов. В заявке видео команды (1 мин), питч-видео (2 мин) и питч-дек. Компания не нужна; один человек состоит только в одной команде.</p><p class="do">Найди людей из AITU до конца декабря.</p></div>
+    <div class="card"><h3>Imagine Cup и Rice: только со стартапом</h3><p>Imagine Cup требует юрлицо, основанное не раньше 2.11.2024, и расходы от $1 на 10 сервисов Azure до 28.02.2027. Rice: студенческий стартап, минимум 2 студента-основателя, финал очно в Houston. SEOULFUL (каталог Olive Young) под Imagine Cup не подходит: там нужен софт-продукт на Azure. Для GSEA он подойдёт, только если это действующий бизнес 6+ месяцев.</p><p class="do">Пока бизнес не оформлен, эти два пропускай.</p></div>
+    <div class="card"><h3>Призы не оплачивают магистратуру</h3><p>Крупные призы (до $30K у Kiroween, $1M seed у Hult, $200K у Rice) получают единицы. На учёбу деньги дают Болашак и Erasmus Mundus, а конкурсы работают на портфолио.</p><p class="do">Участвуй ради готового проекта и ссылки, приз считай бонусом.</p></div>
+  </div>
+
+  <h3 class="ct-sub">Порядок участия до весны 2027</h3>
+  <ol class="ct-plan">
+    <li><span class="d">до 4 декабря</span><h4>Kiroween на Devpost (по желанию)</h4><p>Нужен готовый проект и демо. Kiro-кредиты запрашивать до 1 декабря. Времени мало: нет идеи, пропускай и бери следующий хакатон.</p></li>
+    <li><span class="d">8–10 января</span><h4>United Hacks V8</h4><p>Онлайн-уикенд, регистрация бесплатная, подача через Devpost. Низкое усилие и хороший первый проект для портфолио.</p></li>
+    <li><span class="d">25 января – 11 февраля</span><h4>DeveloperWeek 2027 Hackathon</h4><p>Онлайн, финальная сдача 11.02 в 10:00 PT. На 23.11 регистрация ещё «Coming Soon».</p></li>
+    <li><span class="d">27–28 февраля</span><h4>Hack-Nation, 8th Global AI Hackathon</h4><p>24-часовой спринт; идея и команда заранее не нужны, челленджи выдают на месте. Нужна заявка «Request to Join» на Luma и одобрение организаторов.</p></li>
+    <li><span class="d">до 28 февраля</span><h4>Hult Prize 2027</h4><p>Команда 2–4, два видео и питч-дек. Узнай в AITU, есть ли локальный отбор.</p></li>
+    <li><span class="d">март</span><h4>Google Summer of Code 2027</h4><p>Даты 2027 не опубликованы; в 2026 окно для контрибьюторов было 16–31 марта. Первые вклады в open source нужны заранее.</p></li>
+    <li><span class="d">позже</span><h4>Imagine Cup и Rice</h4><p>Только если к концу января и февраля уже есть реальный стартап.</p></li>
+  </ol>
+  <div class="callout warn"><p><b>Не больше трёх событий с декабря по февраль.</b> В это же время IELTS (до 31.12), документы Болашака, заявки Erasmus Mundus (14 и 27 января) и диплом. Они важнее любого хакатона.</p></div>
+
+  <div class="ct-week">
+    <h3>На этой неделе</h3>
+    <ol>
+      <li>Реши до 1 декабря, идёшь ли на Kiroween. Если да, запроси Kiro-кредиты и проверь на Devpost, что приём открыт (один из источников показывает «Closed»).</li>
+      <li>Заведи аккаунт на Devpost и зарегистрируйся на United Hacks V8 (8–10 января); на DeveloperWeek регистрация откроется позже, следи за страницей.</li>
+      <li>Напиши двум или трём людям из AITU про команду на Hult Prize (2–4 человека, дедлайн 28 февраля).</li>
+    </ol>
+  </div>
+
+  <h3 class="ct-sub">Все события</h3>
+  <div class="ct-controls">
+    <label class="p-field">Поиск<input type="search" id="ct-q" placeholder="название, приз, условие" autocomplete="off"></label>
+    <label class="p-field">Направление<select id="ct-dir"><option value="">Все</option><option>AI</option><option>Business</option><option>AI+Business</option></select></label>
+    <label class="p-field">Тип<select id="ct-type"><option value="">Все</option></select></label>
+    <label class="ct-check"><input type="checkbox" id="ct-nocomp"> Без своей компании</label>
+    <span class="ct-count" id="ct-count" aria-live="polite"></span>
+  </div>
+  <div class="ct-chips" id="ct-chips" role="group" aria-label="Состояние"></div>
+  <div class="ct-grid" id="ct-grid"></div>
+  <p class="ct-fine">Сначала идут открытые, по ближайшему сроку. Отметки «Мой статус» хранятся только в этом браузере. Полная таблица со всеми колонками и заметками: <a href="https://claude.ai/artifact/NroQw31fxhjHKJJu4VQipY" target="_blank" rel="noopener noreferrer">Конкурсы, хакатоны и кейсы для портфолио</a>.</p>
+</section>
+
 <section id="decisions">
-  <h2>12. Что нужно решить</h2>
+  <h2>13. Что нужно решить</h2>
   <ol class="decide">
     <li><b>Подтвердить целевую точку</b> из раздела 5 или заменить вузы звёздочками в разделе 4.</li>
     <li><b>Подобрать программы</b> под коды 1.1, 1.4, 1.23, 4.16, 4.18 в Nottingham и сверить названия с перечнем. У York и Sheffield программы уже подобраны.</li>
     <li><b>Записаться на IELTS</b> на начало декабря 2026, крайний срок 31 декабря (British Council Казахстан, компьютерный Academic). Без него в январе не подать в британские вузы, для GLOCAL он нужен к 14 января.</li>
     <li><b>Какие три заявки Erasmus Mundus подавать.</b> Рекомендация: GLOCAL (14 января) и Global COOP (27 января); третью оставить под NavigAIte EU, если старт в январе 2028 подходит, иначе под другую программу из каталога EMJM.</li>
     <li><b>Китай: SJTU MIB и Tongji MGM основными</b>, параллельно CGS и Shanghai Government Scholarship в SJTU (15 февраля и 31 марта). NYU Shanghai и PKU HSBC держать запасными до ответа ЦМП.</li>
+    <li><b>Выбрать не больше трёх событий из раздела 12</b> на декабрь–февраль (по умолчанию United Hacks V8, DeveloperWeek, Hack-Nation) и решить, собирать ли команду на Hult Prize (2–4 человека, до 28 февраля).</li>
     <li><b>Написать в ЦМП</b> про сроки (оффер после защиты, окно подачи до середины октября), засчитывают ли NYU Shanghai и PKU HSBC, и можно ли подавать на CGS параллельно с Болашаком.</li>
   </ol>
 </section>
@@ -831,6 +1102,7 @@ tr.p-closed td { opacity: .62; }
     <li>PKU HSBC: <a href="https://english.phbs.pku.edu.cn/academics/Master/apply/">сроки и тесты</a>, <a href="https://uk.phbs.pku.edu.cn/Study/How_to_Apply.htm">UK–China: требования к IELTS</a>. Tsinghua SEM: <a href="https://masters.sem.tsinghua.edu.cn/en/Admission/How_to_Apply.htm">How to Apply</a></li>
     <li>CSC через ЦМП: <a href="https://www.zakon.kz/obshestvo/6507244-kazakhstantsam-zhelayushchim-postupit-v-vuzy-kitaya-obyavili-o-prodlenii-sroka-priema-dokumentov.html">Zakon.kz, продление срока приёма</a>, <a href="https://bes.media/news/kazahstantsam-predlagayut-73-granta-na-obuchenie-v-vuzah-kitaya-42cdde/">bes.media, 73 гранта на 2026–2027</a></li>
     <li>Карта программ (раздел 11): «Карта полных грантов 2027» от 11.10.2026, сверена с данными от 22.11.2026; официальные страницы вузов и стипендий по ссылкам в таблице</li>
+    <li>Конкурсы и хакатоны (раздел 12), проверено 23.11.2026: <a href="https://devpost.com/hackathons">Devpost</a> (Kiroween, United Hacks V8, DeveloperWeek), <a href="https://www.developerweek.com/NYC/hackathon/">DeveloperWeek</a>, Hack-Nation на Luma (luma.com/9j6zoc6n), <a href="https://www.hultprize.org">Hult Prize</a> (FAQ), Imagine Cup (FAQ и Official Rules, aka.ms/ImagineCup2027TCs), Rice Business Plan Competition, <a href="https://g.co/gsoc">Google Summer of Code</a></li>
     <li>Репозиторий с полным планом: github.com/svulee-jpg/masters-abroad-2027 (приватный)</li>
   </ul>
 </footer>
@@ -1225,6 +1497,181 @@ render();
     sel = +b.getAttribute("data-m"); stop(); draw();
   });
   nextDue(); draw();
+})();
+</script>
+<script type="application/json" id="contests-data">[{"n":"Kaggle Competitions (в т.ч. ARC Prize 2026)","dir":"AI","st":"Открыто","win":"Постоянно; челлендж с призом $400k по AI-агентам — до ~5.01.2027 (дату проверить на странице конкурса)","req":"Аккаунт Kaggle; соло или команда; всё онлайн","type":"Data challenge","prize":"Медали Kaggle (Bronze/Silver/Gold), ранги и денежные призы у крупных конкурсов","cond":"Сильная конкуренция; медаль даётся за топ-проценты таблицы; для портфолио нужны ноутбук и разбор решения (GitHub + профиль Kaggle)","val":3,"eff":"Высокое","fmt":"Онлайн","url":"https://www.kaggle.com/competitions","q":"","co":false,"dl":"","dlk":""},{"n":"lablab.ai Hackathons","dir":"AI","st":"Открыто","win":"Постоянно: онлайн-хакатоны выходят регулярно, у каждого свои даты","req":"Аккаунт; соло или команда; онлайн","type":"Хакатон","prize":"Призы зависят от конкретного хакатона","cond":"У каждого хакатона свои сроки и призы — выбирать те, где условия подходят студенту без компании; правила по странам читать до старта","val":2,"eff":"Низкое","fmt":"Онлайн","url":"https://lablab.ai","q":"","co":false,"dl":"","dlk":""},{"n":"Devpost — Kiroween 2026","dir":"AI","st":"Открыто","win":"Подача до 4.12.2026, 17:00 EST; запрос Kiro-кредитов — до 1.12.2026; судейство 16.12.2026–29.01.2027","req":"Законченный проект и демо на Devpost; онлайн; соло или команда до 3 человек; возраст — совершеннолетие в твоей стране (в РК — 18)","type":"Хакатон","prize":"1-е место $30,000; 2-е $20,000; 3-е $10,000; категории (Best Resurrection, Frankenstein, Skeleton Crew, Costume) — по $5,000","cond":"Времени мало: нужен рабочий проект и демо за недели до дедлайна; общий фонд заявлен $100,000, но перечисленные призы дают $80,000; список стран на странице не указан — прочитать Rules на Devpost; один из источников показывает «Closed» — проверить статус на Devpost","val":2,"eff":"Среднее","fmt":"Онлайн","url":"https://devpost.com/hackathons","q":"","co":false,"dl":"2026-12-04","dlk":"подача"},{"n":"Major League Hacking (MLH) — сезонные хакатоны","dir":"AI","st":"Открыто","win":"Постоянно; календарь событий на сайте (в 2026: AI Hackfest — апрель, трек Gemini API)","req":"Студент; формат зависит от события","type":"Хакатон","prize":"Призы по трекам (например, Gemini API prize track)","cond":"Многие события очные — отбирать цифровые; у каждого свои даты и правила","val":2,"eff":"Низкое","fmt":"Онлайн / очно","url":"","q":"Major League Hacking events 2027","co":false,"dl":"","dlk":""},{"n":"United Hacks V8 (Hack United)","dir":"AI","st":"Открыто","win":"8–10.01.2027, онлайн; регистрация бесплатная, подача проекта через Devpost","req":"Возраст 13+; соло или команда; проект любого типа (веб, AI, игра, железо); онлайн","type":"Хакатон","prize":"Денежные призы по категориям; размер пула заявлен по-разному ($700 у агрегатора, $25K+ у прошлого V7) — сверить на Devpost","cond":"Студенческий хакатон для новичков, формат уикенда; призов немного — ценность в готовом проекте и странице на Devpost для портфолио","val":2,"eff":"Низкое","fmt":"Онлайн","url":"","q":"United Hacks V8 Devpost","co":false,"dl":"2027-01-08","dlk":"старт"},{"n":"Hack-Nation — 8th Global AI Hackathon (MIT-сообщество)","dir":"AI","st":"Открыто","win":"27–28.02.2027, 24-часовой спринт (старт 27.02 в 11:00 ET, сдача 28.02 до 9:00 ET); питчи финалистов онлайн 6.03.2027. Дедлайн заявки не указан — в прошлых сезонах приём закрывался за 3–8 дней до старта","req":"Заявка «Request to Join» на Luma / hack-nation.ai с одобрением организаторов; можно онлайн; идея и команда заранее не нужны — челленджи выдают; команды до 4 человек","type":"Хакатон","prize":"$30K+ денежных призов и API-кредитов по челленджам; $200K+ в AI-инструментах для участников; топ-1% команд приглашают в Venture Lab","cond":"Нужно одобрение организаторов; очные места только в хабах (MIT, Harvard, Stanford, London и др.) — для тебя онлайн; требования к возрасту и статусу на странице не указаны","val":3,"eff":"Среднее","fmt":"Онлайн (+ хабы)","url":"https://luma.com/9j6zoc6n","q":"","co":false,"dl":"2027-02-27","dlk":"старт"},{"n":"Google Cloud — Agents for Impact (Phase III: Digital Hackathon)","dir":"AI","st":"Скоро","win":"Янв–март 2027 (Phase II «Digital AI Arena» — янв 2027, голосование зрителей). Phase I очно: Toronto 20.10, Atlanta 27.10, Sunnyvale 17.11, New York 8.12.2026 — недоступны","req":"Онлайн, в своём темпе; критерии участников на странице не указаны — проверить до регистрации","type":"Хакатон","prize":"Денежные призы (суммы не указаны); выход на сцену Next '27","cond":"Правила участия (возраст, страна, команда) на странице не опубликованы — прочитать до старта; суммы призов неизвестны","val":3,"eff":"Среднее","fmt":"Онлайн","url":"https://cloud.google.com/resources/agents-for-impact-2026","q":"","co":false,"dl":"","dlk":""},{"n":"DeveloperWeek 2027 Hackathon","dir":"AI","st":"Скоро","win":"25.01–11.02.2027 онлайн; очная часть 10–11.02.2027 в Santa Clara; на 23.11.2026 регистрация «Coming Soon»; финальная сдача проектов — 11.02.2027, 10:00 PT","req":"Регистрация на Devpost (DeveloperWeek 2027 Hackathon); команды собираются там же; участие онлайн возможно","type":"Хакатон","prize":"Призы не подтверждены","cond":"Регистрация ещё не открыта — следить на Devpost","val":2,"eff":"Среднее","fmt":"Онлайн (+ Santa Clara)","url":"https://www.developerweek.com/NYC/hackathon/","q":"","co":false,"dl":"2027-01-25","dlk":"старт"},{"n":"Google Summer of Code 2027","dir":"AI","st":"Скоро","win":"Даты 2027 не опубликованы; ожидаемо: организации подаются янв–фев, окно для контрибьюторов ~середина–конец марта 2027 (2026: 16–31 марта; 2025: 24 марта–8 апреля)","req":"Студент или новичок в open source; предложение проекта (proposal); код, например на Python","type":"Open source","prize":"Стипендия от Google за работу над open-source проектом","cond":"Заранее (янв–март) выбрать организацию и сделать первые вклады (PR), иначе заявка слабая","val":3,"eff":"Высокое","fmt":"Онлайн","url":"https://g.co/gsoc","q":"","co":false,"dl":"","dlk":""},{"n":"Основать GDG on Campus в AITU (путь к Google Solution Challenge)","dir":"AI","st":"Не подтверждено","win":"Сроки заявки на чаптер не подтверждены; чаптеры уже есть в NU, KBTU, KIMEP (у KIMEP — хакатон Build with AI 27.04–3.05.2026)","req":"Статус студента; команда организаторов; сначала узнать, нет ли чаптера в AITU","type":"Амбассадорство","prize":"Роль организатора сообщества (Lead) и доступ к программам Google для студентов","cond":"Есть ли чаптер в AITU — неизвестно; организация ивентов требует времени, но это сильная строка для LinkedIn","val":3,"eff":"Высокое","fmt":"Очно (кампус)","url":"","q":"GDG on Campus Astana IT University","co":false,"dl":"","dlk":""},{"n":"Google Solution Challenge 2027","dir":"AI","st":"Не подтверждено","win":"Обычно весна; набор 2027 ещё не объявлен","req":"Членство в GDG on Campus; команда; проект на технологиях Google","type":"Хакатон","prize":"Призы и признание от Google (детали — после анонса 2027)","cond":"Без чаптера GDG on Campus участвовать нельзя — см. строку выше","val":3,"eff":"Высокое","fmt":"Онлайн","url":"","q":"Google Solution Challenge 2027","co":false,"dl":"","dlk":""},{"n":"Rutgers RAISE-27 AI / Data Science Competition","dir":"AI","st":"Не подтверждено","win":"Дедлайн не указан; онлайн-подача + финал 16.04.2027 в Rutgers","req":"Студент бакалавриата или магистратуры, любая специальность; решение по ИИ / data science","type":"Data challenge","prize":"Призовой фонд до $17,000","cond":"Дедлайн на странице не указан — проверить; финал очный в Rutgers (США)","val":2,"eff":"Среднее","fmt":"Онлайн + финал очно (США)","url":"","q":"Rutgers RAISE-27 AI Data Science Competition","co":false,"dl":"","dlk":""},{"n":"Huawei ICT Competition 2026–27 (Казахстан)","dir":"AI","st":"Прошло — след. окно","win":"Нац. отбор 30–31.10, нац. финал 27.11.2026; региональный этап — март 2027, глобальный — май–июнь 2027. В этом сезоне, скорее всего, пропущен; следующий — ~сентябрь 2027","req":"Студент вуза РК; подготовка по выбранному треку","type":"Олимпиада","prize":"Выход на региональный и мировой этап; призы и сертификаты Huawei (размеры — на сайте)","cond":"В 2025–26 в финал прошли 186 из 5 000+ заявок — конкурс высокий, нужна подготовка","val":2,"eff":"Высокое","fmt":"Очно / онлайн (по этапам)","url":"","q":"Huawei ICT Competition Kazakhstan 2026-2027","co":false,"dl":"","dlk":""},{"n":"Claude Campus Ambassadors / Builder Clubs","dir":"AI","st":"Прошло — след. окно","win":"Набор закрыт 12.09.2026; программа сентябрь 2026 – июнь 2027; следующее окно не объявлено","req":"Студент (набор по всему миру); для магистров — трек «Campus Conversations»","type":"Амбассадорство","prize":"Стипендия $3,600","cond":"Набор закрыт; следить за анонсом следующего набора","val":3,"eff":"Среднее","fmt":"Онлайн","url":"https://claude.com/programs/campus","q":"","co":false,"dl":"","dlk":""},{"n":"Astana Hub — AI'preneurs","dir":"AI","st":"Прошло — след. окно","win":"5-й набор открывался 21.05.2026; отбор 18–31.08.2026; следующий набор не подтверждён","req":"Идея или команда AI-стартапа; очно в Астане / Алматы","type":"Акселератор","prize":"Программа ускорения для AI-стартапов (призы и гранты не проверены)","cond":"Нужен стартап; очный формат","val":2,"eff":"Высокое","fmt":"Очно (Астана / Алматы)","url":"https://astanahub.com","q":"","co":true,"dl":"","dlk":""},{"n":"Decentrathon 6.0","dir":"AI","st":"Прошло — след. окно","win":"30–31.10.2026; объявлен «финальным сезоном» — следующего, вероятно, не будет","req":"Студент РК; команда","type":"Хакатон","prize":"Призы не проверены","cond":"Если «финальный сезон» подтвердится, следующего окна не будет","val":2,"eff":"Среднее","fmt":"Не подтверждено","url":"","q":"Decentrathon 6.0","co":false,"dl":"","dlk":""},{"n":"HackAlem AI","dir":"AI","st":"Прошло — след. окно","win":"23.09.2026; следующая дата не объявлена","req":"Команда; AI-проект","type":"Хакатон","prize":"Призовой фонд $200,000","cond":"Следить за анонсами Alem","val":2,"eff":"Среднее","fmt":"Не подтверждено","url":"","q":"HackAlem AI","co":false,"dl":"","dlk":""},{"n":"AlemPlus и alem.ai battle","dir":"AI","st":"Прошло — след. окно","win":"AlemPlus — май 2026; alem.ai battle — до 22.02.2026","req":"Не подтверждено","type":"Хакатон","prize":"alem.ai battle — 25 млн тенге","cond":"Следить за новыми сезонами Alem","val":2,"eff":"Среднее","fmt":"Не подтверждено","url":"","q":"alem.ai battle","co":false,"dl":"","dlk":""},{"n":"Microsoft Learn Student Ambassadors","dir":"AI+Business","st":"Открыто","win":"По сообщениям, заявки принимаются круглый год","req":"18+, очная форма обучения; Contributor ID (приходит за 3–5 рабочих дней)","type":"Амбассадорство","prize":"Статус амбассадора, сообщество и ресурсы Microsoft (детали — на странице)","cond":"Программа перезапущена в апреле 2026 для всех специальностей; условия перепроверить при подаче","val":3,"eff":"Низкое","fmt":"Онлайн","url":"https://learn.microsoft.com/training/student-hub/become-a-student-ambassador","q":"","co":false,"dl":"","dlk":""},{"n":"Imagine Cup 2027 (Microsoft)","dir":"AI+Business","st":"Открыто","win":"Подача до 28.02.2027, 23:59 CST (официальный FAQ; агрегаторы пишут 8.01.2027 — это неверно). Оценка заявок идёт с 2.11.2026; экспертный отбор 1–12.03.2027; интервью 16–31.03.2027; финал — май–июнь 2027","req":"Зарегистрированная компания (юрлицо), основанная не раньше 2.11.2024; команда до 4 человек, 18+; к 28.02.2027 — не менее $1 расходов на 10 разных сервисов Azure в твоей подписке; основатели не обязаны быть студентами","type":"Питч / стартап","prize":"Есть номинация Student Startup (Student Prize): победитель входит в топ-20 и приглашается на World Championship; суммы призов — в Official Rules (aka.ms/ImagineCup2027TCs), в FAQ их нет","cond":"Без юрлица подать нельзя — нужна регистрация (например, ТОО), а подходит ли ИП, уточнить: imagine@microsoft.com; нужен готовый AI/tech-продукт на Azure; Казахстан в списке санкционных стран не значится","val":3,"eff":"Высокое","fmt":"Онлайн + финал","url":"https://imaginecup.microsoft.com","q":"","co":true,"dl":"2027-02-28","dlk":"подача"},{"n":"Texas A&M Mays — AI in Business Pitch Competition","dir":"AI+Business","st":"Не подтверждено","win":"Издание 2026 открылось в январе 2026; 2027, вероятно, январь 2027 (не подтверждено)","req":"Письменный бизнес-план; студенты-основатели из любого вуза","type":"Питч / стартап","prize":"Призы не подтверждены — смотреть на странице конкурса","cond":"Прямое попадание в профиль «AI + бизнес»; формат — письменный бизнес-план, нужен проект с командой","val":3,"eff":"Среднее","fmt":"Не подтверждено","url":"","q":"Texas A&M Mays AI in Business Pitch Competition","co":true,"dl":"","dlk":""},{"n":"Astana Hub Battle / AI & Digital Bridge","dir":"AI+Business","st":"Прошло — след. окно","win":"Прошёл 1–3.10.2026; следующий — около октября 2027 (не подтверждено)","req":"Действующий стартап","type":"Питч / стартап","prize":"$100,000 суммарно: 4 победителя × $25,000; также Draper Founders Challenge и AI & Digital Bridge Awards","cond":"В 2026 было 292 заявки; нужен стартап","val":3,"eff":"Высокое","fmt":"Очно","url":"https://astanahub.com","q":"","co":true,"dl":"","dlk":""},{"n":"MIT Solve — 2027 Global Challenges","dir":"AI+Business","st":"Прошло — след. окно","win":"Дедлайн был 2.11.2026, 12:00 EST (один источник пишет 6.11); следующий раунд — около сентября 2027","req":"Решение (прототип или идея) для глобальной проблемы; команда","type":"Питч / стартап","prize":"Призовой фонд $1M+; девятимесячная программа Solver","cond":"Раунд закрыт; на сентябрь 2027 готовить проект заранее","val":3,"eff":"Высокое","fmt":"Онлайн","url":"https://solve.mit.edu","q":"","co":true,"dl":"","dlk":""},{"n":"Республиканская предметная олимпиада студентов вузов","dir":"AI+Business","st":"Не подтверждено","win":"Следующий цикл: внутривузовский этап — янв–фев 2027, финал — весной (в 2026 финал по «Информационным системам» — 25.04.2026)","req":"Студент AITU; узнать в вузе, по какой образовательной программе и на базе какого вуза проходит олимпиада","type":"Олимпиада","prize":"Дипломы республиканской олимпиады — строка в портфолио","cond":"Даты цикла 2027 не подтверждены; бесплатно, компании не нужно — спросить в AITU, по какой программе подавать","val":2,"eff":"Среднее","fmt":"По этапам (не подтверждено)","url":"","q":"республиканская предметная олимпиада студентов 2027","co":false,"dl":"","dlk":""},{"n":"Конкурсы для иностранных студентов в Шанхае (Fudan, ECNU, Shanghai Global Talents, CICSIC, Yanyuan-Dishui Lake AI+ Startup Challenge)","dir":"AI+Business","st":"Не подтверждено","win":"Прошлые сроки: Fudan — финал 23.03.2026; ECNU — регистрация март 2026; Shanghai Global Talents Innovation & Entrepreneurship Competition (6-й) — регистрация апрель 2026","req":"Нужно учиться в Шанхае / Китае","type":"Питч / стартап","prize":"Призы и гранты в Китае (суммы не проверены)","cond":"Актуально только если окажешься в Китае (Bolashak разрешает Китай); сейчас недоступно","val":2,"eff":"Среднее","fmt":"Очно (Шанхай)","url":"","q":"Shanghai international students innovation entrepreneurship competition","co":false,"dl":"","dlk":""},{"n":"Конкурсы для иностранных студентов в Корее (Busan, KMU, SNU)","dir":"AI+Business","st":"Не подтверждено","win":"Busan — 8.10.2026 (прошло); KMU и SNU — международные треки, даты не подтверждены","req":"Нужно учиться в Корее","type":"Питч / стартап","prize":"Не проверено","cond":"Актуально только если окажешься в Корее","val":1,"eff":"Среднее","fmt":"Очно (Корея)","url":"","q":"Korea international students startup competition","co":false,"dl":"","dlk":""},{"n":"Rice Business Plan Competition 2027","dir":"Business","st":"Открыто","win":"Подача 9.11.2026 – 29.01.2027 (источники расходятся: 29 или 30.01); финал в Houston, апрель 2027 (8–10 или 9–11)","req":"Студенческий стартап: минимум 2 студента-основателя","type":"Питч / стартап","prize":"1-е место — $200,000","cond":"Нужен действующий студенческий стартап и очное участие в Houston; вопросы: rbpc@rice.edu","val":3,"eff":"Высокое","fmt":"Очно (Houston)","url":"","q":"Rice Business Plan Competition 2027","co":true,"dl":"2027-01-29","dlk":"подача"},{"n":"Global Scaling Challenge 2027","dir":"Business","st":"Открыто","win":"Подача от вуза до 15.01.2027","req":"Номинация вузом — AITU должен сам подать заявку","type":"Кейс-чемпионат","prize":"Не подтверждено","cond":"Подаёт именно вуз — написать в AITU заранее, пока не прошло 15.01","val":2,"eff":"Среднее","fmt":"Не подтверждено","url":"","q":"Global Scaling Challenge 2027","co":true,"dl":"2027-01-15","dlk":"подача"},{"n":"ICBSC 2027","dir":"Business","st":"Скоро","win":"Удалённый этап — конец января 2027; финал 22–24.04.2027","req":"Команда студентов; детали регистрации не подтверждены","type":"Кейс-чемпионат","prize":"Не подтверждено","cond":"Регистрацию и состав команды проверить на сайте","val":2,"eff":"Среднее","fmt":"Удалённый этап + финал","url":"","q":"ICBSC 2027 case competition","co":false,"dl":"","dlk":""},{"n":"Melbourne Global Online Case Competition","dir":"Business","st":"Скоро","win":"Откроется в 2027 (точная дата не подтверждена)","req":"Команда студентов; онлайн","type":"Кейс-чемпионат","prize":"Не подтверждено","cond":"Дату набора перепроверить в начале 2027","val":2,"eff":"Среднее","fmt":"Онлайн","url":"","q":"Melbourne Global Online Case Competition 2027","co":false,"dl":"","dlk":""},{"n":"Hult Prize 2027","dir":"Business","st":"Открыто","win":"Дедлайн заявки — 28.02.2027, 23:59 GMT (официальный FAQ; дата 15.12.2026 у агрегатора неверна). Вузовские отборы идут по своему календарю (обычно янв–фев) — узнать в AITU, есть ли локальный раунд","req":"Команда 2–4 человека, всем 18+ к 28.02.2027, студенты вузов; в заявке: видео о команде (1 мин), питч-видео (2 мин) и питч-дек; компания не нужна","type":"Питч / стартап","prize":"$1M seed-финансирование победителю","cond":"Нужна команда (один человек может быть только в одной команде); страница hultprize.org/register содержит противоречивый текст про прошлый цикл — зарегистрироваться и сверить условия по FAQ; в локальных отборах видео бывает длиннее (до 4 минут)","val":3,"eff":"Высокое","fmt":"Онлайн + вузовский отбор","url":"https://www.hultprize.org","q":"","co":false,"dl":"2027-02-28","dlk":"подача"},{"n":"GSEA — Global Student Entrepreneur Awards","dir":"Business","st":"Не подтверждено","win":"Сезон авг 2026 – 2027; сроки зависят от страны; казахстанский раунд 2026/27 не подтверждён","req":"18–30 лет, студент, собственный бизнес не моложе 6 месяцев","type":"Питч / стартап","prize":"Глобальный призовой фонд $100,000","cond":"Нужен действующий бизнес 6+ месяцев; найти национального организатора в Казахстане","val":3,"eff":"Высокое","fmt":"Не подтверждено","url":"","q":"GSEA Global Student Entrepreneur Awards Kazakhstan","co":true,"dl":"","dlk":"","note":"SEOULFUL подойдёт, только если это действующий бизнес 6+ месяцев"},{"n":"L'Oréal Brandstorm 2027","dir":"Business","st":"Не подтверждено","win":"Дедлайн не подтверждён (вероятно, ~31.03.2027 — это предположение)","req":"До 30 лет; команда из 3; презентация из 3 слайдов; компания не нужна","type":"Кейс-чемпионат","prize":"Работа в L'Oréal и миссия в штаб-квартире в Париже","cond":"Дату проверить на странице 2027; международная конкуренция","val":3,"eff":"Среднее","fmt":"Не подтверждено","url":"","q":"L'Oréal Brandstorm 2027","co":false,"dl":"","dlk":""},{"n":"Startup Orda (Astana Hub)","dir":"Business","st":"Не подтверждено","win":"Demo Days: 31.10 и 28.11.2026; следующий набор не подтверждён","req":"16+; бесплатно; региональные хабы","type":"Акселератор","prize":"Бесплатная программа для стартапов (детали — на сайте)","cond":"Нужна стартап-идея; очный формат","val":2,"eff":"Среднее","fmt":"Очно (региональные хабы)","url":"https://astanahub.com","q":"","co":false,"dl":"","dlk":""},{"n":"ISM Case Competition","dir":"Business","st":"Не подтверждено","win":"Финал 16–18.05.2027; дедлайн регистрации не подтверждён","req":"Команда студентов","type":"Кейс-чемпионат","prize":"Не подтверждено","cond":"Сроки регистрации проверить","val":2,"eff":"Среднее","fmt":"Не подтверждено","url":"","q":"ISM Case Competition 2027","co":false,"dl":"","dlk":""},{"n":"Susilo и B Corp case competitions","dir":"Business","st":"Не подтверждено","win":"Даты проверить","req":"Команда студентов","type":"Кейс-чемпионат","prize":"Не подтверждено","cond":"Даты и условия не подтверждены","val":2,"eff":"Среднее","fmt":"Не подтверждено","url":"","q":"Susilo case competition; B Corp case competition","co":false,"dl":"","dlk":""},{"n":"Unilever Future Leaders' League","dir":"Business","st":"Не подтверждено","win":"Казахстанский раунд не найден; есть европейская версия; в 2023 дедлайн был 8 ноября","req":"Студент; доступность для РК не подтверждена","type":"Кейс-чемпионат","prize":"Не подтверждено","cond":"Открыт ли для студентов из РК — неизвестно","val":2,"eff":"Среднее","fmt":"Не подтверждено","url":"","q":"Unilever Future Leaders' League","co":false,"dl":"","dlk":""},{"n":"NIBS","dir":"Business","st":"Прошло — след. окно","win":"Дедлайн был 23.10.2026; следующий — 2027 (не подтверждено)","req":"Команда студентов","type":"Кейс-чемпионат","prize":"Не подтверждено","cond":"Следить за открытием набора осенью 2027","val":2,"eff":"Среднее","fmt":"Не подтверждено","url":"","q":"NIBS case competition","co":false,"dl":"","dlk":""},{"n":"Management Consulted World Cup","dir":"Business","st":"Прошло — след. окно","win":"Прошёл; следующий не объявлен","req":"Команда студентов","type":"Кейс-чемпионат","prize":"Не подтверждено","cond":"Следить за анонсом следующего сезона","val":2,"eff":"Среднее","fmt":"Не подтверждено","url":"","q":"Management Consulted World Cup","co":false,"dl":"","dlk":""},{"n":"Baylor New Venture Competition 2027","dir":"Business","st":"Прошло — след. окно","win":"Первый раунд закрылся 1.10.2026; второй раунд (20.11.2026–18.01.2027) — только для топ-50; финал 16–17.04.2027. Следующий набор — ориентировочно с ~1.04.2027 (по данным поиска, не подтверждено)","req":"Студенческий стартап; команда; формат финала и условия для иностранных команд — проверить","type":"Питч / стартап","prize":"Не подтверждено","cond":"Для текущего цикла закрыто — только справочно; готовиться к следующему окну","val":3,"eff":"Высокое","fmt":"Не подтверждено","url":"","q":"Baylor New Venture Competition","co":true,"dl":"","dlk":""}]</script>
+<script>
+(function () {
+  "use strict";
+  var MON = ["янв", "фев", "мар", "апр", "мая", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"];
+  var MONG = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+  var now = new Date();
+  var TODAY = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+  function utc(s) { var p = s.split("-"); return Date.UTC(+p[0], +p[1] - 1, +p[2]); }
+  function days(s) { return Math.round((utc(s) - TODAY) / 864e5); }
+  function fmtShort(s) { var p = s.split("-"); return +p[2] + " " + MON[+p[1] - 1]; }
+  function fmtLong(s) { var p = s.split("-"); return +p[2] + " " + MONG[+p[1] - 1] + " " + p[0]; }
+  function plural(n, a, b, c) { var m = Math.abs(n) % 100, k = m % 10; if (m > 10 && m < 20) return c; if (k === 1) return a; if (k > 1 && k < 5) return b; return c; }
+  function dword(n) { return plural(n, "день", "дня", "дней"); }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  /* Countdown tiles in the hero */
+  var tiles = document.querySelectorAll("[data-d]");
+  for (var i = 0; i < tiles.length; i++) {
+    var v = tiles[i].querySelector(".v");
+    if (v) v.textContent = String(Math.max(0, days(tiles[i].getAttribute("data-d"))));
+  }
+
+  /* Next steps list */
+  var NEXT = [
+    { d: "2026-12-04", t: "Kiroween на Devpost: подача проекта (по желанию)", h: "#contests" },
+    { d: "2026-12-31", t: "IELTS Academic: сдать до этой даты", h: "#requirements" },
+    { d: "2027-01-08", t: "United Hacks V8: старт хакатона", h: "#contests" },
+    { d: "2027-01-14", t: "Erasmus Mundus GLOCAL: дедлайн заявки", h: "#europe" },
+    { d: "2027-01-27", t: "Erasmus Mundus GLOBAL COOP: дедлайн заявки", h: "#europe" },
+    { d: "2027-02-15", t: "CGS (SJTU): дедлайн заявки", h: "#china" },
+    { d: "2027-02-28", t: "Hult Prize: дедлайн заявки, команда 2–4", h: "#contests" }
+  ];
+  var nl = document.getElementById("next-list");
+  if (nl) {
+    var up = NEXT.filter(function (x) { return days(x.d) >= 0; }).slice(0, 5), h = "";
+    up.forEach(function (x) {
+      var n = days(x.d);
+      h += '<li><span class="dt">' + fmtShort(x.d) + '</span><a href="' + x.h + '">' + esc(x.t) + '</a>' +
+        '<span class="dd' + (n <= 14 ? " hot" : "") + '">' + (n === 0 ? "сегодня" : n + " " + dword(n)) + "</span></li>";
+    });
+    nl.innerHTML = h || "<li>Все ближайшие сроки прошли. Проверь раздел «Карта времени».</li>";
+  }
+
+  /* Contests */
+  var dataEl = document.getElementById("contests-data");
+  var grid = document.getElementById("ct-grid");
+  if (!dataEl || !grid) return;
+  var DATA = JSON.parse(dataEl.textContent);
+  var KEY = "ct-status-v1", saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { saved = {}; }
+  function persist() { try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) { /* storage unavailable */ } }
+  var RANK = { "Открыто": 0, "Скоро": 1, "Не подтверждено": 2, "Прошло — след. окно": 3 };
+  var STCLS = { "Открыто": "good", "Скоро": "warn", "Не подтверждено": "mute", "Прошло — след. окно": "bad" };
+  var STTXT = { "Прошло — след. окно": "Прошло, ждать след. окно" };
+  var MY = ["", "Хочу", "Участвую", "Подано", "Пропускаю"];
+  var f = { q: "", dir: "", type: "", nocomp: false, st: "all" };
+  DATA.forEach(function (x, i) { x._i = i; });
+
+  function shortName(x) { return x.n.replace(/^Devpost\s—\s/, "").replace(/\s*[(—].*$/, ""); }
+
+  /* Tiles */
+  var open = DATA.filter(function (x) { return x.st === "Открыто"; });
+  var openNo = open.filter(function (x) { return !x.co; });
+  var nxt = DATA.filter(function (x) { return x.dl && days(x.dl) >= 0; }).sort(function (a, b) { return a.dl.localeCompare(b.dl); })[0];
+  var t = '<div class="ct-tile"><b>' + DATA.length + "</b><span>событий в таблице</span></div>" +
+    '<div class="ct-tile"><b>' + open.length + "</b><span>открыто сейчас</span></div>" +
+    '<div class="ct-tile"><b>' + openNo.length + "</b><span>открыто без своей компании</span></div>";
+  if (nxt) {
+    var nn = days(nxt.dl);
+    t += '<div class="ct-tile"><b>' + nn + "</b><span>" + dword(nn) + " до ближайшего срока: " + esc(shortName(nxt)) + " (" + fmtShort(nxt.dl) + ")</span></div>";
+  }
+  document.getElementById("ct-tiles").innerHTML = t;
+
+  /* Controls */
+  var typeSel = document.getElementById("ct-type");
+  var types = [];
+  DATA.forEach(function (x) { if (types.indexOf(x.type) < 0) types.push(x.type); });
+  types.sort();
+  typeSel.innerHTML = '<option value="">Все</option>' + types.map(function (s) { return '<option value="' + esc(s) + '">' + esc(s) + "</option>"; }).join("");
+  var CHIPS = [["all", "Все"], ["Открыто", "Открыто"], ["Скоро", "Скоро"], ["Не подтверждено", "Не подтверждено"], ["Прошло — след. окно", "Прошло"], ["mine", "Мои отметки"]];
+  var chips = document.getElementById("ct-chips");
+  function drawChips() {
+    chips.innerHTML = CHIPS.map(function (c, i) {
+      return (i === CHIPS.length - 1 ? '<span class="sep"></span>' : "") +
+        '<button type="button" data-st="' + esc(c[0]) + '" aria-pressed="' + (f.st === c[0]) + '">' + esc(c[1]) + "</button>";
+    }).join("");
+  }
+
+  function match(x) {
+    if (f.st === "mine") { if (!saved[x.n]) return false; }
+    else if (f.st !== "all" && x.st !== f.st) return false;
+    if (f.dir && x.dir !== f.dir) return false;
+    if (f.type && x.type !== f.type) return false;
+    if (f.nocomp && x.co) return false;
+    if (f.q) {
+      var hay = [x.n, x.win, x.req, x.prize, x.cond, x.type, x.fmt].join(" ").toLowerCase();
+      if (hay.indexOf(f.q) < 0) return false;
+    }
+    return true;
+  }
+  function cmp(a, b) {
+    var r = RANK[a.st] - RANK[b.st];
+    if (r) return r;
+    var da = a.dl || "9999", db = b.dl || "9999";
+    if (da !== db) return da < db ? -1 : 1;
+    return a._i - b._i;
+  }
+
+  function card(x) {
+    var s = saved[x.n] || "";
+    var past = x.st === "Прошло — след. окно";
+    var dd = "";
+    if (x.dl) {
+      var n = days(x.dl);
+      if (n >= 0) {
+        dd = '<span class="ct-days' + (n <= 14 ? " hot" : "") + '">' + (x.dlk === "старт" ? "Старт через " : "До дедлайна ") + n + " " + dword(n) + " · " + fmtShort(x.dl) + "</span>";
+      } else {
+        dd = '<span class="ct-days">Срок прошёл · ' + fmtShort(x.dl) + "</span>";
+      }
+    }
+    var dots = "";
+    for (var k = 1; k <= 3; k++) dots += k <= x.val ? "●" : "<i>●</i>";
+    var link = x.url
+      ? '<a href="' + esc(x.url) + '" target="_blank" rel="noopener noreferrer">Сайт ↗</a>'
+      : (x.q ? '<a href="https://www.google.com/search?q=' + encodeURIComponent(x.q) + '" target="_blank" rel="noopener noreferrer">Найти ↗</a>' : "");
+    var opts = MY.map(function (o) {
+      return '<option value="' + esc(o) + '"' + (o === s ? " selected" : "") + ">" + (o || "Мой статус: —") + "</option>";
+    }).join("");
+    return '<article class="ct-card' + (past ? " past" : "") + (s ? " marked" : "") + '" data-i="' + x._i + '">' +
+      "<h3>" + esc(x.n) + "</h3>" +
+      '<div class="ct-meta"><span class="pill ' + STCLS[x.st] + '">' + esc(STTXT[x.st] || x.st) + '</span><span class="pill info">' + esc(x.dir) + '</span><span class="pill mute">' + esc(x.type) + "</span>" +
+      (x.co ? '<span class="pill warn">нужна компания или стартап</span>' : "") + "</div>" +
+      '<div><p class="ct-lbl">Окно и сроки</p><p>' + esc(x.win) + "</p>" + dd + "</div>" +
+      '<div><p class="ct-lbl">Что можно выиграть</p><p>' + esc(x.prize) + "</p></div>" +
+      '<div><p class="ct-lbl">Условия участия</p><p>' + esc(x.req) + "</p></div>" +
+      (x.note ? '<p class="note">Для тебя: ' + esc(x.note) + "</p>" : "") +
+      '<details class="ct-more"><summary>Подводные камни</summary><p>' + esc(x.cond) + "</p></details>" +
+      '<div class="ct-foot"><span class="ct-dots" title="Ценность для портфолио: ' + x.val + ' из 3">' + dots + '</span><span>Усилие: ' + esc(x.eff.toLowerCase()) + "</span><span>" + esc(x.fmt) + "</span>" + link +
+      '<select class="ct-status" aria-label="Мой статус: ' + esc(shortName(x)) + '">' + opts + "</select></div>" +
+      "</article>";
+  }
+
+  var countEl = document.getElementById("ct-count");
+  function render() {
+    var rows = DATA.filter(match).sort(cmp);
+    grid.innerHTML = rows.length ? rows.map(card).join("") : '<div class="ct-empty">Ничего не найдено. Сними один из фильтров.</div>';
+    countEl.textContent = rows.length + " из " + DATA.length;
+  }
+
+  document.getElementById("ct-q").addEventListener("input", function () { f.q = this.value.trim().toLowerCase(); render(); });
+  document.getElementById("ct-dir").addEventListener("change", function () { f.dir = this.value; render(); });
+  typeSel.addEventListener("change", function () { f.type = this.value; render(); });
+  document.getElementById("ct-nocomp").addEventListener("change", function () { f.nocomp = this.checked; render(); });
+  chips.addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-st]");
+    if (!b) return;
+    f.st = b.getAttribute("data-st"); drawChips(); render();
+  });
+  grid.addEventListener("change", function (e) {
+    var sel = e.target.closest(".ct-status");
+    if (!sel) return;
+    var c = sel.closest(".ct-card"), x = DATA[+c.getAttribute("data-i")];
+    if (sel.value) saved[x.n] = sel.value; else delete saved[x.n];
+    persist();
+    c.classList.toggle("marked", !!sel.value);
+    if (f.st === "mine") render();
+  });
+  drawChips(); render();
 })();
 </script>
 </body>

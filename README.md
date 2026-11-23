@@ -4,7 +4,7 @@
 
 Статус: **22.11.2026**. Приоритеты: 1 Великобритания (Болашак), 2 Европа (Erasmus Mundus), 3 Китай.
 
-Сайт «Saule's Master's Degree Roadmap» (всё в одном файле: карта времени, направления, вузы, GPA и IELTS, Болашак, Европа, Китай, календарь, карта программ с фильтрами): https://claude.ai/artifact/AXHfRcDkEWumWTCgvQ7yVi. Исходник: [site/index.html](site/index.html).
+Сайт «Saule's Master's Degree Roadmap» (всё в одном файле: карта времени, направления, вузы, GPA и IELTS, Болашак, Европа, Китай, календарь, карта программ с фильтрами, конкурсы и хакатоны для портфолио; тёмный золотой дизайн с обратным отсчётом до дедлайнов): https://claude.ai/artifact/AXHfRcDkEWumWTCgvQ7yVi. Исходник: [site/index.html](site/index.html).
 
 ## Срочно (ближайшие 2 недели)
 
@@ -33,6 +33,7 @@
 | [docs/sources.md](docs/sources.md) | Источники со ссылками |
 | [docs/archive-korea-and-other-grants.md](docs/archive-korea-and-other-grants.md) | Архив: Корея и другие гранты из карты от 11.10.2026 (не входят в текущий план) |
 | [site/index.html](site/index.html) | Исходник сайта Saule's Master's Degree Roadmap |
+| [data/contests.json](data/contests.json) | 40 конкурсов и хакатонов для раздела 12 сайта (данные проверены 23.11.2026) |
 
 ## Принятые решения
 
