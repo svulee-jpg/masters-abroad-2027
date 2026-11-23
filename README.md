@@ -4,7 +4,7 @@
 
 Статус: **22.11.2026**. Приоритеты: 1 Великобритания (Болашак), 2 Европа (Erasmus Mundus), 3 Китай.
 
-Сайт «Saule's Master's Degree Roadmap» (всё в одном файле: карта времени, направления, вузы, GPA и IELTS, Болашак, Европа, Китай, календарь, карта программ с фильтрами, конкурсы и хакатоны для портфолио; тёмный золотой дизайн с обратным отсчётом до дедлайнов): https://claude.ai/artifact/AXHfRcDkEWumWTCgvQ7yVi. Исходник: [site/index.html](site/index.html). Копия для GitHub Pages: docs/index.html (после правки site/index.html копировать: `cp site/index.html docs/index.html`). Ссылка для телефона: https://svulee-jpg.github.io/masters-abroad-2027/
+Сайт «Saule's Master's Degree Roadmap» (всё в одном файле: карта времени, направления, вузы, GPA и IELTS, Болашак, Европа, Китай, календарь, карта программ с фильтрами, конкурсы и хакатоны для портфолио; тёмный золотой дизайн с обратным отсчётом до дедлайнов): https://claude.ai/artifact/AXHfRcDkEWumWTCgvQ7yVi. Исходник: [site/index.html](site/index.html). Копия для GitHub Pages: docs/index.html и docs/img (после правки копировать: `cp site/index.html docs/index.html && cp -r site/img docs/`). Ссылка для телефона: https://svulee-jpg.github.io/masters-abroad-2027/
 
 ## Срочно (ближайшие 2 недели)
 
