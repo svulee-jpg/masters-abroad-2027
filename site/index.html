@@ -458,6 +458,27 @@ html.nav-open .sb-tab { left: var(--sbw); }
 }
 @media (prefers-reduced-motion: reduce) { .sb, .sb-tab, .sb-back { transition: none !important; } }
 @media print { .sb, .sb-tab, .sb-back { display: none !important; } html.nav-open body { padding-left: 0 !important; } }
+
+/* Vision board */
+.vb-lead { color: var(--muted); max-width: 46em; margin: 6px 0 30px; }
+.vb-grid { column-count: 3; column-gap: 16px; }
+.vb-it { margin: 0 0 16px; break-inside: avoid; background: #000; border: 1px solid var(--line); border-radius: 3px; overflow: hidden; line-height: 0; }
+.vb-b { display: block; width: 100%; margin: 0; padding: 0; border: 0; background: none; cursor: zoom-in; line-height: 0; overflow: hidden; }
+.vb-b img { display: block; width: 100%; height: auto; transition: transform .6s ease; }
+.vb-b:hover img, .vb-b:focus-visible img { transform: scale(1.03); }
+.vb-b:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.vb-end { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; margin: 22px 0 0; padding-top: 22px; border-top: 1px solid var(--line); }
+.vb-end p { margin: 0; font-family: var(--font-display); font-style: italic; font-size: clamp(20px, 2.4vw, 28px); color: var(--ink); }
+.vb-end em { color: var(--accent); }
+.vb-lb { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(5, 4, 3, .95); cursor: zoom-out; }
+.vb-lb[hidden] { display: none; }
+.vb-lb img { max-width: min(100%, 920px); max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 3px; }
+.vb-lb button { position: absolute; top: 14px; right: 14px; width: 40px; height: 40px; display: grid; place-items: center; background: #0a0907; border: 1px solid var(--accent); border-radius: 50%; color: var(--accent); font: 400 22px/1 var(--font-body); cursor: pointer; padding: 0; }
+html.vb-lock { overflow: hidden; }
+@media (max-width: 900px) { .vb-grid { column-count: 2; } }
+@media (max-width: 560px) { .vb-grid { column-gap: 10px; } .vb-it { margin-bottom: 10px; } }
+@media (prefers-reduced-motion: reduce) { .vb-b img { transition: none; } .vb-b:hover img { transform: none; } }
+@media print { .vb-lb { display: none !important; } .vb-grid { column-count: 3; } }
 </style>
 <script>(function(){var d=document.documentElement,o=innerWidth>=1100;try{if(localStorage.getItem('sb')==='0')o=false}catch(e){}if(o)d.classList.add('nav-open')})();</script>
 </head>
@@ -501,6 +522,9 @@ html.nav-open .sb-tab { left: var(--sbw); }
     </div>
     <div class="sb-g"><p class="sb-gt">Решения</p>
       <a href="#decisions" data-k="вопросы выбор"><i>13</i><span>Что нужно решить</span></a>
+    </div>
+    <div class="sb-g"><p class="sb-gt">Мотивация</p>
+      <a href="#vision" data-k="манифестация коллаж доска желаний мечты фото vision board london лондон"><i>·</i><span>Доска желаний</span></a>
     </div>
     <p class="sb-none" id="sb-none">Ничего не найдено</p>
   </nav>
@@ -585,12 +609,12 @@ html.nav-open .sb-tab { left: var(--sbw); }
   <h2>1. Исходные данные</h2>
   <p class="sec-note">От этих цифр зависит, куда можно подаваться.</p>
   <div class="grid">
-    <div class="card"><div class="big">3.08</div><div class="lbl">GPA из 4.0 с первым триместром 3 курса (прогноз 3.07–3.09). В транскрипте сейчас 3.09 за 163 кредита. Порог Болашака 3.00 пройден</div></div>
+    <div class="card"><div class="big">3.08</div><div class="lbl">GPA из 4.0 с первым триместром 3 курса: все оценки выставлены 23.11.2026, Robotics 90 (A-). В транскрипте AITU пока 3.09 за 163 кредита. Порог Болашака 3.00 пройден</div></div>
     <div class="card"><div class="big">AI Business</div><div class="lbl">Бакалавриат AITU, первый выпуск, защита в начале июня 2027</div></div>
     <div class="card"><div class="big">нет IELTS</div><div class="lbl">Прошлый результат (6.0, 2023) просрочен. Нужна новая сдача</div></div>
     <div class="card"><div class="big">UK + Китай</div><div class="lbl">Страны, где можно использовать Болашак. Европа идёт отдельно, по Erasmus Mundus</div></div>
   </div>
-  <p class="sec-note" style="margin-top:20px">GPA по транскрипту AITU (22.11.2026), взвешен по кредитам: 6 триместров, 163 кредита, 3.09. Ниже первый триместр 3 курса и как общий GPA зависит от финальной оценки Robotics for AI Business. Кредиты новых курсов неизвестны, расчёт при равных кредитах (разница не больше 0.01).</p>
+  <p class="sec-note" style="margin-top:20px">GPA по транскрипту AITU (22.11.2026), взвешен по кредитам: 6 триместров, 163 кредита, 3.09. Ниже первый триместр 3 курса: все шесть оценок выставлены, Robotics for AI Business 90 (A-, 3.67). Кредиты новых курсов неизвестны, расчёт при равных кредитах (по 5): 193 кредита, общий GPA 3.08. При других кредитах получается от 3.06 до 3.10.</p>
   <div class="tablewrap">
     <table>
       <thead>
@@ -604,6 +628,8 @@ html.nav-open .sb-tab { left: var(--sbw); }
         <tr><td>5</td><td class="num">27</td><td class="num">3.12</td></tr>
         <tr><td>6 (обмен KNU)</td><td class="num">29</td><td class="num">3.14</td></tr>
         <tr><td><b>Итого по транскрипту</b></td><td class="num"><b>163</b></td><td class="num"><b>3.09</b></td></tr>
+        <tr><td>7 (первый триместр 3 курса, кредиты по 5, оценки 23.11.2026)</td><td class="num">30</td><td class="num">3.00</td></tr>
+        <tr><td><b>Итого с 7-м триместром</b></td><td class="num"><b>193</b></td><td class="num"><b>3.08</b></td></tr>
       </tbody>
     </table>
   </div>
@@ -614,7 +640,7 @@ html.nav-open .sb-tab { left: var(--sbw); }
       </thead>
       <tbody>
         <tr><td>95–100 (4.0)</td><td class="num">3.06</td><td class="num">3.09</td></tr>
-        <tr><td>90–94 (3.67), твой прогноз</td><td class="num">3.00</td><td class="num">3.08</td></tr>
+        <tr><td><b>90–94 (3.67): твой результат, Robotics 90</b></td><td class="num"><b>3.00</b></td><td class="num"><b>3.08</b></td></tr>
         <tr><td>85–89 (3.33)</td><td class="num">2.94</td><td class="num">3.07</td></tr>
         <tr><td>80–84 (3.0)</td><td class="num">2.89</td><td class="num">3.06</td></tr>
       </tbody>
@@ -1204,6 +1230,24 @@ html.nav-open .sb-tab { left: var(--sbw); }
     <li><b>Выбрать не больше трёх событий из раздела 12</b> на декабрь–февраль (по умолчанию United Hacks V8, DeveloperWeek, Hack-Nation) и решить, собирать ли команду на Hult Prize (2–4 человека, до 28 февраля).</li>
     <li><b>Написать в ЦМП</b> про сроки (оффер после защиты, окно подачи до середины октября), засчитывают ли NYU Shanghai и PKU HSBC, и можно ли подавать на CGS параллельно с Болашаком.</li>
   </ol>
+</section>
+
+<section id="vision" class="vb">
+  <p class="kicker">Visualize it · Manifest it</p>
+  <h2>Всё сбудется, если быть чуть храбрее.</h2>
+  <p class="vb-lead">Доска желаний для дней, когда страшно подавать заявку, писать профессору или садиться за IELTS. Посмотри на неё минуту, сделай один маленький шаг и возвращайся к плану.</p>
+  <div class="vb-grid">
+    <figure class="vb-it"><button class="vb-b" type="button" aria-label="Открыть крупнее: What if it all works out?"><img src="img/vision-what-if-london.png" width="736" height="1308" loading="lazy" alt="Биг-Бен и красный двухэтажный автобус, поверх газетная страница с надписью: What if it all works out?"></button></figure>
+    <figure class="vb-it"><button class="vb-b" type="button" aria-label="Открыть крупнее: Work until you don't have to introduce yourself"><img src="img/vision-work-star.png" width="1080" height="1440" loading="lazy" alt="Звезда на аллее славы с надписью: Work until you don't have to introduce yourself"></button></figure>
+    <figure class="vb-it"><button class="vb-b" type="button" aria-label="Открыть крупнее: Keep studying, London is waiting you"><img src="img/vision-keep-studying.png" width="736" height="981" loading="lazy" alt="Биг-Бен на закате и надпись: Keep studying, London is waiting you"></button></figure>
+    <figure class="vb-it"><button class="vb-b" type="button" aria-label="Открыть крупнее: If you can dream it, you can do it."><img src="img/vision-dream-leopard.png" width="1152" height="2048" loading="lazy" alt="Леопард на чёрном фоне и надпись: If you can dream it, you can do it."></button></figure>
+    <figure class="vb-it"><button class="vb-b" type="button" aria-label="Открыть крупнее: I manifest London"><img src="img/vision-i-manifest-london.png" width="736" height="736" loading="lazy" alt="Ночной Биг-Бен и автобус с розовой надписью: I manifest London"></button></figure>
+    <figure class="vb-it"><button class="vb-b" type="button" aria-label="Открыть крупнее: Don't call it a dream. Call it a plan."><img src="img/vision-call-it-a-plan.png" width="736" height="1308" loading="lazy" alt="Биг-Бен на фоне неба и надпись: Don't call it a dream, call it a plan."></button></figure>
+  </div>
+  <div class="vb-end">
+    <p>London is waiting. <em>Be a little braver.</em></p>
+    <a class="btn" href="#next">Один шаг сегодня</a>
+  </div>
 </section>
 
 <footer>
@@ -1887,6 +1931,27 @@ render();
       if (f) { f.click(); q.blur(); }
     } else if (e.key === "Escape") { q.value = ""; filter(); }
   });
+})();
+</script>
+<div class="vb-lb" id="vb-lb" hidden role="dialog" aria-modal="true" aria-label="Фото крупно"><img alt=""><button type="button" aria-label="Закрыть">&times;</button></div>
+<script>
+(function () {
+  var lb = document.getElementById("vb-lb"), grid = document.querySelector(".vb-grid");
+  if (!lb || !grid) return;
+  var im = lb.querySelector("img"), x = lb.querySelector("button"), last = null;
+  function open(b) {
+    var s = b.querySelector("img");
+    last = b; im.src = s.currentSrc || s.src; im.alt = s.alt;
+    lb.hidden = false; document.documentElement.classList.add("vb-lock"); x.focus();
+  }
+  function close() {
+    lb.hidden = true; im.removeAttribute("src");
+    document.documentElement.classList.remove("vb-lock");
+    if (last) last.focus();
+  }
+  grid.addEventListener("click", function (e) { var b = e.target.closest(".vb-b"); if (b) open(b); });
+  lb.addEventListener("click", close);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !lb.hidden) close(); });
 })();
 </script>
 </body>
